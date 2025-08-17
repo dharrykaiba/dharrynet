@@ -2,6 +2,7 @@
   "name": "dharrynet",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://mijuy.com/",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.7.0",
@@ -16,6 +17,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build && echo dharry.net > ./build/CNAME",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
