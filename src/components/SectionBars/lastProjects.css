@@ -1,0 +1,129 @@
+/* Base */
+.last-projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 3rem auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  width: clamp(300px, 95%, 1100px);
+  max-height: 70vh;
+  box-sizing: border-box;
+}
+
+.project-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-card {
+  height: clamp(120px, 22vh, 220px);
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--color-white);
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px var(--color-primary-variant);
+}
+
+.project-content h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+/* ✅ Descripción fuera del card */
+.project-desc {
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  margin-top: 0.5rem;
+  display: none; /* oculto por defecto en móvil */
+  color: var(--color-text, #fff);
+}
+
+/* ✅ Tablet (dentro del card, abajo) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .project-wrapper {
+    position: relative; /* necesario para meter el desc dentro */
+  }
+
+  .project-desc {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0 0.5rem;
+    font-size: 0.85rem;
+    text-align: center;
+
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2; /* 🔒 máx. 2 líneas */
+    -webkit-box-orient: vertical;
+
+    max-width: 90%;
+    color: var(--color-white);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* ✅ Desktop (fuera de la card, normal) */
+@media (min-width: 1025px) {
+  .project-card {
+    height: clamp(240px, 40vh, 400px);
+  }
+
+  .project-desc {
+    position: static; /* vuelve al flujo normal */
+    display: block;
+    max-width: 90%;
+    margin-top: 1rem;
+  }
+}
+
+
+/* ✅ Tablet: 2 columnas */
+@media (max-width: 1024px) {
+  .last-projects {
+    grid-template-columns: repeat(2, 1fr);
+    max-height: 60vh;
+  }
+
+  .last-projects .project-wrapper:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .project-card {
+    height: clamp(110px, 18vh, 160px);
+  }
+}
+
+/* ✅ Móvil: 1 columna */
+@media (max-width: 600px) {
+  .last-projects {
+    grid-template-columns: 1fr;
+    max-height: 55vh;
+  }
+
+  .project-card {
+    height: clamp(100px, 16vh, 150px);
+  }
+}

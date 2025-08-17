@@ -1,0 +1,68 @@
+.streaming-status {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.platform {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 500;
+}
+
+.icon {
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+/* Texto ON/OFF */
+.state-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-light);
+}
+
+/* Estados */
+.platform.online .icon {
+  color: var(--color-secondary); /* verde */
+  animation: pulse 1.2s infinite;
+}
+
+.platform.online .state-text {
+  color: var(--color-secondary);
+}
+
+.platform.offline .icon {
+  color: var(--color-primary); /* rojo */
+}
+
+.platform.offline .state-text {
+  color: var(--color-primary);
+}
+
+.platform.error .icon {
+  color: var(--color-dark); /* gris */
+}
+
+.platform.error .state-text {
+  color: var(--color-dark);
+}
+
+/* Animación de pulso para online */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
