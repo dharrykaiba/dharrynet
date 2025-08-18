@@ -1,53 +1,25 @@
-// Importamos React (necesario para trabajar con JSX)
+// src/App.jsx
 import React from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
-// Importamos los estilos globales
+// Estilos globales
 import "./styles/globals.css";
 
-// Importamos los componentes de la aplicación
-import Intro from "./components/intro/Intro";
-import Navbar from "./components/SectionBars/Navbar";
-// import About from "./components/about/About";
-// import Experience from "./components/experience/Experience";
-// import Services from "./components/services/Services";
-// import Portfolio from "./components/portfolio/Portfolio";
-// import Testimonials from "./components/testimonials/Testimonials";
-// import Contact from "./components/contact/Contact";
-import Footer from "./components/SectionBars/Footer";
+// Views
+import HomeView from "./views/HomeView";
 
-// Componente principal de la aplicación
 function App() {
   return (
-    <>
-      {/* Encabezado */}
-      <Intro />
+    <Router>
+      <Routes>
+        {/* Ruta principal */}
+        <Route path="/" element={<HomeView />} />
 
-      {/* Barra de navegación */}
-      <Navbar />
-
-      {/* Sección Acerca de mí */}
-      {/* <About /> */}
-
-      {/* Sección de Experiencia */}
-      {/* <Experience /> */}
-
-      {/* Sección de Servicios */}
-      {/* <Services /> */}
-
-      {/* Sección de Portafolio */}
-      {/* <Portfolio /> */}
-
-      {/* Sección de Testimonios */}
-      {/* <Testimonials /> */}
-
-      {/* Sección de Contacto */}
-      {/* <Contact /> */}
-
-      {/* Pie de página */}
-      <Footer />
-    </>
+        {/* 🚀 Aquí puedes agregar más rutas en el futuro */}
+        {/* <Route path="/about" element={<AboutView />} /> */}
+      </Routes>
+    </Router>
   );
 }
 
-// Exportamos el componente para que pueda ser usado en otros archivos
 export default App;
