@@ -5,7 +5,7 @@ import "../styles/HomeView.css";
 // Importa los componentes que usabas en App
 import Intro from "../components/intro/Intro";
 import Navbar from "../components/SectionBars/Navbar";
- import About from "../components/about/About";
+ //import About from "../components/about/About";
 // import Experience from "../components/experience/Experience";
 // import Services from "../components/services/Services";
 // import Portfolio from "../components/portfolio/Portfolio";
@@ -23,7 +23,7 @@ const HomeView = () => {
       <Navbar />
 
       {/* Sección Acerca de mí */}
-      <About />
+      {/*<About />*/}
 
       {/* Sección de Experiencia */}
       {/* <Experience /> */}
