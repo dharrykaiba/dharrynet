@@ -1,4 +1,5 @@
 import React from "react";
+import "../SectionBars/Socials.css";
 import { socialLinks } from "./links";
 
 const Socials = () => {

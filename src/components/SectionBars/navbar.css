@@ -1,33 +1,37 @@
 nav {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--color-shadow-medium); /* Fondo oscuro según tu temática */
   width: max-content;
-  display: block;
+  display: flex;
   padding: 0.7rem 1.7rem;
   z-index: 2;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
   bottom: 2rem;
-  display: flex;
   gap: 0.8rem;
-  border-radius: 3rem;
+  border-radius: var(--radius-lg);
   backdrop-filter: blur(15px);
+  box-shadow: var(--shadow-dark);
+  transition: var(--transition);
 }
 
 nav a {
   background: transparent;
   padding: 0.9rem;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   display: flex;
-  color: var(--color-light);
+  color: var(--text-dark);
   font-size: 1.1rem;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
 }
 
 nav a:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--red-hover); /* hover usando tus variables temáticas */
 }
 
 nav a.active {
-  background: var(--color-primary);
-  color: var(--color-bg);
+  background: var(--red); /* activo usando color primario azul */
+  color: var(--text-dark);
 }

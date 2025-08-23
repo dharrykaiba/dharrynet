@@ -1,0 +1,78 @@
+/* ========== Variables //src/styles/globales.css ========== */
+:root {
+  /* === Fondos base === */
+  --color-bg: #1f1f1f;
+  --color-bg-variant: #3c1f1f;
+  --color-bg-accent: #2c1f1f;
+
+  /* === Paleta primaria (tríada) === */
+  --color-primary: #fa0000;
+  --color-secondary: #00fa00;
+  --color-tertiary: #0000fa;
+
+  /* === Variantes === */
+  --color-primary-variant: rgba(250, 0, 0, 0.4);
+  --color-secondary-variant: rgba(0, 250, 0, 0.3);
+  --color-tertiary-variant: rgba(0, 0, 250, 0.3);
+  --color-accent: #ff1a1a;
+
+  /* === Textos === */
+  --color-white: #fff;
+  --color-light: rgba(255, 255, 255, 0.6);
+  --color-dark: #ccc;
+
+  --shadow-primary: 0 4px 15px var(--color-primary-variant);
+
+  /* ================= FS25 THEME ================= */
+  --fs-bg: #252525;
+  --fs-panel: rgba(18, 22, 18, 0.7);
+  --fs-border: rgba(120, 255, 150, 0.16);
+  --fs-border-hover: rgba(120, 255, 150, 0.28);
+  --fs-accent: #81c332;
+  --fs-accent-2: #6fa82b;
+  --fs-text: #e7f4ea;
+  --fs-muted: #a9c3b1;
+  --fs-warn: #ffd166;
+  --fs-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --fs-shadow-hover: 0 14px 36px rgba(0, 0, 0, 0.55);
+  --fs-shadow-header: 0 6px 22px rgba(0, 0, 0, 0.35);
+  --fs-glow-accent: rgba(120, 255, 150, 0.7);
+  --fs-glow-accent-soft: rgba(120, 255, 150, 0.18);
+  --fs-header-bg-1: rgba(9, 14, 10, 0.72);
+  --fs-header-bg-2: rgba(9, 14, 10, 0.52);
+  --fs-header-line-1: rgba(120, 255, 150, 0.06);
+  --fs-header-line-2: rgba(45, 209, 110, 0.06);
+  --fs-card-bg-1: rgba(23, 30, 24, 0.85);
+  --fs-card-bg-2: rgba(14, 18, 15, 0.85);
+  --fs-hover-gradient: rgba(120, 255, 150, 0.08);
+
+  /* ====== Footer global ====== */
+  --footer-bg: var(--color-primary, #222);
+  --footer-text: var(--color-bg, #f4f4f4);
+  --footer-text-hover: var(--color-white, #fff);
+  --footer-border: var(--color-bg, #eee);
+  --footer-shadow: rgba(0, 0, 0, 0.15);
+
+  /* ====== Footer HomeView ====== */
+  --home-footer-bg: #ffffff;
+  --home-footer-text: #222;
+  --home-footer-text-hover: #4caf50;
+  --home-footer-border: #ddd;
+  --home-footer-shadow: rgba(0, 0, 0, 0.15);
+
+  /* ====== Footer FS25View ====== */
+  --fs-footer-bg: #252525;
+  --fs-footer-text: #ddd;
+  --fs-footer-text-hover: #3cb371;
+  --fs-footer-border: #aaa;
+  --fs-footer-shadow: rgba(0, 0, 0, 0.3);
+
+  /* Navbar colors */
+  --navbar-bg-color: rgba(0, 0, 0, 0.3);
+  --navbar-link-color: var(--color-light);
+  --navbar-link-hover-bg: rgba(0, 0, 0, 0.3);
+
+  /* Socials */
+  --socials-color: var(--color-light);
+  --socials-line-color: var(--color-primary);
+}

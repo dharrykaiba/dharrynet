@@ -1,3 +1,4 @@
+//src/components/SectionBars/Footer.jsx
 import React from "react";
 import "./footer.css";
 import { links, socialLinks } from "./links";

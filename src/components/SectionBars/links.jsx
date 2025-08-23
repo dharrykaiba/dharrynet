@@ -1,7 +1,7 @@
 // 📌 links.jsx → Archivo compartido para navegación y redes sociales
 import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
-import { BiBook, BiMessageSquareDetail } from "react-icons/bi";
-import { RiServiceLine } from "react-icons/ri";
+//import { BiBook, BiMessageSquareDetail } from "react-icons/bi";
+//import { RiServiceLine } from "react-icons/ri";
 import { FaGithub, FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
 
 import gamingImg from "../../assets/default.png";

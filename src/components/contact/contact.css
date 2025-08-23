@@ -16,7 +16,7 @@
   padding: 1.2rem;
   border-radius: 1.2rem;
   border: 1px solid transparent;
-  transition: var(--transition);
+  transition: all 400ms ease;
 }
 .contact__option:hover {
   background: transparent;

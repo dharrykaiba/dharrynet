@@ -1,57 +1,76 @@
+/* ========= BASE ========= */
 .streaming-status {
   display: flex;
   gap: 1.5rem;
   align-items: center;
   justify-content: center;
   font-size: 0.95rem;
+
+  /* Colores base con variables globales */
+  --ss-online: var(--green);
+  --ss-offline: var(--red);
+  --ss-error: var(--light);
+  --ss-text: var(--text-secondary);
+
+  --ss-transition: var(--transition-fast);
 }
 
 .platform {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.4rem;
   font-weight: 500;
+  text-decoration: none;
+  transition: var(--ss-transition);
 }
 
 .icon {
-  font-size: 1.2rem;
-  transition: var(--transition);
+  font-size: 1.3rem;
+  transition: var(--ss-transition);
 }
 
-/* Texto ON/OFF */
 .state-text {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-light);
+  color: var(--ss-text);
+  transition: var(--ss-transition);
 }
 
-/* Estados */
+/* ========= ESTADOS ========= */
 .platform.online .icon {
-  color: var(--color-secondary); /* verde */
+  color: var(--ss-online);
   animation: pulse 1.2s infinite;
 }
-
 .platform.online .state-text {
-  color: var(--color-secondary);
+  color: var(--ss-online);
 }
 
 .platform.offline .icon {
-  color: var(--color-primary); /* rojo */
+  color: var(--ss-offline);
 }
-
 .platform.offline .state-text {
-  color: var(--color-primary);
+  color: var(--ss-offline);
 }
 
 .platform.error .icon {
-  color: var(--color-dark); /* gris */
+  color: var(--ss-error);
 }
-
 .platform.error .state-text {
-  color: var(--color-dark);
+  color: var(--ss-error);
 }
 
-/* Animación de pulso para online */
+.platform.checking .icon,
+.platform.checking .state-text {
+  color: var(--ss-text);
+  opacity: 0.7;
+}
+
+.platform:hover .icon,
+.platform:hover .state-text {
+  filter: brightness(1.2);
+}
+
+/* ========= ANIMACIONES ========= */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -65,4 +84,21 @@
     transform: scale(1);
     opacity: 0.7;
   }
+}
+
+/* ========= THEMES ========= */
+/* En HomeView (tendencia al rojo) */
+.homeView .streaming-status {
+  --ss-online: var(--accent-red);
+  --ss-offline: var(--red);
+  --ss-error: var(--light);
+  --ss-text: var(--text-primary);
+}
+
+/* En FS25View (tendencia al verde) */
+.fs25-theme .streaming-status {
+  --ss-online: var(--verde-lima);
+  --ss-offline: var(--verde-acento);
+  --ss-error: var(--light);
+  --ss-text: var(--text-primary);
 }

@@ -2,8 +2,8 @@ import React from "react";
 import "./intro.css";
 import Socials from "../SectionBars/Socials";
 import StreamingStatus from "../streamstate/streamstate";
-//import LastProjects from "../SectionBars/LastProjects";
-import UnderConstruction from "../SectionBars/UnderConstruction";
+import LastProjects from "../SectionBars/LastProjects";
+//import UnderConstruction from "../SectionBars/UnderConstruction";
 
 const projects = [
   {
@@ -32,9 +32,9 @@ const Header = () => {
         <Socials />
 
         {/* Reemplazo del figure */}
-        {/* <LastProjects />*/}
+        <LastProjects />
 
-        <UnderConstruction />
+        {/* <UnderConstruction /> */}
 
         <a
           href="#contact"

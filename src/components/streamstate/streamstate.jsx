@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SiTwitch, SiYoutube } from "react-icons/si";
-import { TbBrandKickFilled } from "react-icons/tb"; // Kick icon
+import { TbBrandKickFilled } from "react-icons/tb";
 import "./streamingStatus.css";
 
 const platforms = [
@@ -21,7 +21,7 @@ const platforms = [
   },
 ];
 
-const StreamingStatus = () => {
+const StreamingStatus = ({ className = "" }) => {
   const [status, setStatus] = useState({
     twitch: "checking",
     kick: "checking",
@@ -29,7 +29,7 @@ const StreamingStatus = () => {
   });
 
   useEffect(() => {
-    checkTwitch();
+    setStatus((prev) => ({ ...prev, twitch: "online" })); // 🔥 Forzado
     checkKick();
     checkYouTube();
   }, []);
@@ -95,7 +95,7 @@ const StreamingStatus = () => {
   }
 
   return (
-    <div className="streaming-status">
+    <div className={`streaming-status ${className}`}>
       {platforms.map(({ key, Icon, url }) => (
         <a
           key={key}

@@ -1,0 +1,9 @@
+
+.homeView {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.homeView h1 {
+  color: var(--color-primary);
+}

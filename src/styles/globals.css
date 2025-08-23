@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import "./variables.css";
 
-/* ================= Reset ================= */
+/* === Dimensiones / Contenedores === */
+:root {
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+}
+
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -11,40 +19,6 @@
   text-decoration: none;
 }
 
-/* ================= Variables ================= */
-:root {
-  /* === Fondos === */
-  --color-bg: #1f1f1f; /* Fondo principal: negro profundo */
-  --color-bg-variant: #3c1f1f; /* Fondo rojo oscuro */
-  --color-bg-accent: #2c1f1f; /* Panel / card: rojo vino oscuro */
-
-  /* === Tríada de colores (basada en #FA0000) === */
-  --color-primary: #fa0000; /* Rojo brillante */
-  --color-secondary: #00fa00; /* Verde lima */
-  --color-tertiary: #0000fa; /* Azul eléctrico */
-
-  /* === Variantes para hover y sombras === */
-  --color-primary-variant: rgba(250, 0, 0, 0.4);
-  --color-secondary-variant: rgba(0, 250, 0, 0.3);
-  --color-tertiary-variant: rgba(0, 0, 250, 0.3);
-
-  --color-accent: #ff1a1a; /* Rojo más intenso (opcional, puedes mantenerlo) */
-
-  /* === Textos === */
-  --color-white: #fff;
-  --color-light: rgba(255, 255, 255, 0.6);
-  --color-dark: #ccc;
-
-  /* === Transiciones y estilos === */
-  --transition: all 400ms ease;
-  --container-width-lg: 75%;
-  --container-width-md: 86%;
-  --container-width-sm: 90%;
-  --border-radius: 0.4rem;
-  --shadow-primary: 0 4px 15px var(--color-primary-variant);
-}
-
-/* ================= Global ================= */
 html {
   scroll-behavior: smooth;
 }
@@ -55,19 +29,20 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  background: var(--color-bg);
-  color: var(--color-white);
+  background: var(--bg-dark);
+  color: var(--text-primary);
   line-height: 1.7;
+  transition: var(--transition);
   background-image: url("../assets/bg-texture.png");
 }
 
-/* ================= Containers ================= */
+/* Containers */
 .container {
   width: var(--container-width-lg);
   margin: 0 auto;
 }
 
-/* ================= Headings ================= */
+/* Headings */
 h1,
 h2,
 h3,
@@ -75,11 +50,12 @@ h4,
 h5,
 h6 {
   font-weight: 500;
+  color: var(--text-primary);
 }
 
 h1 {
   font-size: 2.5rem;
-  color: var(--color-primary);
+  color: var(--text-red); /* rojo como color principal */
 }
 
 section {
@@ -89,135 +65,75 @@ section {
 section > h2,
 section > h5 {
   text-align: center;
-  color: var(--color-light);
+  color: var(--red);
 }
 
 section > h2 {
-  color: var(--color-primary);
   margin-bottom: 3rem;
 }
 
-/* ================= Text & Links ================= */
-.text-light {
-  color: var(--color-light);
-}
-
-a {
-  color: var(--color-primary);
-  transition: var(--transition);
-}
-
-a:hover {
-  color: var(--color-white);
-  text-shadow: 0 0 8px var(--color-primary-variant);
-}
-
-/* ================= Buttons ================= */
-.btn {
-  width: max-content;
-  display: inline-block;
-  color: var(--color-primary);
-  padding: 0.75rem 1.2rem;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  border: 1px solid var(--color-primary);
-  transition: var(--transition);
-  box-shadow: var(--shadow-primary);
-}
-
-.btn:hover {
-  background: var(--color-white);
-  color: var(--color-bg);
-  border-color: transparent;
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: var(--color-bg);
-  box-shadow: var(--shadow-primary);
-}
-
-.btn-primary:hover {
-  background: var(--color-accent);
-  box-shadow: 0 6px 20px var(--color-primary-variant);
-}
-
-/* ================= Images ================= */
 img {
   display: block;
   width: 100%;
   object-fit: cover;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-primary);
 }
 
-/* ================= Cards / Panels ================= */
-.card {
-  background: var(--color-bg-accent);
-  padding: 1.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-primary);
+a {
+  color: var(--blue); /* antes --color-primary */
   transition: var(--transition);
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px var(--color-primary-variant);
+a:hover {
+  color: var(--white); /* antes --color-white */
 }
 
-/* ================= Avatars ================= */
-.client__avatar {
-  width: 4rem;
-  aspect-ratio: 1/1;
-  overflow: hidden;
-  border-radius: 50%;
-  margin: 0 auto 1rem;
-  border: 0.4rem solid var(--color-primary);
-  box-shadow: var(--shadow-primary);
+/* Buttons */
+.btn {
+  width: max-content;
+  display: inline-block;
+  color: var(--red); /* antes --color-primary */
+  padding: 0.75rem 1.2rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid var(--red); /* antes --color-primary */
+  transition: var(--transition);
 }
 
-/* ================= Testimonials ================= */
-.testimonials {
-  background: var(--color-bg-accent);
-  text-align: center;
-  padding: 2rem;
-  border-radius: 2rem;
-  user-select: none;
+.btn:hover {
+  background: var(--white); /* antes --color-white */
+  color: var(--bg-dark); /* antes --color-bg */
+  border-color: transparent;
 }
 
-.client_review {
-  color: var(--color-light);
-  font-weight: 300;
-  display: block;
-  width: 80%;
-  margin: 0.8rem auto 0;
+.btn-primary {
+  background: var(--red); /* antes --color-primary */
+  color: var(--bg-dark); /* antes --color-bg */
 }
 
-.swiper-pagination-clickable .swiper-pagination-bullet-active {
-  background: var(--color-primary);
+/* Variantes temáticas */
+.btn-red {
+  background: var(--red);
+  color: var(--text-primary);
 }
 
-/* ================= Media Queries ================= */
-@media screen and (max-width: 1024px) {
-  .container {
-    width: var(--container-width-md);
-  }
-
-  section {
-    margin-top: 6rem;
-  }
+.btn-red:hover {
+  background: var(--red-hover);
 }
 
-@media screen and (max-width: 600px) {
-  .container {
-    width: var(--container-width-sm);
-  }
+.btn-green {
+  background: var(--green);
+  color: var(--text-primary);
+}
 
-  section > h2 {
-    margin-bottom: 2rem;
-  }
+.btn-green:hover {
+  background: var(--green-hover);
+}
 
-  .client_review {
-    width: 90%;
-  }
+.btn-blue {
+  background: var(--blue);
+  color: var(--text-primary);
+}
+
+.btn-blue:hover {
+  background: var(--blue-hover);
 }
