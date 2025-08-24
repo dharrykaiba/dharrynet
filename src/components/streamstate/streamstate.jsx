@@ -29,7 +29,8 @@ const StreamingStatus = ({ className = "" }) => {
   });
 
   useEffect(() => {
-    setStatus((prev) => ({ ...prev, twitch: "online" })); // 🔥 Forzado
+    //setStatus((prev) => ({ ...prev, twitch: "online" })); // 🔥 Forzado
+    checkTwitch();
     checkKick();
     checkYouTube();
   }, []);
