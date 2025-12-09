@@ -17,6 +17,7 @@
   transition: var(--transition);
   text-decoration: none;
 }
+
 .footer a:hover {
   color: var(--ft-text-hover, var(--white));
 }
@@ -32,6 +33,7 @@
   text-transform: uppercase;
   transition: var(--transition);
 }
+
 .footer__logo:hover {
   transform: scale(1.08);
   text-shadow: var(--shadow-medium);
@@ -47,11 +49,13 @@
   padding: 0;
   list-style: none;
 }
+
 .permalinks a {
   font-weight: 500;
   position: relative;
   padding: 0.2rem 0;
 }
+
 .permalinks a::after {
   content: "";
   display: block;
@@ -62,6 +66,7 @@
   margin: 0 auto;
   border-radius: var(--radius-sm);
 }
+
 .permalinks a:hover::after {
   width: 90%;
 }
@@ -73,6 +78,7 @@
   gap: 1.2rem;
   margin-bottom: 2.5rem;
 }
+
 .footer__socials a {
   background: var(--color-tertiary-dark);
   color: var(--ft-bg, var(--bg-dark));
@@ -84,6 +90,7 @@
   transition: var(--transition-fast);
   font-size: 1.2rem;
 }
+
 .footer__socials a:hover {
   background: var(--ft-bg, var(--bg-dark));
   color: var(--ft-text, var(--text-primary));
@@ -106,9 +113,11 @@
     flex-direction: column;
     gap: 1.3rem;
   }
+
   .footer__socials {
     margin-bottom: 2rem;
   }
+
   .footer__logo {
     font-size: 2rem;
   }
@@ -126,16 +135,20 @@
 
 /* 🟢 Footer FS25View */
 .fs25-theme .footer {
-  --ft-bg: var(--gradient-background-dark);/* Fondo base oscuro */
-  --ft-text: var(--light); /* Texto neutro */
-  --ft-text-hover: var(--accent-green); /* Verde brillante al hover */
-  --ft-shadow: var(--shadow-dark); /* Sombra intensa verde */
+  --ft-bg: var(--gradient-background-dark);
+  /* Fondo base oscuro */
+  --ft-text: var(--light);
+  /* Texto neutro */
+  --ft-text-hover: var(--accent-green);
+  /* Verde brillante al hover */
+  --ft-shadow: var(--shadow-dark);
+  /* Sombra intensa verde */
 }
 
 /* 🔵 Footer BlueTheme */
-.blue-theme .footer {
-  --ft-bg: var(--bg-blue);
+.fs25-themegreen .footer {
+  --ft-bg: var(--gradient-background-dark);
   --ft-text: var(--light);
-  --ft-text-hover: var(--blue-hover);
-  --ft-shadow: var(--shadow-blue);
+  --ft-text-hover: var(--verde-lima);
+  --ft-shadow: var( --verde-lima);
 }

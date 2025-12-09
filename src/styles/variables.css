@@ -1,14 +1,20 @@
 /* ========== 🌐 Variables Globales (variables.css) ========== */
 :root {
   /* 🎨 Colores base */
-  --red: #fa0000; /* rojo serio, menos saturado */
-  --green: #388e3c; /* verde corporativo */
-  --blue: #1976d2; /* azul confiable */
+  --red: #fa0000;
+  /* rojo serio, menos saturado */
+  --green: #388e3c;
+  /* verde corporativo */
+  --blue: #1976d2;
+  /* azul confiable */
 
   /* 🌟 Colores acento (más suaves, para hover o detalles) */
-  --accent-red: #f84646; /* rojo acento derivado */
-  --accent-green: #52b957; /* verde más fresco */
-  --accent-blue: #64b5f6; /* azul moderno */
+  --accent-red: #f84646;
+  /* rojo acento derivado */
+  --accent-green: #52b957;
+  /* verde más fresco */
+  --accent-blue: #64b5f6;
+  /* azul moderno */
   --accent-yellow: #fed700;
 
   /* 🎭 Neutros */
@@ -18,18 +24,25 @@
   --dark-text: #1f1f21;
 
   /* 🌌 Fondos Temáticos */
-  --bg-dark: #1d1d1d; /* Fondo base oscuro elegante */
-  --bg-light: #f5f5f5; /* Fondo claro elegante */
+  --bg-dark: #1d1d1d;
+  /* Fondo base oscuro elegante */
+  --bg-light: #f5f5f5;
+  /* Fondo claro elegante */
   /* Colores base */
-  --color-primary-dark: #0d0d0def; /* Fondo principal, negro casi puro */
-  --color-secondary-dark: #181818f6; /* Fondos secundarios */
-  --color-tertiary-dark: #222222ee; /* Fondos terciarios / scroll */
+  --color-primary-dark: #0d0d0def;
+  /* Fondo principal, negro casi puro */
+  --color-secondary-dark: #181818f6;
+  /* Fondos secundarios */
+  --color-tertiary-dark: #222222ee;
+  /* Fondos terciarios / scroll */
 
   /* Fondo rojo */
   --bg-red: #2a0d0d;
   --bg-red-accent: #3b1a1a;
-  --bg-red-light: #5a2020; /* un tono más suave */
-  --bg-red-dark: #1a0505; /* aún más profundo */
+  --bg-red-light: #5a2020;
+  /* un tono más suave */
+  --bg-red-dark: #1a0505;
+  /* aún más profundo */
 
   /* Fondo verde */
   --bg-green: #0d1f0d;
@@ -91,53 +104,49 @@
   --shadow-blue-dark: 0 10px 30px var(--color-shadow-blue);
 
   /* 🎨 Paleta Verde - Degradados de oscuro a claro */
-  --verde-oscuro: #204039; /* Verde muy oscuro / base */
-  --verde-medio: #435c14; /* Verde neutro profundo */
-  --verde-acento: #72a12d; /* Verde intermedio */
-  --verde-lima: #9bc042; /* Verde claro / destaque */
+  --verde-oscuro: #204039;
+  /* Verde muy oscuro / base */
+  --verde-medio: #435c14;
+  /* Verde neutro profundo */
+  --verde-acento: #72a12d;
+  /* Verde intermedio */
+  --verde-lima: #9bc042;
+  /* Verde claro / destaque */
 
   /* 🌟 Colores secundarios / acento */
-  --amarillo-brillante: #fed70; /* Amarillo vibrante */
-  --gris-suave: #adb9c4; /* Gris claro */
-  --gris-claro: #e2e7ed; /* Gris muy suave */
+  --amarillo-brillante: #fed70;
+  /* Amarillo vibrante */
+  --gris-suave: #adb9c4;
+  /* Gris claro */
+  --gris-claro: #e2e7ed;
+  /* Gris muy suave */
 
   /* 🔹 Degradados listos para usar */
-  --gradient-green-header-text: linear-gradient(
-    180deg,
-    var(--verde-lima) 55%,
-    var(--verde-oscuro) 100%
-  );
-  --gradient-background: linear-gradient(
-    135deg,
-    var(--color-tertiary-dark) 20%,
-    var(--color-secondary-dark) 180%
-  );--gradient-background-dark: linear-gradient(
-    0deg,
-    var(--color-primary-dark) 20%,
-    var(--color-tertiary-dark) 180%
-  );
-  --gradient-background-header: linear-gradient(
-    135deg,
-    var(--color-primary-dark) 0%,
-    var(--color-tertiary-dark) 50%,
-    var(--color-secondary-dark) 100%
-  );
+  --gradient-green-header-text: linear-gradient(180deg,
+      var(--verde-lima) 55%,
+      var(--verde-oscuro) 100%);
+  --gradient-background: linear-gradient(135deg,
+      var(--color-tertiary-dark) 20%,
+      var(--color-secondary-dark) 180%);
+  --gradient-background-dark: linear-gradient(0deg,
+      var(--color-primary-dark) 20%,
+      var(--color-tertiary-dark) 180%);
+  --gradient-background-green: linear-gradient(180deg,
+      #808080 25%, #9bc042 100%);
+  --gradient-background-header: linear-gradient(135deg,
+      var(--color-primary-dark) 0%,
+      var(--color-tertiary-dark) 50%,
+      var(--color-secondary-dark) 100%);
   --grad-verde: linear-gradient(135deg, var(--verde-oscuro), var(--verde-lima));
-  --grad-verde-acento: linear-gradient(
-    135deg,
-    var(--verde-medio),
-    var(--verde-lima)
-  );
-  --grad-verde-neutro: linear-gradient(
-    135deg,
-    var(--verde-oscuro),
-    var(--verde-acento)
-  );
-  --grad-amarillo: linear-gradient(
-    135deg,
-    var(--amarillo-brillante),
-    var(--verde-lima)
-  );
+  --grad-verde-acento: linear-gradient(135deg,
+      var(--verde-medio),
+      var(--verde-lima));
+  --grad-verde-neutro: linear-gradient(135deg,
+      var(--verde-oscuro),
+      var(--verde-acento));
+  --grad-amarillo: linear-gradient(135deg,
+      var(--amarillo-brillante),
+      var(--verde-lima));
   --grad-gris: linear-gradient(135deg, var(--gris-suave), var(--gris-claro));
 
   /* 🔳 Bordes redondeados */
@@ -164,6 +173,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -174,6 +184,7 @@
     transform: translateY(20px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -185,6 +196,7 @@
     transform: scale(0.95);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -192,21 +204,25 @@
 }
 
 @keyframes bounce {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.05);
     opacity: 0.85;

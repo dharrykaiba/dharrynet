@@ -102,3 +102,11 @@
   --ss-error: var(--light);
   --ss-text: var(--text-primary);
 }
+
+/* En fs25-themegreen (tendencia al verde) */
+.fs25-themegreen .streaming-status {
+  --ss-online: var(--verde-lima);
+  --ss-offline: var(--verde-acento);
+  --ss-error: var(--light);
+  --ss-text: var(--text-primary);
+}

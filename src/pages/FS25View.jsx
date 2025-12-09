@@ -50,7 +50,7 @@ function FS25View() {
   return (
     <div className="fs25-theme"> {/* 🔐 Aísla todo el componente */}
       <header className="fs25-header">
-        <h1>FS25 HardCore</h1>
+        <h1>DieselDharry</h1>
         <StreamingStatus />
       </header>
 

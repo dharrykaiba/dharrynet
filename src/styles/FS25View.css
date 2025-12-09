@@ -30,6 +30,7 @@
   margin: 0;
   font-size: 2rem;
   font-weight: 700;
+  font-family: "Helvetica Compressed", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: var(--gradient-green-header-text);
   -webkit-background-clip: text;
   background-clip: text;
@@ -161,8 +162,10 @@
   align-items: center;
   gap: 0.25rem;
   font-size: 0.9rem;
-  margin: 0.5rem 0; /* opcional, si quieres diferente */
-  flex-grow: unset; /* evita que crezca si no lo necesitas */
+  margin: 0.5rem 0;
+  /* opcional, si quieres diferente */
+  flex-grow: unset;
+  /* evita que crezca si no lo necesitas */
 }
 
 .fs25-ver-mas {
@@ -178,9 +181,12 @@
 /* Miniaturas de episodios (YouTube 16:9) */
 .fs25-episode img {
   width: 100%;
-  height: auto; /* 🔑 respeta la proporción original */
-  aspect-ratio: 16 / 9; /* asegura que mantenga el formato correcto */
-  object-fit: cover; /* recorta si es necesario, pero sin deformar */
+  height: auto;
+  /* 🔑 respeta la proporción original */
+  aspect-ratio: 16 / 9;
+  /* asegura que mantenga el formato correcto */
+  object-fit: cover;
+  /* recorta si es necesario, pero sin deformar */
   display: block;
 }
 
@@ -189,18 +195,23 @@
 /* Responsive mejorado */
 @media (max-width: 768px) {
   .fs25-header {
-    flex-direction: row; /* se mantiene horizontal */
+    flex-direction: row;
+    /* se mantiene horizontal */
     justify-content: space-between;
     padding: 0.5rem 1rem;
     gap: 0.5rem;
   }
 
   .fs25-header h1 {
-    font-size: 1.4rem; /* más pequeño que los 2rem originales */
-    white-space: nowrap; /* evita que el título se parta en varias líneas */
-    text-overflow: ellipsis; /* si es demasiado largo, pone "..." */
+    font-size: 1.4rem;
+    /* más pequeño que los 2rem originales */
+    white-space: nowrap;
+    /* evita que el título se parta en varias líneas */
+    text-overflow: ellipsis;
+    /* si es demasiado largo, pone "..." */
     overflow: hidden;
-    max-width: 70%; /* asegura que no empuje al otro elemento */
+    max-width: 70%;
+    /* asegura que no empuje al otro elemento */
   }
 
   .fs25-main {
@@ -214,6 +225,7 @@
 
 /* Mejoras de accesibilidad */
 @media (prefers-reduced-motion: reduce) {
+
   .fs25-card,
   .fs25-status-card,
   .fs25-card img,
@@ -233,8 +245,10 @@
 /* Asegura que .fs25-theme sea el contenedor que realmente tiene scroll */
 .fs25-theme {
   /* Si el body ocupa toda la pantalla, usa uno de estos según tu layout */
-  max-height: 100vh; /* opcional, útil si está fijo bajo el header */
-  overflow-y: auto; /* necesario para que exista scrollbar */
+  max-height: 100vh;
+  /* opcional, útil si está fijo bajo el header */
+  overflow-y: auto;
+  /* necesario para que exista scrollbar */
 
   /* Firefox */
   scrollbar-width: thin;
