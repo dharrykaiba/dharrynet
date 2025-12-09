@@ -7,7 +7,7 @@ import defaultImg from "../assets/default.png";
 // 📦 Mods
 const mods = [
   {
-    name: "John Deere 8R",
+    name: "John Deere 8Rssssssssssssssssss",
     category: "🚜 Tractor",
     img: defaultImg,
     description: "Potente tractor para grandes cultivos con motor de 400 HP."
