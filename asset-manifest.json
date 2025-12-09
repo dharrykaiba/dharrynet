@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.b0bd6773.css",
-    "main.js": "/static/js/main.9f675439.js",
+    "main.js": "/static/js/main.d572f1af.js",
     "static/media/default.png": "/static/media/default.b48bfc2a5da61fa621cc.png",
     "static/media/fs25seasonpass1.png": "/static/media/fs25seasonpass1.0da1f43f56e6b598e8e7.png",
     "static/media/fondoheaderazul_vacio.png": "/static/media/fondoheaderazul_vacio.8dab4ded81b9902bb471.png",
     "index.html": "/index.html",
     "main.b0bd6773.css.map": "/static/css/main.b0bd6773.css.map",
-    "main.9f675439.js.map": "/static/js/main.9f675439.js.map"
+    "main.d572f1af.js.map": "/static/js/main.d572f1af.js.map"
   },
   "entrypoints": [
     "static/css/main.b0bd6773.css",
-    "static/js/main.9f675439.js"
+    "static/js/main.d572f1af.js"
   ]
 }
