@@ -3,11 +3,15 @@ import "../styles/FS25Purchase.css";
 import Footer from "../components/SectionBars/Footer";
 import StreamingStatus from "../components/streamstate/streamstate";
 
+
+// Importar la imagen local
+import fs25SeasonPassImg from "../assets/fs25seasonpass1.png";
+
 const items = [
   {
     name: "FS25 - Year 1 Season Pass: ¡Tu mejor inicio en Farming Simulator 25!",
     link: "https://www.farming-simulator.com/dlc-detail.php?dlc_id=fs25seasonpass1&code=DIESELD",
-    img: "https://www.farming-simulator.com/img/content/products/fs25/fs25seasonpass1-content1.jpg?v=117865480",
+    img: fs25SeasonPassImg, // <-- Aquí usamos la imagen local
     description: `
   <p>¡Comienza tu aventura agrícola con todo lo esencial! El <strong>Year 1 Season Pass</strong> es la mejor opción para quienes quieren disfrutar de FS25 al máximo desde el primer día, incluyendo todos los packs oficiales y la gran expansión <strong>Highlands Fishing Expansion</strong>.</p>
   
