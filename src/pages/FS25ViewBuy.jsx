@@ -3,9 +3,9 @@ import "../styles/FS25Purchase.css";
 import Footer from "../components/SectionBars/Footer";
 import StreamingStatus from "../components/streamstate/streamstate";
 
-
 // Importar la imagen local
 import fs25SeasonPassImg from "../assets/fs25seasonpass1.png";
+import logo from "../assets/logodiesel200.png";
 
 const items = [
   {
@@ -36,17 +36,17 @@ const items = [
   },
 ];
 
-
-
-
 export default function FS25Purchase() {
   return (
     <div className="fs25-themegreen">
       <header className="fs25purchase-header">
-        <h1>DieselDharry</h1>
+        <div className="logo-title">
+          <img src={logo} alt="DieselDharry Logo" className="header-logo" />
+          <h1>DieselDharry </h1>
+        </div>
+
         <StreamingStatus />
       </header>
-
       <main className="fs25purchase-main">
         <section className="fs25-main-section">
           <div className="fs25purchase-grid">
@@ -56,7 +56,6 @@ export default function FS25Purchase() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

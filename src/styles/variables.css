@@ -148,6 +148,10 @@
       var(--amarillo-brillante),
       var(--verde-lima));
   --grad-gris: linear-gradient(135deg, var(--gris-suave), var(--gris-claro));
+  --grad-white-vertical: linear-gradient(180deg,
+      #ffffff 0%,
+      #c4c4c4 70%,
+      #ffffff 100%);
 
   /* 🔳 Bordes redondeados */
   --radius-sm: 0.4rem;

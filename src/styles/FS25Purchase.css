@@ -23,7 +23,7 @@
 
 /* ===== HEADER ===== */
 .fs25purchase-header {
-  background: var(--azul-oscuro) url("../assets/fondoheaderazul_vacio.png") center/cover no-repeat;
+  background: var(--azul-oscuro) url("../assets/fondoheaderazul_2.png") center/cover no-repeat;
   backdrop-filter: blur(8px);
   padding: 0.75rem 2rem;
   border-bottom: 1px solid var(--verde-lima);
@@ -36,11 +36,53 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
+/* ===== RESPONSIVE: Cambia a fondoheaderazul_3.png ===== */
+@media (max-width: 992px) {
+
+  /* Tablets y móviles */
+  .fs25purchase-header {
+    background: var(--azul-oscuro) url("../assets/fondoheaderazul_3.png") center/cover no-repeat;
+  }
+}
+
 .fs25purchase-header h1 {
   margin: 0;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--verde-lima);
+  font-style: italic;
+
+  font-family: "Helvetica Compressed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Degradado */
+  background: var(--grad-white-vertical);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  /* Borde del texto */
+  -webkit-text-stroke: 1px #3d3d3d48;
+  text-stroke: 1px #3d3d3d48;
+
+  /* 👇 Corrección para evitar que se recorte la Y */
+  line-height: 1.2;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+/* === LOGO + TÍTULO === */
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-logo {
+  width: 48px;
+  /* Ajusta el tamaño aquí */
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.6));
 }
 
 /* ===== MAIN ===== */
@@ -183,6 +225,7 @@
 .description-html strong {
   color: var(--text-lighter);
 }
+
 .description-html .partner-code {
   color: var(--amarillo-destacado);
   font-family: monospace;
