@@ -1,18 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.d3117922.css",
-    "main.js": "/static/js/main.6595bcf4.js",
-    "static/media/bg-hero.png": "/static/media/bg-hero.c88ac20edaf68cbba1f3.png",
-    "static/media/undercontruction.png": "/static/media/undercontruction.f83b40207baa9bc308eb.png",
+    "main.css": "/static/css/main.b0bd6773.css",
+    "main.js": "/static/js/main.9f675439.js",
     "static/media/default.png": "/static/media/default.b48bfc2a5da61fa621cc.png",
     "static/media/fs25seasonpass1.png": "/static/media/fs25seasonpass1.0da1f43f56e6b598e8e7.png",
     "static/media/fondoheaderazul_vacio.png": "/static/media/fondoheaderazul_vacio.8dab4ded81b9902bb471.png",
     "index.html": "/index.html",
-    "main.d3117922.css.map": "/static/css/main.d3117922.css.map",
-    "main.6595bcf4.js.map": "/static/js/main.6595bcf4.js.map"
+    "main.b0bd6773.css.map": "/static/css/main.b0bd6773.css.map",
+    "main.9f675439.js.map": "/static/js/main.9f675439.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3117922.css",
-    "static/js/main.6595bcf4.js"
+    "static/css/main.b0bd6773.css",
+    "static/js/main.9f675439.js"
   ]
 }
