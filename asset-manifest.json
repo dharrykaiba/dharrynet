@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.b0bd6773.css",
-    "main.js": "/static/js/main.d572f1af.js",
+    "main.css": "/static/css/main.24f14800.css",
+    "main.js": "/static/js/main.695b1404.js",
+    "static/media/fondoheaderazul_3.png": "/static/media/fondoheaderazul_3.6bcc40d7aecbd89c480f.png",
+    "static/media/fondoheaderazul_2.png": "/static/media/fondoheaderazul_2.5c5ef3b5784c7b161fce.png",
     "static/media/default.png": "/static/media/default.b48bfc2a5da61fa621cc.png",
     "static/media/fs25seasonpass1.png": "/static/media/fs25seasonpass1.0da1f43f56e6b598e8e7.png",
-    "static/media/fondoheaderazul_vacio.png": "/static/media/fondoheaderazul_vacio.8dab4ded81b9902bb471.png",
+    "static/media/logodiesel200.png": "/static/media/logodiesel200.ee286d15af78df0d7343.png",
     "index.html": "/index.html",
-    "main.b0bd6773.css.map": "/static/css/main.b0bd6773.css.map",
-    "main.d572f1af.js.map": "/static/js/main.d572f1af.js.map"
+    "main.24f14800.css.map": "/static/css/main.24f14800.css.map",
+    "main.695b1404.js.map": "/static/js/main.695b1404.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0bd6773.css",
-    "static/js/main.d572f1af.js"
+    "static/css/main.24f14800.css",
+    "static/js/main.695b1404.js"
   ]
 }
