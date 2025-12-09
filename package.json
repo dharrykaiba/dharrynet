@@ -2,7 +2,7 @@
   "name": "dharrynet",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://mijuy.com/",
+  "homepage": "http://dharry.net/",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.7.0",
