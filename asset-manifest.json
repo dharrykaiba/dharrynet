@@ -1,18 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.24f14800.css",
-    "main.js": "/static/js/main.695b1404.js",
+    "main.css": "/static/css/main.892c08b7.css",
+    "main.js": "/static/js/main.af710cf5.js",
     "static/media/fondoheaderazul_3.png": "/static/media/fondoheaderazul_3.6bcc40d7aecbd89c480f.png",
+    "static/media/fs25y1bundle_pc_cover_giantsbonus.png": "/static/media/fs25y1bundle_pc_cover_giantsbonus.e1789d5f7daa9485414d.png",
     "static/media/fondoheaderazul_2.png": "/static/media/fondoheaderazul_2.5c5ef3b5784c7b161fce.png",
     "static/media/default.png": "/static/media/default.b48bfc2a5da61fa621cc.png",
-    "static/media/fs25seasonpass1.png": "/static/media/fs25seasonpass1.0da1f43f56e6b598e8e7.png",
+    "static/media/fs25seasonpass2-content1.jpg": "/static/media/fs25seasonpass2-content1.48b07822195024e52635.jpg",
+    "static/media/Banner_Y2SP_DIESELD.png": "/static/media/Banner_Y2SP_DIESELD.57130c5de16d4d9d94e4.png",
+    "static/media/Banner_HF_DIESELD.png": "/static/media/Banner_HF_DIESELD.34e57f68740885bdc5af.png",
+    "static/media/fs25_pc_cover_en_giantsbonus.png": "/static/media/fs25_pc_cover_en_giantsbonus.d7197c92cba568b7d4ce.png",
+    "static/media/fs25highlandsfishingedition_pc_cover_en_giantsbonus.png": "/static/media/fs25highlandsfishingedition_pc_cover_en_giantsbonus.b4c9df6cdd76c2a77ee8.png",
+    "static/media/fs25seasonpass1_pc_cover.png": "/static/media/fs25seasonpass1_pc_cover.2b012a723483a0214954.png",
+    "static/media/fs25seasonpass2_pc_cover.png": "/static/media/fs25seasonpass2_pc_cover.e9741571ced25dd4939a.png",
+    "static/media/fs25seasonpass1-content1.jpg": "/static/media/fs25seasonpass1-content1.8a942a3e565fce8730ab.jpg",
     "static/media/logodiesel200.png": "/static/media/logodiesel200.ee286d15af78df0d7343.png",
     "index.html": "/index.html",
-    "main.24f14800.css.map": "/static/css/main.24f14800.css.map",
-    "main.695b1404.js.map": "/static/js/main.695b1404.js.map"
+    "main.892c08b7.css.map": "/static/css/main.892c08b7.css.map",
+    "main.af710cf5.js.map": "/static/js/main.af710cf5.js.map"
   },
   "entrypoints": [
-    "static/css/main.24f14800.css",
-    "static/js/main.695b1404.js"
+    "static/css/main.892c08b7.css",
+    "static/js/main.af710cf5.js"
   ]
 }
