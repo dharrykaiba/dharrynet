@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.892c08b7.css",
-    "main.js": "/static/js/main.3429d150.js",
+    "main.css": "/static/css/main.5b3429b1.css",
+    "main.js": "/static/js/main.20550ed7.js",
     "static/media/fondoheaderazul_3.png": "/static/media/fondoheaderazul_3.6bcc40d7aecbd89c480f.png",
     "static/media/fs25y1bundle_pc_cover_giantsbonus.png": "/static/media/fs25y1bundle_pc_cover_giantsbonus.e1789d5f7daa9485414d.png",
     "static/media/fondoheaderazul_2.png": "/static/media/fondoheaderazul_2.5c5ef3b5784c7b161fce.png",
@@ -15,12 +15,13 @@
     "static/media/fs25seasonpass2_pc_cover.png": "/static/media/fs25seasonpass2_pc_cover.e9741571ced25dd4939a.png",
     "static/media/fs25seasonpass1-content1.jpg": "/static/media/fs25seasonpass1-content1.8a942a3e565fce8730ab.jpg",
     "static/media/logodiesel200.png": "/static/media/logodiesel200.ee286d15af78df0d7343.png",
+    "static/media/Giants_OfficialPartnerBadge_TransparentWhite.png": "/static/media/Giants_OfficialPartnerBadge_TransparentWhite.1f6899334472610a853d.png",
     "index.html": "/index.html",
-    "main.892c08b7.css.map": "/static/css/main.892c08b7.css.map",
-    "main.3429d150.js.map": "/static/js/main.3429d150.js.map"
+    "main.5b3429b1.css.map": "/static/css/main.5b3429b1.css.map",
+    "main.20550ed7.js.map": "/static/js/main.20550ed7.js.map"
   },
   "entrypoints": [
-    "static/css/main.892c08b7.css",
-    "static/js/main.3429d150.js"
+    "static/css/main.5b3429b1.css",
+    "static/js/main.20550ed7.js"
   ]
 }
