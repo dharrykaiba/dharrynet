@@ -51,15 +51,46 @@ const mainEditions = [
         </div>
 
         <p>
-          Edición que incluye el juego base y la expansión “Highlands Fishing Expansion”.
-          Añade acuicultura, nuevos cultivos (cebollas), ganado de tierras altas,
-          más de 20 máquinas nuevas y el mapa de Kinlaig inspirado en Escocia.
+          Una edición completa para comenzar tu aventura agrícola con todo lo necesario para crecer sin límites.
+          Incluye el juego base y la expansión “Highlands Fishing Expansion”, además de todos los contenidos
+          del Año 1 que se lanzan a lo largo del calendario oficial.
         </p>
 
         <p>
-          Explora cuatro mapas globales, cultiva 26 tipos de cultivos,
-          gestiona más de 400 máquinas y expande tu granja tanto en tierra como en agua.
-          Incluye nuevas marcas: Monosem, Can-Am, Agri-Spread y GT Bunning.
+          <strong>Construye tu imperio agrícola en tres regiones únicas:</strong> un paisaje del sudeste asiático
+          con arrozales y terrenos inundables, un mapa norteamericano de grandes espacios abiertos y una región
+          centroeuropea rodeada de ríos, estanques y bosques. Cada zona ofrece desafíos distintos, nuevos cultivos
+          (como arroz y espinacas) y animales adicionales como los poderosos búfalos.
+        </p>
+
+        <p>
+          Maneja más de <strong>400 máquinas reales de más de 150 marcas líderes</strong> — CASE IH, John Deere,
+          Fendt, Valtra, Massey Ferguson, Kubota y muchas más. Lleva tu granja en solitario o con amigos en
+          multijugador, gestionando ganadería, silvicultura, cadenas de producción, misiones de construcción
+          y nuevas oportunidades de negocio.
+        </p>
+
+        <p>
+          <strong>Tecnología renovada:</strong> FS25 estrena el Engine 10 de GIANTS, con mejoras visuales,
+          físicas mejoradas, clima dinámico, niebla a distancia, sombras más realistas, terreno deformable
+          y un ecosistema más vivo que nunca.
+        </p>
+
+        <p>
+          <strong>Incluye todo el contenido del Year 1 Season Pass:</strong>
+          <ul>
+            <li>FS25 – NEXAT Pack</li>
+            <li>FS25 – Plains and Prairies Pack</li>
+            <li>FS25 – Mercedes-Benz Trucks Pack</li>
+            <li>FS25 – Highlands Fishing Expansion</li>
+          </ul>
+          Recibes cada pack automáticamente al momento de su lanzamiento, ampliando tu experiencia durante todo el año.
+        </p>
+
+        <p>
+          La expansión Highlands Fishing añade acuicultura, cebollas como nuevo cultivo, ganado de tierras altas,
+          más de 20 máquinas adicionales y el mapa costero de Kinlaig inspirado en Escocia: pesca, canales,
+          paisajes verdes y una nueva forma de vivir cerca del agua.
         </p>
 
         <p className="partner-note">
@@ -162,12 +193,24 @@ function MainEditionsCard({ editions }) {
             </div>
             <div className="inner-card-info">
               <div className="featured-badge">★ MEJOR VALOR ★</div>
+
               <h3>{featured.name}</h3>
-              <div className="featured-description">{featured.description}</div>
+
               <div className="inner-price-action">
-                <span className="price">${featured.price}</span>
+                {/* ❌ Precio destacado arriba (no hay precio aquí, solo botón) */}
                 <a href={featured.link} target="_blank" rel="noopener noreferrer" className="action-button">
-                  Comprar ahora →
+                  Adquirir en la web oficial →
+                </a>
+              </div>
+
+              <div className="featured-description">{featured.description}</div>
+
+              <div className="inner-price-action">
+                {/* ❌ Precio principal comentado */}
+                {/* <span className="price">${featured.price}</span> */}
+
+                <a href={featured.link} target="_blank" rel="noopener noreferrer" className="action-button">
+                  Adquirir en la web oficial →
                 </a>
               </div>
             </div>
@@ -185,8 +228,11 @@ function MainEditionsCard({ editions }) {
                 <div className="other-info">
                   <h5>{item.name}</h5>
                   <p>{item.shortDesc}</p>
+
                   <div className="other-price-action">
-                    <span>${item.price}</span>
+                    {/* ❌ Precio en otras ediciones */}
+                    {/* <span>${item.price}</span> */}
+
                     <a href={item.link} target="_blank" rel="noopener noreferrer" className="other-button">
                       Ver
                     </a>
@@ -201,6 +247,7 @@ function MainEditionsCard({ editions }) {
   );
 }
 
+
 // Componente para Season Passes con soporte de "featured"
 function SeasonPassesCard({ passes }) {
   const featured = passes.find(p => p.featured);
@@ -214,12 +261,17 @@ function SeasonPassesCard({ passes }) {
             <div className="season-featured-image">
               <img src={featured.img} alt={featured.name} />
             </div>
+
             <div className="season-featured-info">
               <div className="featured-badge">★ CONTENIDO EN PROGRESO ★</div>
               <h3>{featured.name}</h3>
+
               <div className="featured-description">{featured.description}</div>
+
               <div className="season-price-action">
-                <span className="price">${featured.price}</span>
+                {/* ❌ Precio del Season Pass destacado */}
+                {/* <span className="price">${featured.price}</span> */}
+
                 <a href={featured.link} target="_blank" rel="noopener noreferrer" className="action-button">
                   Reservar ahora →
                 </a>
@@ -238,9 +290,13 @@ function SeasonPassesCard({ passes }) {
                 <img src={pass.img} alt={pass.name} className="other-season-img" />
                 <div className="other-season-info">
                   <h5>{pass.name}</h5>
+
                   <div className="featured-description">{pass.description}</div>
+
                   <div className="other-season-action">
-                    <span>${pass.price}</span>
+                    {/* ❌ Precio Season Passes secundarios */}
+                    {/* <span>${pass.price}</span> */}
+
                     <a href={pass.link} target="_blank" rel="noopener noreferrer" className="other-button">
                       Ver
                     </a>
@@ -254,6 +310,7 @@ function SeasonPassesCard({ passes }) {
     </div>
   );
 }
+
 
 export default function FS25Purchase() {
   return (
