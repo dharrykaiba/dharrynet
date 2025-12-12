@@ -8,11 +8,10 @@
   --border-color: rgba(155, 190, 25, 0.25);
   --radius-md: 12px;
   --transition: all 0.25s ease;
-
-  /* Nuevo color destacado */
   --amarillo-destacado: #ffd002;
 }
 
+/* ===== BASE ===== */
 .fs25-themegreen {
   background-color: var(--bg-page);
   color: var(--text-light);
@@ -36,10 +35,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-/* ===== RESPONSIVE: Cambia a fondoheaderazul_3.png ===== */
 @media (max-width: 992px) {
-
-  /* Tablets y móviles */
   .fs25purchase-header {
     background: var(--azul-oscuro) url("../assets/fondoheaderazul_3.png") center/cover no-repeat;
   }
@@ -50,27 +46,19 @@
   font-size: 2rem;
   font-weight: 700;
   font-style: italic;
-
   font-family: "Helvetica Compressed", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-  /* Degradado */
-  background: var(--grad-white-vertical);
+  background: linear-gradient(to bottom, #fff, #ccc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
-
-  /* Borde del texto */
   -webkit-text-stroke: 1px #3d3d3d48;
   text-stroke: 1px #3d3d3d48;
-
-  /* 👇 Corrección para evitar que se recorte la Y */
   line-height: 1.2;
   padding-bottom: 4px;
   display: inline-block;
 }
 
-/* === LOGO + TÍTULO === */
 .logo-title {
   display: flex;
   align-items: center;
@@ -79,197 +67,69 @@
 
 .header-logo {
   width: 48px;
-  /* Ajusta el tamaño aquí */
   height: 48px;
   object-fit: contain;
   filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.6));
 }
 
-/* ===== MAIN ===== */
+/* ===== MAIN LAYOUT ===== */
 .fs25purchase-main {
   padding: 1.5rem;
   max-width: 1400px;
-  /* más ancho */
   margin: 0 auto;
 }
 
-.fs25-main-section {
-  margin-top: 1.5rem;
+.fs25-section {
+  margin-bottom: 3rem;
 }
 
-/* ===== GRID ===== */
-.fs25purchase-grid {
-  display: grid;
-  gap: 2rem;
-  /* Más ancho: 2 columnas en desktop, 1 en móvil */
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-}
-
-.fs25purchase-card-wrapper.featured-wrapper {
-  grid-column: 1 / -1;
-}
-
-@media (max-width: 768px) {
-  .fs25purchase-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .fs25purchase-main {
-    padding: 1rem;
-  }
-}
-
-/* ===== TARJETA ===== */
-.fs25purchase-card {
-  background: var(--azul-oscuro);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+.fs25-section-content {
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
 }
 
-.fs25-card-content {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 1.5rem;
-  gap: 1.5rem;
-}
-
-@media (min-width: 900px) {
-  .featured-wrapper .fs25-card-content {
-    flex-direction: row;
-  }
-
-  .normal-wrapper .fs25-card-content {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
-
-/* ===== VIDEO ===== */
-.media-section {
-  flex: 1;
-  min-width: 300px;
-  max-width: 400px;
-}
-
-.video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: #000;
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* ===== INFO ===== */
-.info-section {
-  flex: 2;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-}
-
-.info-section h3 {
-  margin: 0 0 1.2rem;
-  font-size: 1.5rem;
-  color: var(--text-lighter);
-  font-weight: 700;
-  text-align: left;
-}
-
-.info-section h3:hover {
+.section-title {
+  text-align: center;
+  margin-bottom: 1rem;
   color: var(--verde-lima);
 }
 
-/* Descripción con HTML */
-.description-html {
-  margin: 0.6rem 0;
-  font-size: 1.05rem;
-  color: var(--text-light);
-  opacity: 0.95;
-  line-height: 1.6;
-  text-align: left;
+.section-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  opacity: 0.9;
 }
 
-.description-html p {
-  margin: 0.8rem 0;
+/* ===== BADGE Y BOTONES ===== */
+.featured-badge {
+  background: var(--amarillo-destacado);
+  color: var(--azul-oscuro);
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
 }
 
-.description-html h4 {
-  margin: 1.2rem 0 0.6rem;
-  font-size: 1.2rem;
-  color: var(--verde-lima);
-  font-weight: 700;
-}
-
-.description-html ul {
-  padding-left: 1.5rem;
-  margin: 0.8rem 0;
-}
-
-.description-html li {
-  margin-bottom: 0.4rem;
-}
-
-.description-html strong {
-  color: var(--text-lighter);
-}
-
-.description-html .partner-code {
-  color: var(--amarillo-destacado);
-  font-family: monospace;
-  background: rgba(255, 208, 2, 0.1);
-  padding: 0.15em 0.3em;
-  border-radius: 4px;
-}
-
-.description-html em {
-  opacity: 0.85;
-}
-
-/* ===== FILA: IMAGEN + BOTÓN ===== */
-.image-button-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-  margin-bottom: 1.2rem;
-  flex-wrap: wrap;
-}
-
-.card-image {
-  flex: 0 0 180px;
-  /* ancho fijo pero razonable */
-  height: auto;
-  max-height: 180px;
+.action-button,
+.other-button {
+  text-decoration: none;
+  font-weight: bold;
   border-radius: 10px;
-  border: 1px solid var(--border-color);
-  object-fit: contain;
-  background: rgba(0, 0, 0, 0.15);
+  transition: var(--transition);
+  text-align: center;
+  display: inline-block;
 }
 
 .action-button {
   padding: 0.75rem 1.5rem;
   background: var(--verde-lima);
   color: var(--azul-oscuro);
-  font-weight: bold;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: var(--transition);
   font-size: 1.05rem;
   min-width: 180px;
-  text-align: center;
-  align-self: flex-start;
 }
 
 .action-button:hover {
@@ -277,40 +137,318 @@
   color: white;
 }
 
-/* Descripción */
-.info-section p {
-  margin: 0.6rem 0;
+.other-button {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--verde-medio);
+  color: var(--azul-oscuro);
+  border-radius: 6px;
+}
+
+.other-button:hover {
+  background: var(--verde-lima);
+}
+
+/* ===== TARJETAS DESTACADAS (MAIN + SEASON) ===== */
+.fs25-unified-card,
+.fs25-season-unified-card {
+  background: var(--azul-oscuro);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.featured-inner-card,
+.featured-season-card {
+  background: linear-gradient(135deg, rgba(155, 190, 25, 0.15), rgba(124, 169, 40, 0.1));
+  border-bottom: 1px solid var(--verde-lima);
+  padding: 1.5rem;
+}
+
+.inner-card-content,
+.season-featured-content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.inner-card-image img,
+.season-featured-image img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  object-fit: contain;
+}
+
+.inner-card-info,
+.season-featured-info {
+  flex: 1;
+  max-width: 600px;
+}
+
+.inner-card-info h3,
+.season-featured-info h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.4rem;
+  color: var(--text-lighter);
+}
+
+.inner-card-info p,
+.season-featured-info p {
+  margin: 0 0 1rem;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
+.inner-price-action,
+.season-price-action {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--verde-lima);
+}
+
+/* ===== OTRAS OPCIONES (GRID) ===== */
+.other-options-section,
+.other-seasons-section {
+  padding: 1.5rem;
+  padding-top: 0;
+}
+
+.other-options-section h4,
+.other-seasons-section h4 {
+  color: var(--verde-lima);
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.other-options-grid,
+.other-seasons-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Tarjetas secundarias */
+.other-option-card,
+.other-season-card {
+  display: flex;
+  gap: 1rem;
+  background: rgba(10, 20, 51, 0.6);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(155, 190, 25, 0.15);
+  transition: var(--transition);
+}
+
+.other-option-card:hover,
+.other-season-card:hover {
+  border-color: var(--verde-medio);
+}
+
+.other-img,
+.other-season-img {
+  width: 250px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.other-info,
+.other-season-info {
+  flex: 1;
+}
+
+.other-info h5,
+.other-season-info h5 {
+  margin: 0 0 0.4rem;
   font-size: 1.05rem;
+  color: var(--text-lighter);
+}
+
+.other-info p,
+.other-season-info p {
+  font-size: 0.9rem;
+  margin: 0 0 0.6rem;
+  color: var(--text-light);
+  opacity: 0.85;
+}
+
+.other-price-action,
+.other-season-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.other-price-action span,
+.other-season-action span {
+  font-weight: bold;
+  color: var(--verde-lima);
+}
+
+.featured-description {
+  margin: 0 0 1rem;
   color: var(--text-light);
   opacity: 0.95;
-  text-align: left;
   line-height: 1.6;
 }
 
-/* Destacado */
-.fs25purchase-card.featured {
-  background: #020e32;
-  border-color: var(--verde-lima);
+.featured-description-image {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
 }
 
-/* Móvil: centrar contenido */
-@media (max-width: 899px) {
-  .info-section {
-    text-align: center;
+.featured-description-image img {
+  height: 350px;
+  /* ← Altura fija */
+  width: auto;
+  /* ← Ancho proporcional */
+  max-width: 100%;
+  /* ← Evita que se salga del contenedor en móvil */
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  object-fit: contain;
+  /* ← Mantiene proporción y muestra toda la imagen */
+}
+
+.partner-note {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  background: rgba(255, 208, 2, 0.12); /* amarillo suave */
+  border-left: 3px solid var(--amarillo-destacado);
+  border-radius: 6px;
+  color: var(--text-light);
+  font-weight: 500;
+  box-shadow: 0 0 6px rgba(255, 208, 2, 0.18);
+}
+
+
+/* ==========================================================================
+   RESPONSIVE: 3 BREAKPOINTS CLAROS
+   ========================================================================== */
+
+/* 💻 DESKTOP: ≥1024px → por defecto (sin media query) */
+
+/* 📱 MÓVIL: ≤767px */
+@media (max-width: 767px) {
+  .fs25purchase-main {
+    padding: 1rem;
+  }
+
+  /* Layout vertical en destacados */
+  .inner-card-content,
+  .season-featured-content {
+    flex-direction: column;
     align-items: center;
-  }
-
-  .info-section h3,
-  .info-section p {
     text-align: center;
   }
 
-  .image-button-row {
-    justify-content: center;
+  /* Imagen ocupa fila completa */
+  .inner-card-image img,
+  .season-featured-image img,
+  .other-img,
+  .other-season-img {
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 1rem;
   }
 
-  .card-image {
-    flex: 0 0 160px;
-    max-height: 160px;
+  /* Grid: 1 columna */
+  .other-options-grid,
+  .other-seasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ✅ Tarjetas "otras opciones" en columna */
+  .other-option-card,
+  .other-season-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ✅ Ajustar info para centrado */
+  .other-info,
+  .other-season-info {
+    text-align: center;
+  }
+
+  .action-button {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .featured-description-image img {
+    height: 190px;
+  }
+}
+
+/* 📱➡️💻 TABLET: 768px – 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .fs25purchase-main {
+    padding: 1.25rem;
+  }
+
+  .featured-inner-card,
+  .featured-season-card,
+  .other-options-section,
+  .other-seasons-section {
+    padding: 1.25rem;
+    padding-top: 1.25rem;
+  }
+
+  /* ✅ Forzar 1 columna en el grid de "otras opciones" */
+  .other-options-grid,
+  .other-seasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ✅ Mantener layout horizontal en tablet (opcional, pero coherente) */
+  .other-option-card,
+  .other-season-card {
+    flex-direction: row;
+    /* explícito */
+  }
+
+  /* ✅ Imágenes más pequeñas */
+  .other-img,
+  .other-season-img {
+    width: 180px;
+    /* ajuste fino para tablet */
+  }
+
+  /* Imágenes más pequeñas */
+  .inner-card-image img,
+  .season-featured-image img {
+    width: 200px;
+  }
+
+  .other-img,
+  .other-season-img {
+    width: 200px;
+  }
+
+  /* Ajuste de texto */
+  .inner-card-info,
+  .season-featured-info {
+    max-width: 500px;
+  }
+
+  /* Botón más compacto */
+  .action-button {
+    min-width: 160px;
+    font-size: 1rem;
+    padding: 0.65rem 1.25rem;
   }
 }
