@@ -325,12 +325,35 @@
 .partner-note {
   margin-top: 0.75rem;
   padding: 0.6rem 0.85rem;
-  background: rgba(255, 208, 2, 0.12); /* amarillo suave */
+  background: rgba(255, 208, 2, 0.12);
+  /* amarillo suave */
   border-left: 3px solid var(--amarillo-destacado);
   border-radius: 6px;
   color: var(--text-light);
   font-weight: 500;
   box-shadow: 0 0 6px rgba(255, 208, 2, 0.18);
+}
+
+.fs25-legal-footer {
+  margin-top: 3rem;
+  padding: 1.5rem 1rem;
+  font-size: 0.75rem;
+  text-align: center;
+  /* esto centra el texto */
+  display: flex;
+  /* usamos flexbox */
+  flex-direction: column;
+  /* los elementos van uno debajo del otro */
+  align-items: center;
+  /* esto centra la imagen horizontalmente */
+  justify-content: center;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+.fs25-legal-footer .partner-badge {
+  max-width: 200px;
+  margin-bottom: 1rem;
 }
 
 

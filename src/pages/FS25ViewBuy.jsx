@@ -15,6 +15,7 @@ import fs25SeasonPass2Cover from "../assets/fs25/fs25seasonpass2_pc_cover.png";
 import fs25Y1BundleGiantsBonus from "../assets/fs25/fs25y1bundle_pc_cover_giantsbonus.png";
 import fs25seasonpass2content1 from "../assets/fs25/fs25seasonpass2-content1.jpg";
 import fs25seasonpass1content1 from "../assets/fs25/fs25seasonpass1-content1.jpg";
+import Giants_OfficialPartnerBadge_TransparentWhite from "../assets/fs25/Giants_OfficialPartnerBadge_TransparentWhite.png";
 
 const mainEditions = [
   {
@@ -345,6 +346,23 @@ export default function FS25Purchase() {
             <SeasonPassesCard passes={seasonPasses} />
           </div>
         </section>
+        {/* 🔻 Footer legal especial para esta página */}
+        <footer className="fs25-legal-footer">
+          <img
+            src={Giants_OfficialPartnerBadge_TransparentWhite}
+            alt="GIANTS Official Partner"
+            className="partner-badge"
+          />
+          <p>
+            Las imágenes, marcas registradas y material promocional de Farming Simulator son propiedad de
+            GIANTS Software. Este sitio utiliza dichos recursos con fines informativos y promocionales
+            como parte del programa oficial GIANTS Partner Program.
+          </p>
+          <p>
+            No realizo ventas directas. Todas las compras se efectúan en la web oficial de Farming Simulator.
+            Los enlaces externos pueden incluir mi código de partner <strong>DIESELD</strong>.
+          </p>
+        </footer>
       </main>
 
       <Footer />
