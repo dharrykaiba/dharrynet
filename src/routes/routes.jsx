@@ -1,17 +1,24 @@
-// src/routes.jsx
+// src/routes/routes.jsx
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+
+import HomeView from "../pages/HomeView.jsx";
+import FS25View from "../pages/FS25View.jsx";
 import FS25ViewBuy from "../pages/FS25ViewBuy.jsx";
 
 const AppRouter = () => {
   return (
     <Routes>
-      {/* Redirigir '/' y '/fs25' hacia '/fs25buy' */}
-      <Route path="/" element={<Navigate to="/fs25buy" replace />} />
-      <Route path="/fs25" element={<Navigate to="/fs25buy" replace />} />
 
-      {/* Ruta de compra */}
+      {/* Página principal de DharryNet */}
+      <Route path="/" element={<HomeView />} />
+
+      {/* Página de Farming Simulator 25 */}
+      <Route path="/fs25" element={<FS25View />} />
+
+      {/* Página de compra de Farming Simulator 25 */}
       <Route path="/fs25buy" element={<FS25ViewBuy />} />
+
     </Routes>
   );
 };

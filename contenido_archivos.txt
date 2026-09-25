@@ -1,0 +1,4281 @@
+﻿
+
+================================================================================
+ARCHIVO: package.json
+================================================================================
+
+{
+  "name": "dharrynet",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://dharry.net/",
+  "dependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.7.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "emailjs-com": "^3.2.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.8.1",
+    "react-scripts": "5.0.1",
+    "swiper": "^11.2.10",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "predeploy": "npm run build && echo dharry.net > ./build/CNAME",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\App.jsx
+================================================================================
+
+// src/App.jsx
+import React from "react";
+import { HashRouter as Router } from "react-router-dom";
+
+// Estilos globales
+
+import Routes from "./routes/routes"; // Importa el archivo de rutas
+// Views
+
+function App() {
+  return (
+    <Router>
+      <Routes />
+    </Router>
+  );
+}
+
+export default App;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\index.js
+================================================================================
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./styles/globals.css";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\about\about.css
+================================================================================
+
+/* ===== Container Principal ===== */
+.about__container {
+  display: grid;
+  grid-template-columns: 35% 50%;
+  gap: 15%;
+  align-items: center;
+}
+
+/* ===== Imagen ===== */
+.about__me {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(45deg, transparent, var(--red), transparent);
+  display: grid;
+  place-items: center;
+}
+
+.about__me-image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transform: rotate(10deg);
+  transition: var(--transition);
+}
+
+.about__me-image:hover {
+  transform: rotate(0deg);
+}
+
+
+/* ===== Tarjetas ===== */
+.about__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.about__card {
+  background: var(--bg-dark);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.about__card:hover {
+  background: transparent;
+  border-color: var(--red);
+  cursor: default;
+}
+
+.about__icon {
+  color: var(--red);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.about__card h5 {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.about__card small {
+  font-size: 0.7rem;
+  color: var(--light);
+}
+
+/* ===== Contenido ===== */
+.about__content p {
+  margin: 2rem 0 2.6rem;
+  color: var(--light);
+}
+
+.about__content .btn {
+  display: inline-block;
+}
+
+/* ===== Media Queries: Tablets ===== */
+@media screen and (max-width: 1024px) {
+  .about__container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .about__me {
+    width: 50%;
+    margin: 2rem auto 4rem;
+  }
+
+  .about__content p {
+    margin: 1rem 0 1.5rem;
+  }
+}
+
+/* ===== Media Queries: Móviles ===== */
+@media screen and (max-width: 600px) {
+  .about__me {
+    width: 65%;
+    margin: 0 auto 3rem;
+  }
+
+  .about__cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .about__content {
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+
+  .about__content p {
+    margin: 1.5rem 0;
+  }
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\about\About.jsx
+================================================================================
+
+import React from "react";
+import "./about.css";
+import ME from "../../assets/me-about.png";
+import { FaAward } from "react-icons/fa";
+import { FiUsers } from "react-icons/fi";
+import { VscFolderLibrary } from "react-icons/vsc";
+
+const About = () => {
+  return (
+    <section id="about">
+      <h5>Get To Know</h5>
+      <h2>About Me</h2>
+
+      <div className="container about__container">
+        <div className="about__me">
+          <div className="about__me-image">
+            <img src={ME} alt="About image" />
+          </div>
+        </div>
+
+        <div className="about__content">
+          <div className="about__cards">
+            <article className="about__card">
+              <FaAward className="about__icon" />
+              <h5>Experience</h5>
+              <small>1+ Years Working</small>
+            </article>
+
+            <article className="about__card">
+              <FiUsers className="about__icon" />
+              <h5>Clients</h5>
+              <small>200+ worldwide</small>
+            </article>
+
+            <article className="about__card">
+              <VscFolderLibrary className="about__icon" />
+              <h5>Projects</h5>
+              <small>80+ completed</small>
+            </article>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+            atque architecto similique sint error accusantium tenetur! A
+            quibusdam ad quasi voluptatibus, porro, hic autem iste, dolor fuga
+            eum delectus quia.
+          </p>
+          <a href="#contact" className="btn btn-primary">
+            Let's Talk
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\contact\contact.css
+================================================================================
+
+.contact__container {
+  width: 58%;
+  display: grid;
+  grid-template-columns: 30% 58%;
+  gap: 12%;
+}
+
+.contact__options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.contact__option {
+  background: var(--color-bg-variant);
+  text-align: center;
+  padding: 1.2rem;
+  border-radius: 1.2rem;
+  border: 1px solid transparent;
+  transition: all 400ms ease;
+}
+.contact__option:hover {
+  background: transparent;
+  border-color: var(--color-primary-variant);
+}
+.contact__option-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact__option a {
+  margin-top: 0.7rem;
+  display: inline-block;
+  font-size: 0.8rem;
+}
+
+/* ==========form=================== */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  border: 2px solid var(--color-primary-variant);
+  resize: none;
+  color: var(--color-white);
+}
+
+/* ======media queries for tablets(medium devices) =========*/
+
+@media screen and (max-width: 1024px) {
+  .contact__container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ======media queries for mobile(small devices) =========*/
+
+@media screen and (max-width: 600px) {
+  .contact__container {
+    width: var(--container-width-sm);
+  }
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\contact\Contact.jsx
+================================================================================
+
+import React, { useRef } from "react";
+import "./contact.css";
+import { MdOutlineEmail } from "react-icons/md";
+import { RiMessengerLine } from "react-icons/ri";
+import { BsWhatsapp } from "react-icons/bs";
+
+import emailjs from "emailjs-com";
+
+const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_yhmyh7q",
+        "template_wbpqpbr",
+        form.current,
+        "Po8nwYiPRh31wRCkt"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+
+    e.target.reset();
+  };
+
+  return (
+    <section id="contact">
+      <h5>Get In Touch</h5>
+      <h2>Contact Me</h2>
+      <div className="container contact__container">
+        <div className="contact__options">
+          <article className="contact__option">
+            <MdOutlineEmail className="contact__option-icon" />
+            <h4>Email</h4>
+            <h5>manu@gmail.com</h5>
+            <a href="mailto:manu@gmail.com" target="_blank">
+              Send a message
+            </a>
+          </article>
+
+          <article className="contact__option">
+            <RiMessengerLine className="contact__option-icon" />
+            <h4>Messenger</h4>
+            <h5>Manohar</h5>
+            <a href="https://m.me/manohar" target="_blank">
+              Send a message
+            </a>
+          </article>
+
+          <article className="contact__option">
+            <BsWhatsapp className="contact__option-icon" />
+            <h4>Whatsapp</h4>
+            <h5>+987654321</h5>
+            <a
+              href="https://api.whatsapp.com/send?phone=987654321"
+              target="_blank"
+            >
+              Send a message
+            </a>
+          </article>
+        </div>
+
+        <form ref={form} onSubmit={sendEmail}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Full Name"
+            required
+          />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea
+            name="message"
+            rows="7"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit" className="btn btn-primary">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\experience\experience.css
+================================================================================
+
+.experience__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.experience__container > div {
+  background: var(--color-bg-variant);
+  padding: 2.4rem 5rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
+  transition: all 400ms ease;
+}
+
+.experience__container > div:hover {
+  background: transparent;
+  border-color: var(--color-primary-variant);
+  cursor: default;
+}
+
+.experience__container > div > h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+}
+
+.experience__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 2rem;
+}
+
+.experience__details {
+  display: flex;
+  gap: 1rem;
+}
+
+.experience__details-icons {
+  margin-top: 5px;
+  color: var(--color-primary);
+}
+
+/* ======media queries for tablets(medium devices) =========*/
+
+@media screen and (max-width: 1024px) {
+  .experience__container {
+    grid-template-columns: 1fr;
+  }
+
+  .experience__container div {
+    width: 80%;
+    padding: 2rem;
+    margin: 0 auto;
+  }
+  .experience__details-icons {
+    margin-top: 35px;
+  }
+  .experience__content {
+    padding: 1rem;
+  }
+}
+
+/* ======media queries for mobile(small devices) =========*/
+
+@media screen and (max-width: 600px) {
+  .experience__container {
+    gap: 1rem;
+  }
+  .experience__container div {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\experience\Experience.jsx
+================================================================================
+
+import React from "react";
+import "./experience.css";
+import { BsPatchCheckFill } from "react-icons/bs";
+const Experience = () => {
+  return (
+    <section id="experience">
+      <h5>What Skills I Have</h5>
+      <h2>My Experience</h2>
+
+      <div className="container experience__container">
+        <div className="experience__frontend">
+          <h3>Frontend Development</h3>
+
+          <div className="experience__content">
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icons" />
+
+              <div>
+                <h4>HTML</h4>
+                <small className="text-light">Experienced</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icons" />
+              <div>
+                <h4>CSS</h4>
+                <small className="text-light">Intermediate</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icons" />
+              <div>
+                <h4>JavaScript</h4>
+                <small className="text-light">Intermediate</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icons" />
+              <div>
+                <h4>Bootstrap</h4>
+                <small className="text-light">Experienced</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icons" />
+              <div>
+                <h4>React</h4>
+                <small className="text-light">Intermediate</small>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div className="experience__backend">
+          <h3>Backend Development</h3>
+          <div className="experience__content">
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icons" />
+              <div>
+                <h4>Java</h4>
+                <small className="text-light">Experienced</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icons" />
+              <div>
+                <h4>MySQL</h4>
+                <small className="text-light">Intermediate</small>
+              </div>
+            </article>
+            <article className="experience__details">
+              <BsPatchCheckFill className="experience__details-icons" />
+              <div>
+                <h4>Python</h4>
+                <small className="text-light">Basic</small>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Experience;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\intro\download.jsx
+================================================================================
+
+import React from "react";
+import CV from "../../assets/cv.pdf";
+
+const CTA = () => {
+  return (
+    <div className="cta">
+      <a href={CV} download className="btn">
+        Download CV
+      </a>
+      <a href="#contact" className="btn btn-primary">
+        Let's Talk
+      </a>
+    </div>
+  );
+};
+
+export default CTA;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\intro\intro.css
+================================================================================
+
+/* ===== Header Hero ===== */
+header.hero {
+  height: 100vh;
+  padding-top: 5rem;
+  overflow: hidden;
+  background-image: linear-gradient(
+      rgba(18, 18, 18, 0.85),
+      rgba(18, 18, 18, 0.85)
+    ),
+    url("../../assets/bg-hero.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--text-primary);
+  position: relative;
+  animation: var(--anim-fade-in);
+}
+
+/* Contenedor principal del header */
+.header__container {
+  text-align: center;
+  height: 100%;
+  position: relative;
+  width: var(--container-width-lg);
+  margin: 0 auto;
+}
+
+/* Introducción dentro del header */
+.header__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: var(--anim-slide-up);
+}
+
+/* Tagline */
+.tagline {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: 0.5rem;
+}
+
+/* Social links */
+.header__socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  position: absolute;
+  left: 0;
+  bottom: 3rem;
+}
+
+.header__socials::after {
+  content: "";
+  width: 1px;
+  height: 2rem;
+  background: var(--red);
+}
+
+/* Últimos proyectos (sustituye la figura hero) */
+.last-projects {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+  animation: var(--anim-scale);
+}
+
+.last-projects a {
+  color: var(--text-red);
+  transition: var(--transition-fast);
+}
+.last-projects a:hover {
+  color: var(--accent-red);
+}
+
+/* Scroll down indicator */
+.scroll__down {
+  position: absolute;
+  right: -2.3rem;
+  bottom: 5rem;
+  transform: rotate(90deg);
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: var(--red);
+  transition: var(--transition);
+}
+
+.scroll__down:hover {
+  color: var(--accent-red);
+}
+
+/* Media queries: Tablets */
+@media screen and (max-width: 1024px) {
+  header.hero {
+    height: 87vh;
+  }
+}
+
+/* Media queries: Mobile */
+@media screen and (max-width: 600px) {
+  header.hero {
+    height: 90vh;
+  }
+  .header__socials,
+  .scroll__down {
+    display: none;
+  }
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\intro\Intro.jsx
+================================================================================
+
+import React from "react";
+import "./intro.css";
+import Socials from "../SectionBars/Socials";
+import StreamingStatus from "../streamstate/streamstate";
+//import LastProjects from "../SectionBars/LastProjects";
+import UnderConstruction from "../SectionBars/UnderConstruction";
+
+const projects = [
+  {
+    title: "🎮 Canal Gaming",
+    link: "https://youtube.com/@dieseldharry",
+  },
+  {
+    title: "💻 GitHub",
+    link: "https://github.com/dharrynet",
+  },
+  {
+    title: "🔒 Seguridad Electrónica",
+    link: "https://youtube.com/security",
+  },
+];
+
+const Header = () => {
+  return (
+    <header className="hero">
+      <div className="container header__container">
+        <div className="header__intro">
+          <StreamingStatus /> {/* Estado centrado */}
+          <p className="tagline">Gaming • Code • Seguridad</p>
+        </div>
+
+        <Socials />
+
+        {/* Reemplazo del figure */}
+        {/* <LastProjects />*/}
+
+        <UnderConstruction /> 
+
+        <a
+          href="#contact"
+          className="scroll__down"
+          aria-label="Scroll down to contact section"
+        >
+          Scroll Down
+        </a>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\portfolio\portfolio.css
+================================================================================
+
+.portfolio__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.portfolio__item {
+  background: var(--color-bg-variant);
+  padding: 1.3rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
+  transition: all 400ms ease;
+}
+.portfolio__item:hover {
+  background: transparent;
+  border-color: var(--color-primary-variant);
+  cursor: default;
+}
+
+.portfolio__item-image {
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.portfolio__item h3 {
+  margin: 1.2rem 0 2rem;
+}
+.portfolio__item-cta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* ======media queries for tablets(medium devices) =========*/
+
+@media screen and (max-width: 1024px) {
+  .portfolio__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+}
+
+/* ======media queries for mobile(small devices) =========*/
+
+@media screen and (max-width: 600px) {
+  .portfolio__container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\portfolio\Portfolio.jsx
+================================================================================
+
+import React from "react";
+import "./portfolio.css";
+import IMG1 from "../../assets/portfolio1.jpg";
+import IMG2 from "../../assets/portfolio2.jpg";
+import IMG3 from "../../assets/portfolio3.jpg";
+import IMG4 from "../../assets/portfolio4.jpg";
+import IMG5 from "../../assets/portfolio5.png";
+import IMG6 from "../../assets/portfolio6.jpg";
+
+const Portfolio = () => {
+  return (
+    <section id="portfolio">
+      <h5>What I Offer</h5>
+      <h2>Services</h2>
+
+      <div className="container portfolio__container">
+        <article className="portfolio__item">
+          <div className="portfolio__item-image">
+            <img src={IMG1} alt="" />
+          </div>
+          <h3>This is portfolio item title</h3>
+
+          <div className="portfolio__item-cta">
+            <div>
+              <a href="#" className="btn">
+                Github
+              </a>
+            </div>
+
+            <div>
+              <a href="#" className="btn btn-primary" target="_blank">
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article className="portfolio__item">
+          <div className="portfolio__item-image">
+            <img src={IMG2} alt="" />
+          </div>
+          <h3>This is portfolio item title</h3>
+          <div className="portfolio__item-cta">
+            <a href="#" className="btn">
+              Github
+            </a>
+            <a href="#" className="btn btn-primary" target="_blank">
+              Live Demo
+            </a>
+          </div>
+        </article>
+
+        <article className="portfolio__item">
+          <div className="portfolio__item-image">
+            <img src={IMG3} alt="" />
+          </div>
+          <h3>This is portfolio item title</h3>
+          <div className="portfolio__item-cta">
+            <a href="#" className="btn">
+              Github
+            </a>
+            <a href="#" className="btn btn-primary" target="_blank">
+              Live Demo
+            </a>
+          </div>
+        </article>
+
+        <article className="portfolio__item">
+          <div className="portfolio__item-image">
+            <img src={IMG4} alt="" />
+          </div>
+          <h3>This is portfolio item title</h3>
+          <div className="portfolio__item-cta">
+            <a href="#" className="btn">
+              Github
+            </a>
+            <a href="#" className="btn btn-primary" target="_blank">
+              Live Demo
+            </a>
+          </div>
+        </article>
+
+        <article className="portfolio__item">
+          <div className="portfolio__item-image">
+            <img src={IMG5} alt="" />
+          </div>
+          <h3>This is portfolio item title</h3>
+          <div className="portfolio__item-cta">
+            <a href="#" className="btn">
+              Github
+            </a>
+            <a href="#" className="btn btn-primary" target="_blank">
+              Live Demo
+            </a>
+          </div>
+        </article>
+
+        <article className="portfolio__item">
+          <div className="portfolio__item-image">
+            <img src={IMG6} alt="" />
+          </div>
+          <h3>This is portfolio item title</h3>
+          <div className="portfolio__item-cta">
+            <a href="#" className="btn">
+              Github
+            </a>
+            <a href="#" className="btn btn-primary" target="_blank">
+              Live Demo
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+};
+
+export default Portfolio;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\footer.css
+================================================================================
+
+/* ====== 🌐 Footer Styles (footer.css) ====== */
+.footer {
+  background: var(--ft-bg, var(--bg-dark));
+  padding: 3rem 0 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  margin-top: 7rem;
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dark), 0 -6px 20px var(--color-shadow-dark);
+  animation: var(--anim-fade-in);
+}
+
+/* 🔗 Links generales */
+.footer a {
+  color: var(--ft-text, var(--text-secondary));
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--ft-text-hover, var(--white));
+}
+
+/* 🏷️ Logo */
+.footer__logo {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 2rem;
+  display: inline-block;
+  color: var(--ft-text, var(--text-primary));
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.footer__logo:hover {
+  transform: scale(1.08);
+  text-shadow: var(--shadow-medium);
+}
+
+/* 📑 Permalinks */
+.permalinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.2rem;
+  margin: 0 auto 2.8rem;
+  padding: 0;
+  list-style: none;
+}
+
+.permalinks a {
+  font-weight: 500;
+  position: relative;
+  padding: 0.2rem 0;
+}
+
+.permalinks a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--ft-text, var(--text-secondary));
+  width: 0;
+  transition: width 0.3s ease;
+  margin: 0 auto;
+  border-radius: var(--radius-sm);
+}
+
+.permalinks a:hover::after {
+  width: 90%;
+}
+
+/* 🌍 Redes Sociales */
+.footer__socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer__socials a {
+  background: var(--color-tertiary-dark);
+  color: var(--ft-bg, var(--bg-dark));
+  padding: 0.7rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  border: 1px solid transparent;
+  box-shadow: var(--ft-shadow, var(--shadow-dark));
+  transition: var(--transition-fast);
+  font-size: 1.2rem;
+}
+
+.footer__socials a:hover {
+  background: var(--ft-bg, var(--bg-dark));
+  color: var(--ft-text, var(--text-primary));
+  border-color: var(--ft-text, var(--text-primary));
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* © Copyright */
+.footer__copyright {
+  margin-top: 2.5rem;
+  margin-bottom: 5rem;
+  color: var(--ft-text, var(--text-secondary));
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* 📱 Responsive */
+@media screen and (max-width: 600px) {
+  .permalinks {
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+
+  .footer__socials {
+    margin-bottom: 2rem;
+  }
+
+  .footer__logo {
+    font-size: 2rem;
+  }
+}
+
+/* ====== 🎨 Temas Específicos ====== */
+
+/* 🔴 Footer HomeView */
+.homeView .footer {
+  --ft-bg: var(--red);
+  --ft-text: var(--text-dark);
+  --ft-text-hover: var(--white);
+  --ft-shadow: var(--shadow-red);
+}
+
+/* 🟢 Footer FS25View */
+.fs25-theme .footer {
+  --ft-bg: var(--gradient-background-dark);
+  /* Fondo base oscuro */
+  --ft-text: var(--light);
+  /* Texto neutro */
+  --ft-text-hover: var(--accent-green);
+  /* Verde brillante al hover */
+  --ft-shadow: var(--shadow-dark);
+  /* Sombra intensa verde */
+}
+
+/* 🔵 Footer BlueTheme */
+.fs25-themegreen .footer {
+  --ft-bg: var(--gradient-background-dark);
+  --ft-text: var(--light);
+  --ft-text-hover: var(--verde-lima);
+  --ft-shadow: var( --verde-lima);
+}
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\Footer.jsx
+================================================================================
+
+//src/components/SectionBars/Footer.jsx
+import React from "react";
+import "./footer.css";
+import { links, socialLinks } from "./links";
+
+const Footer = () => {
+  return (
+    <footer className="footer">
+      {/* 🔥 Logo / Nombre */}
+      <a href="#" className="footer__logo">
+        Dharry
+      </a>
+
+      {/* 🔗 Links de navegación */}
+      <ul className="permalinks">
+        {links.map(({ id, label }) => (
+          <li key={id}>
+            <a href={id}>{label}</a>
+          </li>
+        ))}
+      </ul>
+
+      {/* 🌐 Redes sociales */}
+      <div className="footer__socials">
+        {socialLinks.map(({ id, url, icon, label }) => (
+          <a
+            key={id}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+          >
+            {icon}
+          </a>
+        ))}
+      </div>
+
+      {/* 📄 Copyright */}
+      
+      <div className="footer__copyright">
+        <small>
+          &copy; {new Date().getFullYear()} <strong>Dharry</strong>. Todos los
+          derechos reservados.
+        </small>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\lastProjects.css
+================================================================================
+
+/* === Last Projects Grid === */
+.last-projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 3rem auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  width: clamp(300px, 95%, 1100px);
+  max-height: 70vh;
+  box-sizing: border-box;
+  animation: var(--anim-fade-in);
+}
+
+.project-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === Card === */
+.project-card {
+  height: clamp(120px, 22vh, 220px);
+  width: 100%;
+  border-radius: var(--radius-md, 1rem);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 5px 15px var(--red-hover);
+}
+
+/* === Texto dentro de la card === */
+.project-content h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+/* === Descripción (fuera de la card en desktop) === */
+.project-desc {
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  margin-top: 0.5rem;
+  display: none; /* oculto en móvil por defecto */
+  color: var(--text-secondary, #ccc);
+  transition: var(--transition);
+}
+
+/* === Tablet (descripcion dentro de la card, abajo) === */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .project-wrapper {
+    position: relative;
+  }
+
+.project-desc {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0 0.5rem;
+  font-size: 0.85rem;
+  text-align: center;
+
+  /* Para WebKit (Chrome, Safari, Edge) */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* Remover display: box, ya no es necesario */
+  max-width: 90%;
+  color: var(--text-primary);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+}
+
+/* === Desktop === */
+@media (min-width: 1025px) {
+  .project-card {
+    height: clamp(240px, 40vh, 400px);
+  }
+
+  .project-desc {
+    position: static;
+    display: block;
+    max-width: 90%;
+    margin-top: 1rem;
+  }
+}
+
+/* === Tablet (2 columnas) === */
+@media (max-width: 1024px) {
+  .last-projects {
+    grid-template-columns: repeat(2, 1fr);
+    max-height: 60vh;
+  }
+
+  .last-projects .project-wrapper:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .project-card {
+    height: clamp(100px, 18vh, 140px);
+  }
+}
+
+/* === Móvil (1 columna) === */
+@media (max-width: 600px) {
+  .last-projects {
+    grid-template-columns: 1fr;
+    max-height: 55vh;
+  }
+
+  .project-card {
+    height: clamp(60px, 15vh, 180px);
+  }
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\LastProjects.jsx
+================================================================================
+
+// LastProjects.jsx
+import React from "react";
+import "./lastProjects.css";
+import { projects } from "./links";
+import { Link } from "react-router-dom"; // ⬅️ importamos Link
+
+const LastProjects = () => {
+  return (
+    <div className="last-projects">
+      {projects.map((p) => {
+        // ✅ Si es proyecto gaming, usamos Link interno
+        const isInternal = p.id === "gaming";
+
+        return (
+          <div key={p.id} className="project-wrapper">
+            {isInternal ? (
+              <Link
+                to="/fs25" // ruta interna
+                className="project-card"
+                style={{
+                  backgroundImage: `linear-gradient(${p.color}, ${p.color}), url(${p.img})`,
+                }}
+              >
+                <div className="project-content">
+                  <h3>{p.title}</h3>
+                </div>
+              </Link>
+            ) : (
+              <a
+                href={p.link} // enlaces externos siguen igual
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-card"
+                style={{
+                  backgroundImage: `linear-gradient(${p.color}, ${p.color}), url(${p.img})`,
+                }}
+              >
+                <div className="project-content">
+                  <h3>{p.title}</h3>
+                </div>
+              </a>
+            )}
+            <p className="project-desc">{p.desc}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default LastProjects;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\links.jsx
+================================================================================
+
+// 📌 links.jsx → Archivo compartido para navegación y redes sociales
+import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
+//import { BiBook, BiMessageSquareDetail } from "react-icons/bi";
+//import { RiServiceLine } from "react-icons/ri";
+import { FaGithub, FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
+
+import gamingImg from "../../assets/default.png";
+import codeImg from "../../assets/default.png";
+import securityImg from "../../assets/default.png";
+
+// 🔗 Links de navegación
+export const links = [
+  { id: "#", label: "Inicio", icon: <AiOutlineHome /> },
+  //{ id: "#about", label: "Sobre mí", icon: <AiOutlineUser /> },
+  //{ id: "#experience", label: "Experiencia", icon: <BiBook /> },
+  //{ id: "#services", label: "Servicios", icon: <RiServiceLine /> },
+  //{ id: "#contact", label: "Contacto", icon: <BiMessageSquareDetail /> },
+];
+
+// 🌐 Redes sociales
+export const socialLinks = [
+  {
+    id: "github",
+    url: "https://github.com/dharrykaiba",
+    icon: <FaGithub />,
+    label: "GitHub",
+  },
+  {
+    id: "instagram",
+    url: "https://www.instagram.com/dharrynet/",
+    icon: <FaInstagram />,
+    label: "Instagram",
+  },
+  {
+    id: "twitter",
+    url: "https://x.com/DharryNet",
+    icon: <FaTwitter />,
+    label: "Twitter (X)",
+  },
+  /*{
+    id: "facebook",
+    url: "https://facebook.com",
+    icon: <FaFacebookF />,
+    label: "Facebook",
+  },*/
+];
+
+// 🎯 Proyectos destacados
+// links.jsx
+export const projects = [
+  {
+    id: "gaming",
+    title: "🎮 Canal Gaming",
+    link: "https://youtube.com/@dieseldharry",
+    img: gamingImg, // ✅ variable importada
+    color: "rgba(250, 0, 0, 0.13)", // rojo sutil semi-transparente
+    desc: "Contenido gamer con gameplays, reviews y consejos de videojuegos.",
+  },
+  {
+    id: "github",
+    title: "💻 GitHub",
+    link: "https://github.com/dharrynet",
+    img: codeImg,
+    color: "rgba(250, 0, 0, 0.13)",
+    desc: "Repositorio con proyectos de desarrollo, código abierto y experimentos.",
+  },
+  {
+    id: "security",
+    title: "🔒 Seguridad Electrónica",
+    link: "https://youtube.com/security",
+    img: securityImg,
+    color: "rgba(250, 0, 0, 0.13)",
+    desc: "Canal sobre sistemas de seguridad, cámaras, alarmas y automatización.",
+  },
+];
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\navbar.css
+================================================================================
+
+nav {
+  background: var(--color-shadow-medium); /* Fondo oscuro según tu temática */
+  width: max-content;
+  display: flex;
+  padding: 0.7rem 1.7rem;
+  z-index: 2;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2rem;
+  gap: 0.8rem;
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(15px);
+  box-shadow: var(--shadow-dark);
+  transition: var(--transition);
+}
+
+nav a {
+  background: transparent;
+  padding: 0.9rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition);
+}
+
+nav a:hover {
+  background: var(--red-hover); /* hover usando tus variables temáticas */
+}
+
+nav a.active {
+  background: var(--red); /* activo usando color primario azul */
+  color: var(--text-dark);
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\Navbar.jsx
+================================================================================
+
+import React, { useState } from "react";
+import "./navbar.css";
+import { links } from "./links"; // importamos el array compartido
+
+const Navbar = () => {
+  const [activeNavbar, setActiveNavbar] = useState("#");
+
+  return (
+    <nav>
+      {links.map(({ id, icon, label }) => (
+        <a
+          key={id}
+          href={id}
+          aria-label={label}
+          onClick={() => setActiveNavbar(id)}
+          className={activeNavbar === id ? "active" : ""}
+        >
+          {icon}
+        </a>
+      ))}
+    </nav>
+  );
+};
+
+export default Navbar;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\Socials.css
+================================================================================
+
+/* 📌 Social links */
+.header__socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  position: absolute;
+  left: 0;
+  bottom: 3rem;
+}
+
+.header__socials a {
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.header__socials a:hover {
+  color: var(--accent-blue);
+}
+
+.header__socials::after {
+  content: "";
+  width: 1px;
+  height: 2rem;
+  background: var(--light);
+}
+
+/* 🔴 Theme Red */
+.homeView .header__socials a {
+  color: var(--text-red);
+}
+
+.homeView .header__socials a:hover {
+  color: var(--accent-red);
+}
+
+.homeView .header__socials::after {
+  background: var(--red-hover);
+}
+
+/* 🟢 Theme Green */
+.fs25-theme .header__socials a {
+  color: var(--text-green);
+}
+
+.fs25-theme .header__socials a:hover {
+  color: var(--accent-green);
+}
+
+.fs25-theme .header__socials::after {
+  background: var(--green-hover);
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\Socials.jsx
+================================================================================
+
+import React from "react";
+import "../SectionBars/Socials.css";
+import { socialLinks } from "./links";
+
+const Socials = () => {
+  return (
+    <div className="header__socials">
+      {socialLinks.map(({ id, url, icon, label }) => (
+        <a
+          key={id}
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={label}
+        >
+          {icon}
+        </a>
+      ))}
+    </div>
+  );
+};
+
+export default Socials;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\underConstruction.css
+================================================================================
+
+.construction-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.construction-card {
+  
+  padding: 2rem;
+  border-radius: 1rem;
+  
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  display: flex;          /* Flex para centrar */
+  flex-direction: column; /* Apilar elementos verticalmente */
+  align-items: center;    /* Centrado horizontal */
+  justify-content: center; /* Centrado vertical si hace falta */
+  text-align: center;     /* Alinea también los textos */
+}
+
+.construction-card:hover {
+  transform: translateY(-5px);
+  
+}
+
+.construction-img {
+  width: 120px;
+  margin-bottom: 1rem;
+  animation: bounce 2s infinite;
+  display: block; /* Se asegura que respete el centrado */
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-15px); }
+  60% { transform: translateY(-7px); }
+}
+
+.construction-card h2 {
+  color: #fa0000;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.construction-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.construction-effects {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.construction-effects span {
+  width: 10px;
+  height: 10px;
+  background: #fa0000;
+  border-radius: 50%;
+  display: inline-block;
+  animation: blink 1.5s infinite;
+}
+
+.construction-effects span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.construction-effects span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 0.2; }
+  25%, 75% { opacity: 1; }
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\SectionBars\UnderConstruction.jsx
+================================================================================
+
+import React from "react";
+import "./underConstruction.css";
+import constructionImg from "../../assets/undercontruction.png"; // Imagen de construcción (puede ser un icono o ilustración)
+
+const UnderConstruction = () => {
+  return (
+    <div className="construction-container">
+      <div className="construction-card">
+        <img src={constructionImg} alt="En construcción" className="construction-img" />
+        <h2>Página en construcción</h2>
+        <p>
+          ¡Estamos trabajando en esto! Pronto tendrás acceso a nuestros últimos proyectos.
+        </p>
+        <div className="construction-effects">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default UnderConstruction;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\services\services.css
+================================================================================
+
+.services__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* or repeat(3,1fr) */
+  gap: 3rem;
+}
+.service {
+  background: var(--color-bg-variant);
+  border-radius: 0 0 2rem 2rem;
+  border: 1px solid var(--color-primary);
+  height: fit-content;
+  transition: all 400ms ease;
+}
+
+.service:hover {
+  background: transparent;
+  border-color: var(--color-primary-variant);
+  cursor: default;
+}
+
+.services__head {
+  background: var(--color-primary);
+  padding: 2rem;
+  border-radius: 0 0 2rem 2rem;
+  box-shadow: 0 2rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.services__head h3 {
+  color: var(--color-bg);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.services__list {
+  padding: 2rem;
+}
+
+.services__list li {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.service__list-icon {
+  color: var(--color-primary);
+  margin-top: 5px;
+}
+
+.services__list p {
+  font-size: 0.9rem;
+}
+
+/* ======media queries for tablets(medium devices) =========*/
+
+@media screen and (max-width: 1024px) {
+  .services__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .service {
+    height: auto;
+  }
+}
+
+/* ======media queries for mobile(small devices) =========*/
+
+@media screen and (max-width: 600px) {
+  .services__container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\services\Services.jsx
+================================================================================
+
+import React from "react";
+import "./services.css";
+import { BiCheck } from "react-icons/bi";
+
+const Services = () => {
+  return (
+    <section id="services">
+      <h5>What I Offer</h5>
+      <h2>Services</h2>
+
+      <div className="container services__container">
+        {/*  UI/UX */}
+        <article className="service">
+          <div className="services__head">
+            <h3>UI/UX Design</h3>
+          </div>
+
+          <ul className="services__list">
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+          </ul>
+        </article>
+
+        {/* Web Development*/}
+        <article className="service">
+          <div className="services__head">
+            <h3>Web Development</h3>
+          </div>
+
+          <ul className="services__list">
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+          </ul>
+        </article>
+
+        {/* Content Creation*/}
+        <article className="service">
+          <div className="services__head">
+            <h3>Content Creation</h3>
+          </div>
+
+          <ul className="services__list">
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+            <li>
+              <BiCheck className="service__list-icon" />
+              <p>Lorem, ipsum dolor sit amet consectetur elit.</p>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  );
+};
+
+export default Services;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\streamstate\streamingStatus.css
+================================================================================
+
+/* ========= BASE ========= */
+.streaming-status {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+
+  /* Colores base con variables globales */
+  --ss-online: var(--green);
+  --ss-offline: var(--red);
+  --ss-error: var(--light);
+  --ss-text: var(--text-secondary);
+
+  --ss-transition: var(--transition-fast);
+}
+
+.platform {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--ss-transition);
+}
+
+.icon {
+  font-size: 1.3rem;
+  transition: var(--ss-transition);
+}
+
+.state-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ss-text);
+  transition: var(--ss-transition);
+}
+
+/* ========= ESTADOS ========= */
+.platform.online .icon {
+  color: var(--ss-online);
+  animation: pulse 1.2s infinite;
+}
+
+.platform.online .state-text {
+  color: var(--ss-online);
+}
+
+.platform.offline .icon {
+  color: var(--ss-offline);
+}
+
+.platform.offline .state-text {
+  color: var(--ss-offline);
+}
+
+.platform.error .icon {
+  color: var(--ss-error);
+}
+
+.platform.error .state-text {
+  color: var(--ss-error);
+}
+
+.platform.checking .icon,
+.platform.checking .state-text {
+  color: var(--ss-text);
+  opacity: 0.7;
+}
+
+.platform:hover .icon,
+.platform:hover .state-text {
+  filter: brightness(1.2);
+}
+
+/* ========= ANIMACIONES ========= */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* ========= SOMBRA SOLO EN TABLET Y MÓVIL ========= */
+@media (max-width: 992px) {
+  .streaming-status {
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.35);
+    /* leve oscurecido */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    /* sombra visible y elegante */
+    backdrop-filter: blur(6px);
+    /* efecto vidrio */
+  }
+}
+
+/* ========= THEMES ========= */
+/* En HomeView (tendencia al rojo) */
+.homeView .streaming-status {
+  --ss-online: var(--accent-red);
+  --ss-offline: var(--red);
+  --ss-error: var(--light);
+  --ss-text: var(--text-primary);
+}
+
+/* En FS25View (tendencia al verde) */
+.fs25-theme .streaming-status {
+  --ss-online: var(--verde-lima);
+  --ss-offline: var(--verde-acento);
+  --ss-error: var(--light);
+  --ss-text: var(--text-primary);
+}
+
+/* En fs25-themegreen (tendencia al verde) */
+.fs25-themegreen .streaming-status {
+  --ss-online: var(--verde-lima);
+  --ss-offline: var(--verde-lima);
+  --ss-error: var(--light);
+  --ss-text: var(--text-primary);
+}
+
+
+
+
+================================================================================
+ARCHIVO: src\components\streamstate\streamstate.jsx
+================================================================================
+
+import React, { useEffect, useState } from "react";
+import { SiTwitch, SiYoutube } from "react-icons/si";
+import { TbBrandKickFilled } from "react-icons/tb";
+import "./streamingStatus.css";
+
+const platforms = [
+  {
+    key: "twitch",
+    Icon: SiTwitch,
+    url: `https://www.twitch.tv/${process.env.REACT_APP_TWITCH_USERNAME}`,
+  },
+  {
+    key: "kick",
+    Icon: TbBrandKickFilled,
+    url: `https://kick.com/${process.env.REACT_APP_KICK_USERNAME}`,
+  },
+  {
+    key: "youtube",
+    Icon: SiYoutube,
+    url: `https://www.youtube.com/${process.env.REACT_APP_YOUTUBE_USERNAME}`,
+  },
+];
+
+const StreamingStatus = ({ className = "" }) => {
+  const [status, setStatus] = useState({
+    twitch: "checking",
+    kick: "checking",
+    youtube: "checking",
+  });
+
+  useEffect(() => {
+    //setStatus((prev) => ({ ...prev, twitch: "online" })); // 🔥 Forzado
+    checkTwitch();
+    checkKick();
+    checkYouTube();
+  }, []);
+
+  async function checkTwitch() {
+    try {
+      const res = await fetch(
+        `https://api.twitch.tv/helix/streams?user_login=${process.env.REACT_APP_TWITCH_USERNAME}`,
+        {
+          headers: {
+            "Client-ID": process.env.REACT_APP_TWITCH_CLIENT_ID,
+            Authorization: `Bearer ${process.env.REACT_APP_TWITCH_AUTH_TOKEN}`,
+          },
+        }
+      );
+      const data = await res.json();
+      const streams = Array.isArray(data.data) ? data.data : [];
+      setStatus((prev) => ({
+        ...prev,
+        twitch: streams.length > 0 ? "online" : "offline",
+      }));
+    } catch {
+      setStatus((prev) => ({ ...prev, twitch: "error" }));
+    }
+  }
+
+  async function checkKick() {
+    try {
+      const res = await fetch(
+        `https://kick.com/api/v2/channels/${process.env.REACT_APP_KICK_USERNAME}`
+      );
+      const data = await res.json();
+      setStatus((prev) => ({
+        ...prev,
+        kick: data?.livestream ? "online" : "offline",
+      }));
+    } catch {
+      setStatus((prev) => ({ ...prev, kick: "error" }));
+    }
+  }
+
+  async function checkYouTube() {
+    try {
+      const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
+      const channelId = process.env.REACT_APP_YOUTUBE_CHANNEL_ID;
+
+      if (!apiKey || !channelId) {
+        setStatus((prev) => ({ ...prev, youtube: "offline" }));
+        return;
+      }
+
+      const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=live&type=video&key=${apiKey}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      const items = Array.isArray(data.items) ? data.items : [];
+      setStatus((prev) => ({
+        ...prev,
+        youtube: items.length > 0 ? "online" : "offline",
+      }));
+    } catch {
+      setStatus((prev) => ({ ...prev, youtube: "offline" }));
+    }
+  }
+
+  return (
+    <div className={`streaming-status ${className}`}>
+      {platforms.map(({ key, Icon, url }) => (
+        <a
+          key={key}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`platform ${status[key]}`}
+        >
+          <Icon className={`icon ${status[key]}`} />
+          <span className="state-text">
+            {status[key] === "online"
+              ? "ON"
+              : status[key] === "offline"
+              ? "OFF"
+              : "--"}
+          </span>
+        </a>
+      ))}
+    </div>
+  );
+};
+
+export default StreamingStatus;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\testimonials\testimonials.css
+================================================================================
+
+.testimonials__container {
+  width: 40%;
+  padding-bottom: 4rem;
+}
+.client__avatar {
+  width: 4rem;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  border: 0.4rem solid var(--color-primary);
+}
+
+.testimonials {
+  background: var(--color-bg-variant);
+  text-align: center;
+  padding: 2rem;
+  border-radius: 2rem;
+  user-select: none; /* to not allow user to select the text */
+}
+
+.client_review {
+  color: var(--color-light);
+  font-weight: 300;
+  display: block;
+  width: 80%;
+  margin: 0.8rem auto 0;
+}
+.swiper-pagination-clickable .swiper-pagination-bullet-active {
+  background: var(--color-primary);
+}
+/* ======media queries for tablets(medium devices) =========*/
+
+@media screen and (max-width: 1024px) {
+  .testimonials__container {
+    width: 60%;
+  }
+}
+
+/* ======media queries for mobile(small devices) =========*/
+
+@media screen and (max-width: 600px) {
+  .testimonials__container {
+    width: var(--container-width-sm);
+  }
+  .client_review {
+    width: var(--container-width-sm);
+  }
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\components\testimonials\Testimonials.jsx
+================================================================================
+
+import React from "react";
+import "./testimonials.css";
+import AVTR1 from "../../assets/avatar1.jpg";
+import AVTR2 from "../../assets/avatar2.jpg";
+import AVTR3 from "../../assets/avatar3.jpg";
+import AVTR4 from "../../assets/avatar4.jpg";
+
+// Importa Swiper y SwiperSlide desde react
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Importa los módulos necesarios desde swiper/modules
+import { Pagination, Navigation, Scrollbar } from "swiper/modules";
+
+// Importa los estilos de Swiper
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/scrollbar";
+
+const data = [
+  { avatar: AVTR1, name: "Ernest Achiever", review: "Lorem ipsum dolor sit amet consectetur..." },
+  { avatar: AVTR2, name: "Ernest Achiever", review: "Lorem ipsum dolor sit amet consecteturex..." },
+  { avatar: AVTR3, name: "Ernest Achiever", review: "Lorem ipsum dolor sit amet consectetur..." },
+  { avatar: AVTR4, name: "Ernest Achiever", review: "Lorem ipsum dolor sit amet consectetur..." }
+];
+
+const Testimonials = () => {
+  return (
+    <section id="testimonials">
+      <h5>Review from clients</h5>
+      <h2>Testimonials</h2>
+
+      <Swiper
+        className="container testimonials__container"
+        modules={[Pagination, Navigation, Scrollbar]}
+        spaceBetween={40}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => console.log("slide change")}
+      >
+        {data.map(({ avatar, name, review }, index) => (
+          <SwiperSlide key={index} className="testimonials">
+            <div className="client__avatar">
+              <img src={avatar} alt={name} />
+            </div>
+            <h5 className="client__name">{name}</h5>
+            <small className="client_review">{review}</small>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
+  );
+};
+
+export default Testimonials;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\pages\FS25View.jsx
+================================================================================
+
+import React from "react";
+import "../styles/FS25View.css";
+import Footer from "../components/SectionBars/Footer";
+import StreamingStatus from "../components/streamstate/streamstate";
+
+import defaultImg from "../assets/default.png";
+// 📦 Mods
+const mods = [
+  {
+    name: "John Deere 8Rssssssssssssssssss",
+    category: "🚜 Tractor",
+    img: defaultImg,
+    description: "Potente tractor para grandes cultivos con motor de 400 HP."
+  },
+  {
+    name: "Claas Lexion 8900",
+    category: "🌾 Cosechadora",
+    img: defaultImg,
+    description: "Cosechadora de alta capacidad, ideal para grandes campos."
+  },
+  {
+    name: "Krone Big X 1180",
+    category: "🌱 Forraje",
+    img: defaultImg,
+    description: "Picadora de forraje perfecta para maíz y pasto."
+  }
+];
+
+// 📊 Estado de la granja
+const farmStatus = {
+  dinero: "💰 125,000 €",
+  estado: "🌱 Expansión de cultivos de maíz en progreso"
+};
+
+// ▶️ Capítulos
+const episodes = [
+  {
+    title: "Capítulo 1 - Comenzamos la granja",
+    link: "https://www.youtube.com/watch?v=-QzLam_03VU&t",
+    thumb: "https://img.youtube.com/vi/-QzLam_03VU/mqdefault.jpg"
+  },
+  {
+    title: "Capítulo 2 - Primeras cosechas",
+    link: "https://youtube.com/watch?v=ihNnaeUwKeY",
+    thumb: "https://img.youtube.com/vi/ihNnaeUwKeY/mqdefault.jpg"
+  }
+];
+
+function FS25View() {
+  return (
+    <div className="fs25-theme"> {/* 🔐 Aísla todo el componente */}
+      <header className="fs25-header">
+        <h1>DieselDharry</h1>
+        <StreamingStatus />
+      </header>
+
+      <main className="fs25-main">
+        {/* Estado */}
+        <section className="status-card fs25-status-card">
+          <h2>📊 Estado de la granja</h2>
+          <p className="dinero fs25-dinero">{farmStatus.dinero}</p>
+          <p className="estado fs25-estado">{farmStatus.estado}</p>
+        </section>
+
+        {/* Mods */}
+        <section>
+          <h2>🛠️ Mods destacados</h2>
+          <div className="dark-grid fs25-grid">
+            {mods.map((mod, i) => (
+              <div key={i} className="dark-card fs25-card">
+                <img src={mod.img} alt={mod.name} />
+                <div className="card-body fs25-card-body">
+                  <h3>{mod.name}</h3>
+                  <p className="categoria fs25-categoria">{mod.category}</p>
+                  <p>{mod.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Episodios */}
+        <section>
+          <h2>▶️ Últimos capítulos</h2>
+          <div className="dark-grid fs25-grid">
+            {episodes.map((ep, i) => (
+              <a
+                key={i}
+                href={ep.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="dark-card fs25-card fs25-episode"
+              >
+                <img src={ep.thumb} alt={ep.title} />
+                <div className="card-body fs25-card-body">
+                  <h3>{ep.title}</h3>
+                  <p className="ver-mas fs25-ver-mas">Ver en YouTube →</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
+
+export default FS25View;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\pages\FS25ViewBuy.jsx
+================================================================================
+
+import React from "react";
+import "../styles/FS25Purchase.css";
+import Footer from "../components/SectionBars/Footer";
+import StreamingStatus from "../components/streamstate/streamstate";
+import logo from "../assets/logodiesel200.png";
+
+
+// Imágenes de FS25
+import fs25BaseImg from "../assets/fs25/fs25_pc_cover_en_giantsbonus.png";
+import fs25Y1BundleImg from "../assets/fs25/Banner_HF_DIESELD.png";
+import fs25HighlandsImg from "../assets/fs25/fs25highlandsfishingedition_pc_cover_en_giantsbonus.png";
+import fs25SeasonPass1Img from "../assets/fs25/fs25seasonpass1_pc_cover.png";
+import fs25SeasonPass2Img from "../assets/fs25/Banner_Y2SP_DIESELD.png";
+import fs25SeasonPass2Cover from "../assets/fs25/fs25seasonpass2_pc_cover.png";
+import fs25Y1BundleGiantsBonus from "../assets/fs25/fs25y1bundle_pc_cover_giantsbonus.png";
+import fs25seasonpass2content1 from "../assets/fs25/fs25seasonpass2-content1.jpg";
+import fs25seasonpass1content1 from "../assets/fs25/fs25seasonpass1-content1.jpg";
+import Giants_OfficialPartnerBadge_TransparentWhite from "../assets/fs25/Giants_OfficialPartnerBadge_TransparentWhite.png";
+
+const mainEditions = [
+  {
+    name: "Farming Simulator 25 (Juego Base)",
+    price: 29.99,
+    featured: false,
+    link: "https://www.farming-simulator.com/buy-now.php?platform=pcdigital&code=DIESELD",
+    img: fs25BaseImg,
+    shortDesc: (
+      <>
+        <p>
+          Juego base: un punto de partida para disfrutar la experiencia agrícola y, si lo deseas,
+          más adelante sumar expansiones. Explora distintos mapas, cultiva y trabaja
+          con maquinaria realista a tu propio ritmo.
+        </p>
+
+        <p className="partner-note">
+          Si deseas apoyar mi contenido, recuerda usar mi código de partner: <strong>DIESELD</strong>.
+        </p>
+      </>
+    )
+  },
+
+  {
+    name: "Farming Simulator 25 – Year 1 Bundle",
+    price: 59.99,
+    featured: true,
+    link: "https://www.farming-simulator.com/buy-now.php?platform=pcdigital&code=DIESELD",
+    img: fs25Y1BundleImg,
+    description: (
+      <>
+        <div className="featured-description-image">
+          <img src={fs25Y1BundleGiantsBonus} alt="Highlands Fishing Edition" />
+        </div>
+
+        <p>
+          Una edición completa para comenzar tu aventura agrícola con todo lo necesario para crecer sin límites.
+          Incluye el juego base y la expansión “Highlands Fishing Expansion”, además de todos los contenidos
+          del Año 1 que se lanzan a lo largo del calendario oficial.
+        </p>
+
+        <p>
+          <strong>Construye tu imperio agrícola en tres regiones únicas:</strong> un paisaje del sudeste asiático
+          con arrozales y terrenos inundables, un mapa norteamericano de grandes espacios abiertos y una región
+          centroeuropea rodeada de ríos, estanques y bosques. Cada zona ofrece desafíos distintos, nuevos cultivos
+          (como arroz y espinacas) y animales adicionales como los poderosos búfalos.
+        </p>
+
+        <p>
+          Maneja más de <strong>400 máquinas reales de más de 150 marcas líderes</strong> — CASE IH, John Deere,
+          Fendt, Valtra, Massey Ferguson, Kubota y muchas más. Lleva tu granja en solitario o con amigos en
+          multijugador, gestionando ganadería, silvicultura, cadenas de producción, misiones de construcción
+          y nuevas oportunidades de negocio.
+        </p>
+
+        <p>
+          <strong>Tecnología renovada:</strong> FS25 estrena el Engine 10 de GIANTS, con mejoras visuales,
+          físicas mejoradas, clima dinámico, niebla a distancia, sombras más realistas, terreno deformable
+          y un ecosistema más vivo que nunca.
+        </p>
+
+        <p>
+          <strong>Incluye todo el contenido del Year 1 Season Pass:</strong>
+          <ul>
+            <li>FS25 – NEXAT Pack</li>
+            <li>FS25 – Plains and Prairies Pack</li>
+            <li>FS25 – Mercedes-Benz Trucks Pack</li>
+            <li>FS25 – Highlands Fishing Expansion</li>
+          </ul>
+          Recibes cada pack automáticamente al momento de su lanzamiento, ampliando tu experiencia durante todo el año.
+        </p>
+
+        <p>
+          La expansión Highlands Fishing añade acuicultura, cebollas como nuevo cultivo, ganado de tierras altas,
+          más de 20 máquinas adicionales y el mapa costero de Kinlaig inspirado en Escocia: pesca, canales,
+          paisajes verdes y una nueva forma de vivir cerca del agua.
+        </p>
+
+        <p className="partner-note">
+          Si deseas apoyar mi contenido, recuerda usar mi código de partner: <strong>DIESELD</strong>.
+        </p>
+      </>
+    )
+  },
+
+  {
+    name: "Farming Simulator 25 Highlands Fishing Edition",
+    price: 49.99,
+    featured: false,
+    link: "https://www.farming-simulator.com/buy-now.php?platform=pcdigital&code=DIESELD",
+    img: fs25HighlandsImg,
+    shortDesc: (
+      <>
+        <p>
+          Juego base con la expansión Highlands Fishing: explora Kinlaig, un mapa costero único
+          con pesca, nuevos cultivos y vida rural junto al agua.
+        </p>
+
+        <p className="partner-note">
+          Si deseas apoyar mi contenido, recuerda usar mi código de partner: <strong>DIESELD</strong>.
+        </p>
+      </>
+    )
+  }
+];
+
+
+const seasonPasses = [
+  {
+    name: "Year 2 Season Pass",
+    price: 34.99,
+    featured: true,
+    link: "https://www.farming-simulator.com/dlc-detail.php?dlc_id=fs25seasonpass2&code=DIESELD",
+    img: fs25SeasonPass2Img,
+    description: (
+      <>
+        <p>
+          Season Pass del Año 2: acceso a dos packs (Q1 y Q2 2026) y una gran expansión
+          planeada para el cuarto trimestre. El contenido se desbloquea a medida que se lanza.
+        </p>
+
+        <div className="featured-description-image">
+          <img src={fs25SeasonPass2Cover} alt="Year 2 Season Pass Cover" />
+          <img src={fs25seasonpass2content1} alt="Year 2 Content Preview" />
+        </div>
+
+        <p>
+          Incluye un bono inmediato: el JCB Fastrac Two, el tractor más rápido del mundo.
+          Ahorra hasta un 30% comparado con comprar los contenidos por separado.
+        </p>
+
+        <p className="partner-note">
+          Si deseas apoyar mi contenido, recuerda usar mi código de partner: <strong>DIESELD</strong>.
+        </p>
+      </>
+    )
+  },
+
+  {
+    name: "Year 1 Season Pass",
+    price: 39.99,
+    featured: false,
+    link: "https://www.farming-simulator.com/dlc-detail.php?dlc_id=fs25seasonpass1&code=DIESELD",
+    img: fs25SeasonPass1Img,
+    description: (
+      <>
+        <p>
+          Todas las expansiones del Año 1. No incluye el juego base.
+        </p>
+
+        <div className="featured-description-image">
+          <img src={fs25seasonpass1content1} alt="Year 1 Season Pass Cover" />
+        </div>
+
+        <p className="partner-note">
+          Si deseas apoyar mi contenido, recuerda usar mi código de partner: <strong>DIESELD</strong>.
+        </p>
+      </>
+    )
+  }
+];
+
+
+// Componente para ediciones principales (con destacado)
+function MainEditionsCard({ editions }) {
+  const featured = editions.find(p => p.featured);
+  const others = editions.filter(p => !p.featured);
+
+  return (
+    <div className="fs25-unified-card">
+      {featured && (
+        <div className="featured-inner-card">
+          <div className="inner-card-content">
+            <div className="inner-card-image">
+              <img src={featured.img} alt={featured.name} />
+            </div>
+            <div className="inner-card-info">
+              <div className="featured-badge">★ MEJOR VALOR ★</div>
+
+              <h3>{featured.name}</h3>
+
+              <div className="inner-price-action">
+                {/* ❌ Precio destacado arriba (no hay precio aquí, solo botón) */}
+                <a href={featured.link} target="_blank" rel="noopener noreferrer" className="action-button">
+                  Adquirir en la web oficial →
+                </a>
+              </div>
+
+              <div className="featured-description">{featured.description}</div>
+
+              <div className="inner-price-action">
+                {/* ❌ Precio principal comentado */}
+                {/* <span className="price">${featured.price}</span> */}
+
+                <a href={featured.link} target="_blank" rel="noopener noreferrer" className="action-button">
+                  Adquirir en la web oficial →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {others.length > 0 && (
+        <div className="other-options-section">
+          <h4>Otras ediciones completas</h4>
+          <div className="other-options-grid">
+            {others.map((item, i) => (
+              <div key={i} className="other-option-card">
+                <img src={item.img} alt={item.name} className="other-img" />
+                <div className="other-info">
+                  <h5>{item.name}</h5>
+                  <p>{item.shortDesc}</p>
+
+                  <div className="other-price-action">
+                    {/* ❌ Precio en otras ediciones */}
+                    {/* <span>${item.price}</span> */}
+
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="other-button">
+                      Ver
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+// Componente para Season Passes con soporte de "featured"
+function SeasonPassesCard({ passes }) {
+  const featured = passes.find(p => p.featured);
+  const others = passes.filter(p => !p.featured);
+
+  return (
+    <div className="fs25-season-unified-card">
+      {featured && (
+        <div className="featured-season-card">
+          <div className="season-featured-content">
+            <div className="season-featured-image">
+              <img src={featured.img} alt={featured.name} />
+            </div>
+
+            <div className="season-featured-info">
+              <div className="featured-badge">★ CONTENIDO EN PROGRESO ★</div>
+              <h3>{featured.name}</h3>
+
+              <div className="featured-description">{featured.description}</div>
+
+              <div className="season-price-action">
+                {/* ❌ Precio del Season Pass destacado */}
+                {/* <span className="price">${featured.price}</span> */}
+
+                <a href={featured.link} target="_blank" rel="noopener noreferrer" className="action-button">
+                  Reservar ahora →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {others.length > 0 && (
+        <div className="other-seasons-section">
+          <h4>Otros Season Passes</h4>
+          <div className="other-seasons-grid">
+            {others.map((pass, i) => (
+              <div key={i} className="other-season-card">
+                <img src={pass.img} alt={pass.name} className="other-season-img" />
+                <div className="other-season-info">
+                  <h5>{pass.name}</h5>
+
+                  <div className="featured-description">{pass.description}</div>
+
+                  <div className="other-season-action">
+                    {/* ❌ Precio Season Passes secundarios */}
+                    {/* <span>${pass.price}</span> */}
+
+                    <a href={pass.link} target="_blank" rel="noopener noreferrer" className="other-button">
+                      Ver
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+export default function FS25Purchase() {
+  return (
+    <div className="fs25-themegreen">
+      <header className="fs25purchase-header">
+        <div className="logo-title">
+          <img src={logo} alt="DieselDharry Logo" className="header-logo" />
+          <h1>DieselDharry</h1>
+        </div>
+        <StreamingStatus />
+      </header>
+
+      <main className="fs25purchase-main">
+        {/* 🔹 Sección 1: Ediciones del juego */}
+        <section className="fs25-section">
+          <h2 className="section-title">Farming Simulator 25 – Ediciones del Juego</h2>
+          <p className="section-description">
+            Elige tu versión completa de Farming Simulator 25. Todas incluyen el juego base.
+          </p>
+          <div className="fs25-section-content">
+            <MainEditionsCard editions={mainEditions} />
+          </div>
+        </section>
+
+        {/* 🔹 Sección 2: Expansiones / Season Passes */}
+        <section className="fs25-section">
+          <h2 className="section-title">Expansiones y Season Passes</h2>
+          <p className="section-description">
+            Agrega más contenido a tu juego. Requieren el juego base de Farming Simulator 25.
+          </p>
+          <div className="fs25-section-content">
+            <SeasonPassesCard passes={seasonPasses} />
+          </div>
+        </section>
+        {/* 🔻 Footer legal especial para esta página */}
+        <footer className="fs25-legal-footer">
+          <img
+            src={Giants_OfficialPartnerBadge_TransparentWhite}
+            alt="GIANTS Official Partner"
+            className="partner-badge"
+          />
+          <p>
+            Las imágenes, marcas registradas y material promocional de Farming Simulator son propiedad de
+            GIANTS Software. Este sitio utiliza dichos recursos con fines informativos y promocionales
+            como parte del programa oficial GIANTS Partner Program.
+          </p>
+          <p>
+            No realizo ventas directas. Todas las compras se efectúan en la web oficial de Farming Simulator.
+            Los enlaces externos pueden incluir mi código de partner <strong>DIESELD</strong>.
+          </p>
+        </footer>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\pages\HomeView.jsx
+================================================================================
+
+// src/pages/HomeView.jsx
+import React from "react";
+import "../styles/HomeView.css";
+
+// Importa los componentes que usabas en App
+import Intro from "../components/intro/Intro";
+import Navbar from "../components/SectionBars/Navbar";
+ //import About from "../components/about/About";
+// import Experience from "../components/experience/Experience";
+// import Services from "../components/services/Services";
+// import Portfolio from "../components/portfolio/Portfolio";
+// import Testimonials from "../components/testimonials/Testimonials";
+// import Contact from "../components/contact/Contact";
+import Footer from "../components/SectionBars/Footer";
+
+const HomeView = () => {
+  return (
+     <div className="homeView">
+      {/* Encabezado */}
+      <Intro />
+
+      {/* Barra de navegación */}
+      <Navbar />
+
+      {/* Sección Acerca de mí */}
+      {/*<About />*/}
+
+      {/* Sección de Experiencia */}
+      {/* <Experience /> */}
+
+      {/* Sección de Servicios */}
+      {/* <Services /> */}
+
+      {/* Sección de Portafolio */}
+      {/* <Portfolio /> */}
+
+      {/* Sección de Testimonios */}
+      {/* <Testimonials /> */}
+
+      {/* Sección de Contacto */}
+      {/* <Contact /> */}
+
+      {/* Pie de página */}
+      <Footer />
+    </div>
+  );
+};
+
+export default HomeView;
+
+
+
+
+
+================================================================================
+ARCHIVO: src\routes\routes.jsx
+================================================================================
+
+// src/routes/routes.jsx
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import HomeView from "../pages/HomeView.jsx";
+import FS25View from "../pages/FS25View.jsx";
+import FS25ViewBuy from "../pages/FS25ViewBuy.jsx";
+
+const AppRouter = () => {
+  return (
+    <Routes>
+
+      {/* Página principal de DharryNet */}
+      <Route path="/" element={<HomeView />} />
+
+      {/* Página de Farming Simulator 25 */}
+      <Route path="/fs25" element={<FS25View />} />
+
+      {/* Página de compra de Farming Simulator 25 */}
+      <Route path="/fs25buy" element={<FS25ViewBuy />} />
+
+    </Routes>
+  );
+};
+
+export default AppRouter;
+
+
+
+
+================================================================================
+ARCHIVO: src\styles\FS25Purchase.css
+================================================================================
+
+:root {
+  --azul-oscuro: #010c2d;
+  --bg-page: #0a1433;
+  --verde-lima: #9bbe19;
+  --verde-medio: #7ca928;
+  --text-light: #e6f0d1;
+  --text-lighter: #f8fcd9;
+  --border-color: rgba(155, 190, 25, 0.25);
+  --radius-md: 12px;
+  --transition: all 0.25s ease;
+  --amarillo-destacado: #ffd002;
+}
+
+/* ===== BASE ===== */
+.fs25-themegreen {
+  background-color: var(--bg-page);
+  color: var(--text-light);
+  min-height: 100vh;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+.fs25purchase-header {
+  background: var(--azul-oscuro) url("../assets/fondoheaderazul_2.png") center/cover no-repeat;
+  backdrop-filter: blur(8px);
+  padding: 0.75rem 2rem;
+  border-bottom: 1px solid var(--verde-lima);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 992px) {
+  .fs25purchase-header {
+    background: var(--azul-oscuro) url("../assets/fondoheaderazul_3.png") center/cover no-repeat;
+  }
+}
+
+.fs25purchase-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  font-family: "Helvetica Compressed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: linear-gradient(to bottom, #fff, #ccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px #3d3d3d48;
+  text-stroke: 1px #3d3d3d48;
+  line-height: 1.2;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.6));
+}
+
+/* ===== MAIN LAYOUT ===== */
+.fs25purchase-main {
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.fs25-section {
+  margin-bottom: 3rem;
+}
+
+.fs25-section-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--verde-lima);
+}
+
+.section-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  opacity: 0.9;
+}
+
+/* ===== BADGE Y BOTONES ===== */
+.featured-badge {
+  background: var(--amarillo-destacado);
+  color: var(--azul-oscuro);
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.action-button,
+.other-button {
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: var(--transition);
+  text-align: center;
+  display: inline-block;
+}
+
+.action-button {
+  padding: 0.75rem 1.5rem;
+  background: var(--verde-lima);
+  color: var(--azul-oscuro);
+  font-size: 1.05rem;
+  min-width: 180px;
+}
+
+.action-button:hover {
+  background: var(--verde-medio);
+  color: white;
+}
+
+.other-button {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--verde-medio);
+  color: var(--azul-oscuro);
+  border-radius: 6px;
+}
+
+.other-button:hover {
+  background: var(--verde-lima);
+}
+
+/* ===== TARJETAS DESTACADAS (MAIN + SEASON) ===== */
+.fs25-unified-card,
+.fs25-season-unified-card {
+  background: var(--azul-oscuro);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.featured-inner-card,
+.featured-season-card {
+  background: linear-gradient(135deg, rgba(155, 190, 25, 0.15), rgba(124, 169, 40, 0.1));
+  border-bottom: 1px solid var(--verde-lima);
+  padding: 1.5rem;
+}
+
+.inner-card-content,
+.season-featured-content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.inner-card-image img,
+.season-featured-image img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  object-fit: contain;
+}
+
+.inner-card-info,
+.season-featured-info {
+  flex: 1;
+  max-width: 600px;
+}
+
+.inner-card-info h3,
+.season-featured-info h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.4rem;
+  color: var(--text-lighter);
+}
+
+.inner-card-info p,
+.season-featured-info p {
+  margin: 0 0 1rem;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
+.inner-price-action,
+.season-price-action {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--verde-lima);
+}
+
+/* ===== OTRAS OPCIONES (GRID) ===== */
+.other-options-section,
+.other-seasons-section {
+  padding: 1.5rem;
+  padding-top: 0;
+}
+
+.other-options-section h4,
+.other-seasons-section h4 {
+  color: var(--verde-lima);
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.other-options-grid,
+.other-seasons-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Tarjetas secundarias */
+.other-option-card,
+.other-season-card {
+  display: flex;
+  gap: 1rem;
+  background: rgba(10, 20, 51, 0.6);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(155, 190, 25, 0.15);
+  transition: var(--transition);
+}
+
+.other-option-card:hover,
+.other-season-card:hover {
+  border-color: var(--verde-medio);
+}
+
+.other-img,
+.other-season-img {
+  width: 250px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.other-info,
+.other-season-info {
+  flex: 1;
+}
+
+.other-info h5,
+.other-season-info h5 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  color: var(--text-lighter);
+}
+
+.other-info p,
+.other-season-info p {
+  font-size: 0.9rem;
+  margin: 0 0 0.6rem;
+  color: var(--text-light);
+  opacity: 0.85;
+}
+
+.other-price-action,
+.other-season-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.other-price-action span,
+.other-season-action span {
+  font-weight: bold;
+  color: var(--verde-lima);
+}
+
+.featured-description {
+  margin: 0 0 1rem;
+  color: var(--text-light);
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+.featured-description-image {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.featured-description-image img {
+  height: 350px;
+  /* ← Altura fija */
+  width: auto;
+  /* ← Ancho proporcional */
+  max-width: 100%;
+  /* ← Evita que se salga del contenedor en móvil */
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  object-fit: contain;
+  /* ← Mantiene proporción y muestra toda la imagen */
+}
+
+.partner-note {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  background: rgba(255, 208, 2, 0.12);
+  /* amarillo suave */
+  border-left: 3px solid var(--amarillo-destacado);
+  border-radius: 6px;
+  color: var(--text-light);
+  font-weight: 500;
+  box-shadow: 0 0 6px rgba(255, 208, 2, 0.18);
+}
+
+.fs25-legal-footer {
+  margin-top: 3rem;
+  padding: 1.5rem 1rem;
+  font-size: 0.75rem;
+  text-align: center;
+  /* esto centra el texto */
+  display: flex;
+  /* usamos flexbox */
+  flex-direction: column;
+  /* los elementos van uno debajo del otro */
+  align-items: center;
+  /* esto centra la imagen horizontalmente */
+  justify-content: center;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+.fs25-legal-footer .partner-badge {
+  max-width: 200px;
+  margin-bottom: 1rem;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE: 3 BREAKPOINTS CLAROS
+   ========================================================================== */
+
+/* 💻 DESKTOP: ≥1024px → por defecto (sin media query) */
+
+/* 📱 MÓVIL: ≤767px */
+@media (max-width: 767px) {
+  .fs25purchase-main {
+    padding: 1rem;
+  }
+
+  /* Layout vertical en destacados */
+  .inner-card-content,
+  .season-featured-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Imagen ocupa fila completa */
+  .inner-card-image img,
+  .season-featured-image img,
+  .other-img,
+  .other-season-img {
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 1rem;
+  }
+
+  /* Grid: 1 columna */
+  .other-options-grid,
+  .other-seasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ✅ Tarjetas "otras opciones" en columna */
+  .other-option-card,
+  .other-season-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ✅ Ajustar info para centrado */
+  .other-info,
+  .other-season-info {
+    text-align: center;
+  }
+
+  .action-button {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .featured-description-image img {
+    height: 190px;
+  }
+}
+
+/* 📱➡️💻 TABLET: 768px – 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .fs25purchase-main {
+    padding: 1.25rem;
+  }
+
+  .featured-inner-card,
+  .featured-season-card,
+  .other-options-section,
+  .other-seasons-section {
+    padding: 1.25rem;
+    padding-top: 1.25rem;
+  }
+
+  /* ✅ Forzar 1 columna en el grid de "otras opciones" */
+  .other-options-grid,
+  .other-seasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ✅ Mantener layout horizontal en tablet (opcional, pero coherente) */
+  .other-option-card,
+  .other-season-card {
+    flex-direction: row;
+    /* explícito */
+  }
+
+  /* ✅ Imágenes más pequeñas */
+  .other-img,
+  .other-season-img {
+    width: 180px;
+    /* ajuste fino para tablet */
+  }
+
+  /* Imágenes más pequeñas */
+  .inner-card-image img,
+  .season-featured-image img {
+    width: 200px;
+  }
+
+  .other-img,
+  .other-season-img {
+    width: 200px;
+  }
+
+  /* Ajuste de texto */
+  .inner-card-info,
+  .season-featured-info {
+    max-width: 500px;
+  }
+
+  /* Botón más compacto */
+  .action-button {
+    min-width: 160px;
+    font-size: 1rem;
+    padding: 0.65rem 1.25rem;
+  }
+}
+
+
+
+
+================================================================================
+ARCHIVO: src\styles\FS25View.css
+================================================================================
+
+/* styles/FS25View.css */
+
+/* Variables de colores, sombras y transiciones */
+
+/* 🔐 Contenedor principal aislado */
+.fs25-theme {
+  background: var(--gradient-background);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Encabezado */
+.fs25-header {
+  background: var(--gradient-background-header);
+  backdrop-filter: blur(10px);
+  padding: 0.2rem 2rem;
+  border-bottom: 1px solid var(--verde-lima);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 6px 10px -2px var(--color-shadow-green);
+}
+
+.fs25-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Helvetica Compressed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: var(--gradient-green-header-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Contenido principal */
+.fs25-main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.fs25-main section {
+  margin-bottom: 3rem;
+}
+
+.fs25-main h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+/* Tarjeta de estado */
+.fs25-status-card {
+  background: var(--color-secondary-dark);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-fast);
+  border: 1px solid var(--border-green-light);
+}
+
+.fs25-status-card:hover {
+  box-shadow: var(--shadow-dark);
+  border: 1px solid var(--border-green-header);
+  transform: translateY(-2px);
+}
+
+.fs25-dinero {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--accent-yellow);
+  margin: 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fs25-estado {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Grid para mods y episodios */
+.fs25-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Tarjetas */
+.fs25-card {
+  background: var(--color-secondary-dark);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-green-light);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fs25-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-dark);
+  border-color: var(--border-green-header);
+}
+
+.fs25-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: var(--transition-fast);
+}
+
+.fs25-card:hover img {
+  transform: scale(1.03);
+}
+
+/* Cuerpo de la tarjeta */
+.fs25-card-body {
+  padding: 1.25rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.fs25-card-body h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.fs25-card-body p {
+  color: var(--text-secondary);
+  margin: 0.5rem 0;
+}
+
+.fs25-card-body p.fs25-categoria {
+  color: var(--verde-medio);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  /* opcional, si quieres diferente */
+  flex-grow: unset;
+  /* evita que crezca si no lo necesitas */
+}
+
+.fs25-ver-mas {
+  color: var(--verde-acento) !important;
+  font-weight: 600;
+  margin-top: 1rem !important;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: var(--transition-fast);
+}
+
+/* Miniaturas de episodios (YouTube 16:9) */
+.fs25-episode img {
+  width: 100%;
+  height: auto;
+  /* 🔑 respeta la proporción original */
+  aspect-ratio: 16 / 9;
+  /* asegura que mantenga el formato correcto */
+  object-fit: cover;
+  /* recorta si es necesario, pero sin deformar */
+  display: block;
+}
+
+
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+  .fs25-header {
+    flex-direction: row;
+    /* se mantiene horizontal */
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .fs25-header h1 {
+    font-size: 1.4rem;
+    /* más pequeño que los 2rem originales */
+    white-space: nowrap;
+    /* evita que el título se parta en varias líneas */
+    text-overflow: ellipsis;
+    /* si es demasiado largo, pone "..." */
+    overflow: hidden;
+    max-width: 70%;
+    /* asegura que no empuje al otro elemento */
+  }
+
+  .fs25-main {
+    padding: 1rem;
+  }
+
+  .fs25-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+
+  .fs25-card,
+  .fs25-status-card,
+  .fs25-card img,
+  .fs25-ver-mas {
+    transition: none;
+  }
+}
+
+/* Efectos de enfoque para accesibilidad */
+.fs25-episode:focus {
+  outline: 2px solid var(--verde-acento);
+  outline-offset: 2px;
+}
+
+/* === Scrollbar SOLO dentro de .fs25-theme === */
+
+/* Asegura que .fs25-theme sea el contenedor que realmente tiene scroll */
+.fs25-theme {
+  /* Si el body ocupa toda la pantalla, usa uno de estos según tu layout */
+  max-height: 100vh;
+  /* opcional, útil si está fijo bajo el header */
+  overflow-y: auto;
+  /* necesario para que exista scrollbar */
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-tertiary-dark) var(--color-secondary-dark);
+}
+
+
+
+
+================================================================================
+ARCHIVO: src\styles\globals.css
+================================================================================
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import "./variables.css";
+
+/* === Dimensiones / Contenedores === */
+:root {
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.7;
+  transition: var(--transition);
+  background-image: url("../assets/bg-texture.png");
+}
+
+/* Containers */
+.container {
+  width: var(--container-width-lg);
+  margin: 0 auto;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--text-red); /* rojo como color principal */
+}
+
+section {
+  margin-top: 1rem;
+}
+
+section > h2,
+section > h5 {
+  text-align: center;
+  color: var(--red);
+}
+
+section > h2 {
+  margin-bottom: 3rem;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+a {
+  color: var(--blue); /* antes --color-primary */
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--white); /* antes --color-white */
+}
+
+/* Buttons */
+.btn {
+  width: max-content;
+  display: inline-block;
+  color: var(--red); /* antes --color-primary */
+  padding: 0.75rem 1.2rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid var(--red); /* antes --color-primary */
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background: var(--white); /* antes --color-white */
+  color: var(--bg-dark); /* antes --color-bg */
+  border-color: transparent;
+}
+
+.btn-primary {
+  background: var(--red); /* antes --color-primary */
+  color: var(--bg-dark); /* antes --color-bg */
+}
+
+/* Variantes temáticas */
+.btn-red {
+  background: var(--red);
+  color: var(--text-primary);
+}
+
+.btn-red:hover {
+  background: var(--red-hover);
+}
+
+.btn-green {
+  background: var(--green);
+  color: var(--text-primary);
+}
+
+.btn-green:hover {
+  background: var(--green-hover);
+}
+
+.btn-blue {
+  background: var(--blue);
+  color: var(--text-primary);
+}
+
+.btn-blue:hover {
+  background: var(--blue-hover);
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\styles\HomeView.css
+================================================================================
+
+
+.homeView {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.homeView h1 {
+  color: var(--color-primary);
+}
+
+
+
+
+
+================================================================================
+ARCHIVO: src\styles\variables.css
+================================================================================
+
+/* ========== 🌐 Variables Globales (variables.css) ========== */
+:root {
+  /* 🎨 Colores base */
+  --red: #fa0000;
+  /* rojo serio, menos saturado */
+  --green: #388e3c;
+  /* verde corporativo */
+  --blue: #1976d2;
+  /* azul confiable */
+
+  /* 🌟 Colores acento (más suaves, para hover o detalles) */
+  --accent-red: #f84646;
+  /* rojo acento derivado */
+  --accent-green: #52b957;
+  /* verde más fresco */
+  --accent-blue: #64b5f6;
+  /* azul moderno */
+  --accent-yellow: #fed700;
+
+  /* 🎭 Neutros */
+  --white: #f8fafc;
+  --light: rgba(255, 255, 255, 0.75);
+  --dark: #121212;
+  --dark-text: #1f1f21;
+
+  /* 🌌 Fondos Temáticos */
+  --bg-dark: #1d1d1d;
+  /* Fondo base oscuro elegante */
+  --bg-light: #f5f5f5;
+  /* Fondo claro elegante */
+  /* Colores base */
+  --color-primary-dark: #0d0d0def;
+  /* Fondo principal, negro casi puro */
+  --color-secondary-dark: #181818f6;
+  /* Fondos secundarios */
+  --color-tertiary-dark: #222222ee;
+  /* Fondos terciarios / scroll */
+
+  /* Fondo rojo */
+  --bg-red: #2a0d0d;
+  --bg-red-accent: #3b1a1a;
+  --bg-red-light: #5a2020;
+  /* un tono más suave */
+  --bg-red-dark: #1a0505;
+  /* aún más profundo */
+
+  /* Fondo verde */
+  --bg-green: #0d1f0d;
+  --bg-green-accent: #1c3321;
+  --bg-green-light: #264d2d;
+  --bg-green-dark: #081308;
+
+  /* Fondo azul */
+  --bg-blue: #0d1a2a;
+  --bg-blue-accent: #1c2e46;
+  --bg-blue-light: #2c4a70;
+  --bg-blue-dark: #070f1a;
+
+  /* 🖋 Texto */
+  --text-primary: var(--white);
+  --text-secondary: var(--light);
+  --text-dark: var(--dark-text);
+  --text-red: var(--red);
+  --text-green: var(--green);
+  --text-blue: var(--blue);
+
+  /* 🟩 Acciones / Hovers */
+  --red-hover: #800000;
+  --green-hover: #2e7d32;
+  --blue-hover: #1565c0;
+
+  /* 🔲 Bordes / Sombras */
+  --border-light: #e0e0e079;
+  --border-dark: #555555ea;
+  --border-green-header: rgba(154, 192, 66, 0.822);
+  --border-green-light: rgba(154, 192, 66, 0.178);
+
+  /* 🎨 Colores de sombras neutrales */
+  --color-shadow-light: rgba(0, 0, 0, 0.15);
+  --color-shadow-medium: rgba(0, 0, 0, 0.25);
+  --color-shadow-dark: rgba(0, 0, 0, 0.45);
+
+  /* 🎨 Colores de sombras temáticas */
+  --color-shadow-red: rgba(211, 47, 47, 0.4);
+  --color-shadow-green: rgba(154, 192, 66, 0.534);
+  --color-shadow-blue: rgba(25, 118, 210, 0.35);
+
+  /* 📦 Sombras neutrales completas */
+  --shadow-light: 0 3px 12px var(--color-shadow-light);
+  --shadow-medium: 0 6px 20px var(--color-shadow-medium);
+  --shadow-dark: 0 10px 30px var(--color-shadow-dark);
+
+  /* 🔥 Sombras temáticas (3 intensidades por color) */
+  --shadow-red-light: 0 2px 8px var(--color-shadow-red);
+  --shadow-red: 0 4px 15px var(--color-shadow-red);
+  --shadow-red-dark: 0 10px 30px var(--color-shadow-red);
+
+  --shadow-green-light: 0 2px 8px var(--color-shadow-green);
+  --shadow-green: 0 4px 15px var(--color-shadow-green);
+  --shadow-green-dark: 0 10px 30px var(--color-shadow-green);
+
+  --shadow-blue-light: 0 2px 8px var(--color-shadow-blue);
+  --shadow-blue: 0 4px 15px var(--color-shadow-blue);
+  --shadow-blue-dark: 0 10px 30px var(--color-shadow-blue);
+
+  /* 🎨 Paleta Verde - Degradados de oscuro a claro */
+  --verde-oscuro: #204039;
+  /* Verde muy oscuro / base */
+  --verde-medio: #435c14;
+  /* Verde neutro profundo */
+  --verde-acento: #72a12d;
+  /* Verde intermedio */
+  --verde-lima: #9bc042;
+  /* Verde claro / destaque */
+
+  /* 🌟 Colores secundarios / acento */
+  --amarillo-brillante: #fed70;
+  /* Amarillo vibrante */
+  --gris-suave: #adb9c4;
+  /* Gris claro */
+  --gris-claro: #e2e7ed;
+  /* Gris muy suave */
+
+  /* 🔹 Degradados listos para usar */
+  --gradient-green-header-text: linear-gradient(180deg,
+      var(--verde-lima) 55%,
+      var(--verde-oscuro) 100%);
+  --gradient-background: linear-gradient(135deg,
+      var(--color-tertiary-dark) 20%,
+      var(--color-secondary-dark) 180%);
+  --gradient-background-dark: linear-gradient(0deg,
+      var(--color-primary-dark) 20%,
+      var(--color-tertiary-dark) 180%);
+  --gradient-background-green: linear-gradient(180deg,
+      #808080 25%, #9bc042 100%);
+  --gradient-background-header: linear-gradient(135deg,
+      var(--color-primary-dark) 0%,
+      var(--color-tertiary-dark) 50%,
+      var(--color-secondary-dark) 100%);
+  --grad-verde: linear-gradient(135deg, var(--verde-oscuro), var(--verde-lima));
+  --grad-verde-acento: linear-gradient(135deg,
+      var(--verde-medio),
+      var(--verde-lima));
+  --grad-verde-neutro: linear-gradient(135deg,
+      var(--verde-oscuro),
+      var(--verde-acento));
+  --grad-amarillo: linear-gradient(135deg,
+      var(--amarillo-brillante),
+      var(--verde-lima));
+  --grad-gris: linear-gradient(135deg, var(--gris-suave), var(--gris-claro));
+  --grad-white-vertical: linear-gradient(180deg,
+      #ffffff 0%,
+      #c4c4c4 70%,
+      #ffffff 100%);
+
+  /* 🔳 Bordes redondeados */
+  --radius-sm: 0.4rem;
+  --radius-md: 0.8rem;
+  --radius-lg: 1.5rem;
+  --radius-full: 50%;
+
+  /* 🎚 Transiciones */
+  --transition-fast: all 0.2s ease-in-out;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 0.6s ease;
+
+  /* 🎞️ Animaciones globales */
+  --anim-fade-in: fadeIn 0.6s ease forwards;
+  --anim-slide-up: slideUp 0.6s ease forwards;
+  --anim-scale: scaleIn 0.4s ease forwards;
+  --anim-bounce: bounce 1s infinite;
+  --anim-pulse: pulse 1.5s infinite;
+}
+
+/* 📌 Animaciones reutilizables */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+}
+
+
+
+
+================================================================================
+ARCHIVO: src\styles\variablesant.css
+================================================================================
+
+/* ========== Variables //src/styles/globales.css ========== */
+:root {
+  /* === Fondos base === */
+  --color-bg: #1f1f1f;
+  --color-bg-variant: #3c1f1f;
+  --color-bg-accent: #2c1f1f;
+
+  /* === Paleta primaria (tríada) === */
+  --color-primary: #fa0000;
+  --color-secondary: #00fa00;
+  --color-tertiary: #0000fa;
+
+  /* === Variantes === */
+  --color-primary-variant: rgba(250, 0, 0, 0.4);
+  --color-secondary-variant: rgba(0, 250, 0, 0.3);
+  --color-tertiary-variant: rgba(0, 0, 250, 0.3);
+  --color-accent: #ff1a1a;
+
+  /* === Textos === */
+  --color-white: #fff;
+  --color-light: rgba(255, 255, 255, 0.6);
+  --color-dark: #ccc;
+
+  --shadow-primary: 0 4px 15px var(--color-primary-variant);
+
+  /* ================= FS25 THEME ================= */
+  --fs-bg: #252525;
+  --fs-panel: rgba(18, 22, 18, 0.7);
+  --fs-border: rgba(120, 255, 150, 0.16);
+  --fs-border-hover: rgba(120, 255, 150, 0.28);
+  --fs-accent: #81c332;
+  --fs-accent-2: #6fa82b;
+  --fs-text: #e7f4ea;
+  --fs-muted: #a9c3b1;
+  --fs-warn: #ffd166;
+  --fs-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --fs-shadow-hover: 0 14px 36px rgba(0, 0, 0, 0.55);
+  --fs-shadow-header: 0 6px 22px rgba(0, 0, 0, 0.35);
+  --fs-glow-accent: rgba(120, 255, 150, 0.7);
+  --fs-glow-accent-soft: rgba(120, 255, 150, 0.18);
+  --fs-header-bg-1: rgba(9, 14, 10, 0.72);
+  --fs-header-bg-2: rgba(9, 14, 10, 0.52);
+  --fs-header-line-1: rgba(120, 255, 150, 0.06);
+  --fs-header-line-2: rgba(45, 209, 110, 0.06);
+  --fs-card-bg-1: rgba(23, 30, 24, 0.85);
+  --fs-card-bg-2: rgba(14, 18, 15, 0.85);
+  --fs-hover-gradient: rgba(120, 255, 150, 0.08);
+
+  /* ====== Footer global ====== */
+  --footer-bg: var(--color-primary, #222);
+  --footer-text: var(--color-bg, #f4f4f4);
+  --footer-text-hover: var(--color-white, #fff);
+  --footer-border: var(--color-bg, #eee);
+  --footer-shadow: rgba(0, 0, 0, 0.15);
+
+  /* ====== Footer HomeView ====== */
+  --home-footer-bg: #ffffff;
+  --home-footer-text: #222;
+  --home-footer-text-hover: #4caf50;
+  --home-footer-border: #ddd;
+  --home-footer-shadow: rgba(0, 0, 0, 0.15);
+
+  /* ====== Footer FS25View ====== */
+  --fs-footer-bg: #252525;
+  --fs-footer-text: #ddd;
+  --fs-footer-text-hover: #3cb371;
+  --fs-footer-border: #aaa;
+  --fs-footer-shadow: rgba(0, 0, 0, 0.3);
+
+  /* Navbar colors */
+  --navbar-bg-color: rgba(0, 0, 0, 0.3);
+  --navbar-link-color: var(--color-light);
+  --navbar-link-hover-bg: rgba(0, 0, 0, 0.3);
+
+  /* Socials */
+  --socials-color: var(--color-light);
+  --socials-line-color: var(--color-primary);
+}
+
+
+
+
