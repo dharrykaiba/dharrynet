@@ -1,0 +1,1058 @@
+/* src/styles/WowForeverView.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&display=swap");
+
+.wowforever-page {
+  /* PALETA: ABISMO, ACERO Y BRONCE */
+  --wow-bg: #080B10;
+  --wow-panel: #101720;
+  --wow-card: #131D28;
+  --wow-ocean: #172B3A;
+  --wow-arcane: #20536A;
+  --wow-cyan: #58B6CF;
+
+  --wow-bronze-dark: #241B14;
+  --wow-bronze: #463323;
+  --wow-bronze-mid: #604A32;
+  --wow-gold-dark: #806548;
+  --wow-gold: #B49A75;
+  --wow-gold-light: #D7C19C;
+  --wow-ivory: #E9E2D5;
+
+  --wow-border: #30271E;
+  --wow-border-highlight: #665039;
+  --wow-text: #D8D5CE;
+  --wow-heading: #D7C19C;
+  --wow-muted: #A49B8D;
+  --wow-subtle: #746B60;
+  --wow-link: #70C6DD;
+  --wow-accent: #58B6CF;
+
+  --wow-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.32),
+    0 3px 8px rgba(0, 0, 0, 0.2);
+
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(28, 48, 63, 0.19),
+      transparent 48%
+    ),
+    var(--wow-bg);
+  color: var(--wow-text);
+  font-family: Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+.wowforever-page *,
+.wowforever-page *::before,
+.wowforever-page *::after {
+  box-sizing: border-box;
+}
+
+.wowforever-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wowforever-page button,
+.wowforever-page input,
+.wowforever-page select {
+  font: inherit;
+}
+
+.wowforever-page button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wowforever-page button:focus-visible,
+.wowforever-page a:focus-visible,
+.wowforever-page input:focus-visible,
+.wowforever-page select:focus-visible {
+  outline: 2px solid var(--wow-cyan);
+  outline-offset: 3px;
+}
+
+/* ENCABEZADO */
+
+.wowforever-header {
+  min-height: 76px;
+  padding: 0.85rem max(5%, calc((100% - 1200px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(8, 11, 16, 0.94);
+  border-bottom: 1px solid var(--wow-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+}
+
+.wowforever-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.wowforever-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border: 1px solid var(--wow-gold-dark);
+  border-radius: 4px;
+  background: linear-gradient(145deg, #1B2935, #0B1017);
+  color: var(--wow-gold-light);
+  font-size: 1.25rem;
+  font-weight: 800;
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.45);
+}
+
+.wowforever-brand strong {
+  display: block;
+  color: var(--wow-heading);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.wowforever-brand small {
+  display: block;
+  color: var(--wow-muted);
+  font-size: 0.76rem;
+}
+
+.wowforever-header-status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wowforever-kicker,
+.wowforever-eyebrow,
+.wowforever-panel-label {
+  color: var(--wow-cyan);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.wowforever-main {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+}
+
+.wowforever-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  padding: clamp(3rem, 7vw, 5.5rem) 0 2.5rem;
+  scroll-margin-top: 100px;
+}
+
+.wowforever-hero h1 {
+  margin: 0.5rem 0 1rem;
+  color: #F0E9DD;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+
+.wowforever-hero h1 span {
+  color: var(--wow-cyan);
+  text-shadow: 0 0 22px rgba(88, 182, 207, 0.1);
+}
+
+.wowforever-lead {
+  max-width: 650px;
+  color: var(--wow-ivory);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  line-height: 1.4;
+}
+
+.wowforever-intro,
+.wowforever-section-intro {
+  max-width: 760px;
+  color: var(--wow-muted);
+}
+
+/* BOTONES */
+
+.wowforever-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+}
+
+.wowforever-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--wow-border-highlight);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.wowforever-button:hover {
+  transform: translateY(-2px);
+}
+
+.wowforever-button-primary {
+  background: #24566A;
+  border-color: #3E8095;
+  color: #F1EDE4 !important;
+}
+
+.wowforever-button-primary:hover {
+  background: #34758A;
+  border-color: var(--wow-cyan);
+  color: #FFFFFF !important;
+}
+
+.wowforever-button-secondary {
+  background: #111820;
+  color: var(--wow-ivory);
+}
+
+.wowforever-button-secondary:hover {
+  background: #1B2833;
+  border-color: var(--wow-gold-dark);
+}
+
+/* DATOS DESTACADOS */
+
+.wowforever-hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.7rem;
+}
+
+.wowforever-hero-facts div {
+  display: flex;
+  flex-direction: column;
+}
+
+.wowforever-hero-facts strong {
+  color: var(--wow-heading);
+  font-size: 1.35rem;
+}
+
+.wowforever-hero-facts span {
+  color: var(--wow-muted);
+  font-size: 0.76rem;
+}
+
+/* PANEL HERO */
+
+.wowforever-hero-panel {
+  min-height: 330px;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid var(--wow-border);
+  border-radius: 5px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(88, 182, 207, 0.07),
+      transparent 52%
+    ),
+    linear-gradient(145deg, #141D27, #090D13 78%);
+  box-shadow: var(--wow-shadow);
+}
+
+.wowforever-emblem {
+  display: grid;
+  place-items: center;
+  width: 82px;
+  height: 82px;
+  margin: 1.3rem 0 0.7rem;
+  border: 1px solid var(--wow-gold-dark);
+  border-radius: 50%;
+  color: var(--wow-gold-light);
+  font-size: 2.7rem;
+  background: radial-gradient(circle, #29241E, #101216 72%);
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.55);
+}
+
+.wowforever-hero-panel h2 {
+  margin: 0.5rem 0;
+  color: var(--wow-heading);
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.wowforever-hero-panel p {
+  color: var(--wow-muted);
+}
+
+.wowforever-panel-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1rem;
+  color: var(--wow-muted);
+  font-size: 0.82rem;
+}
+
+.wowforever-status-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--wow-cyan);
+  box-shadow: 0 0 8px rgba(88, 182, 207, 0.3);
+}
+
+/* NAVEGACIÓN INTERNA */
+
+.wowforever-nav {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding: 0.6rem;
+  margin: 0 0 1.2rem;
+  border: 1px solid var(--wow-border);
+  border-radius: 5px;
+  background: rgba(14, 19, 26, 0.94);
+  scrollbar-width: thin;
+  scrollbar-color: var(--wow-border-highlight) var(--wow-bg);
+}
+
+.wowforever-nav button {
+  flex: 0 0 auto;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--wow-muted);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.wowforever-nav button:hover,
+.wowforever-nav button.is-active {
+  background: #1A2B36;
+  border-color: var(--wow-border-highlight);
+  color: var(--wow-ivory);
+}
+
+/* SECCIONES */
+
+.wowforever-section {
+  padding: 1.8rem 0 2.4rem;
+  scroll-margin-top: 105px;
+}
+
+.wowforever-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+}
+
+.wowforever-section-heading h2 {
+  margin: 0.35rem 0 0;
+  color: var(--wow-heading);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.2;
+}
+
+/* BÚSQUEDA Y FILTROS */
+
+.wowforever-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+}
+
+.wowforever-controls input,
+.wowforever-controls select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--wow-border-highlight);
+  border-radius: 4px;
+  background: #0C1118;
+  color: var(--wow-ivory);
+  outline: none;
+}
+
+.wowforever-controls input:focus,
+.wowforever-controls select:focus {
+  border-color: var(--wow-cyan);
+  box-shadow: 0 0 0 2px rgba(88, 182, 207, 0.1);
+}
+
+.wowforever-controls input::placeholder {
+  color: #817665;
+}
+
+/* CLASES */
+
+.wowforever-class-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  align-items: start;
+}
+
+.wowforever-class-card,
+.wowforever-zone-card,
+.wowforever-data-panel,
+.wowforever-skyborne-panel {
+  border: 1px solid var(--wow-border);
+  border-radius: 5px;
+  background: linear-gradient(155deg, #141D27, #0B0F15 88%);
+  box-shadow: var(--wow-shadow);
+}
+
+.wowforever-class-card {
+  overflow: hidden;
+  transition: border-color 180ms ease;
+}
+
+.wowforever-class-card.is-expanded {
+  border-color: var(--wow-gold-dark);
+}
+
+.wowforever-class-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  color: var(--wow-text);
+  cursor: pointer;
+}
+
+.wowforever-class-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border: 1px solid var(--wow-gold-dark);
+  border-radius: 4px;
+  background: #1C1B19;
+  color: var(--wow-gold-light);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.wowforever-class-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.wowforever-class-title strong {
+  display: block;
+  color: var(--wow-heading);
+  font-size: 1rem;
+}
+
+.wowforever-class-title small {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--wow-muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.wowforever-expand {
+  color: var(--wow-cyan);
+  font-size: 1.4rem;
+}
+
+.wowforever-class-details {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid rgba(180, 154, 117, 0.14);
+}
+
+.wowforever-class-details h4 {
+  margin: 1rem 0 0.45rem;
+  color: var(--wow-heading);
+  font-size: 0.82rem;
+}
+
+.wowforever-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.wowforever-chip-list span {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid rgba(180, 154, 117, 0.25);
+  border-radius: 3px;
+  background: #0B1016;
+  color: var(--wow-ivory);
+  font-size: 0.76rem;
+}
+
+.wowforever-class-details ul {
+  margin: 0.3rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--wow-muted);
+  font-size: 0.84rem;
+}
+
+.wowforever-class-details li {
+  margin: 0.35rem 0;
+}
+
+.wowforever-empty {
+  color: var(--wow-muted);
+}
+
+/* ZONAS */
+
+.wowforever-zone-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.wowforever-zone-card {
+  padding: 1.1rem;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.wowforever-zone-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--wow-gold-dark);
+}
+
+.wowforever-zone-mark {
+  color: var(--wow-cyan);
+  font-size: 1.7rem;
+}
+
+.wowforever-zone-card h3 {
+  margin: 0.5rem 0;
+  color: var(--wow-heading);
+  font-size: 1.1rem;
+}
+
+.wowforever-zone-card p {
+  min-height: 55px;
+  margin: 0.3rem 0 1rem;
+  color: var(--wow-muted);
+  font-size: 0.86rem;
+}
+
+.wowforever-status-tag {
+  display: inline-block;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--wow-gold-dark);
+  border-radius: 3px;
+  color: var(--wow-gold-light);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* MAZMORRAS Y BANDAS */
+
+.wowforever-content-columns {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1rem;
+}
+
+.wowforever-data-panel {
+  min-width: 0;
+  padding: 1.15rem;
+}
+
+.wowforever-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.wowforever-panel-heading h3,
+.wowforever-data-panel h3 {
+  margin: 0.1rem 0 0.5rem;
+  color: var(--wow-heading);
+  font-size: 1.2rem;
+}
+
+.wowforever-panel-heading > span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  border: 1px solid var(--wow-gold-dark);
+  border-radius: 50%;
+  color: var(--wow-gold-light);
+  font-size: 0.8rem;
+}
+
+.wowforever-muted,
+.wowforever-disclaimer {
+  color: var(--wow-muted);
+  font-size: 0.8rem;
+}
+
+.wowforever-dungeon-list {
+  margin-top: 0.7rem;
+}
+
+.wowforever-dungeon-row {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(180, 154, 117, 0.13);
+  font-size: 0.84rem;
+}
+
+.wowforever-dungeon-row:last-child {
+  border-bottom: 0;
+}
+
+.wowforever-dungeon-number {
+  color: var(--wow-gold-dark);
+  font-size: 0.72rem;
+}
+
+.wowforever-dungeon-row strong {
+  color: var(--wow-ivory);
+  font-weight: 600;
+}
+
+.wowforever-level {
+  padding: 0.2rem 0.4rem;
+  border: 1px solid rgba(88, 182, 207, 0.12);
+  border-radius: 3px;
+  background: rgba(32, 83, 106, 0.2);
+  color: var(--wow-cyan);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.wowforever-raid-card {
+  margin-top: 0.75rem;
+  padding: 1rem;
+  border-left: 2px solid var(--wow-gold-dark);
+  background: rgba(5, 8, 12, 0.55);
+}
+
+.wowforever-raid-size {
+  color: var(--wow-cyan);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.wowforever-raid-card h4 {
+  margin: 0.25rem 0;
+  color: var(--wow-heading);
+  font-size: 1.1rem;
+}
+
+.wowforever-raid-card p {
+  margin: 0;
+  color: var(--wow-muted);
+  font-size: 0.84rem;
+}
+
+/* RAZAS Y FACCIONES */
+
+.wowforever-race-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.wowforever-combo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.wowforever-combo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  padding: 0.7rem;
+  border: 1px solid rgba(180, 154, 117, 0.16);
+  border-radius: 3px;
+  background: rgba(5, 8, 12, 0.55);
+  font-size: 0.82rem;
+}
+
+.wowforever-combo span {
+  color: var(--wow-muted);
+}
+
+.wowforever-combo b {
+  color: var(--wow-gold-dark);
+}
+
+.wowforever-combo strong {
+  color: var(--wow-heading);
+}
+
+.wowforever-skyborne-panel {
+  padding: 1.2rem;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(88, 182, 207, 0.07),
+      transparent 55%
+    ),
+    linear-gradient(145deg, #141D27, #090D13 85%);
+}
+
+.wowforever-skyborne-panel h3 {
+  margin: 0.4rem 0;
+  color: var(--wow-heading);
+  font-size: 1.8rem;
+}
+
+.wowforever-skyborne-panel > p {
+  color: var(--wow-muted);
+  font-size: 0.88rem;
+}
+
+.wowforever-faction {
+  margin-top: 0.7rem;
+  padding: 0.7rem;
+  border: 1px solid rgba(180, 154, 117, 0.16);
+  border-radius: 3px;
+}
+
+.wowforever-faction strong {
+  color: var(--wow-cyan);
+}
+
+.wowforever-faction p {
+  margin: 0.2rem 0 0;
+  color: var(--wow-ivory);
+  font-size: 0.82rem;
+}
+
+/* CAMPO DE BATALLA */
+
+.wowforever-pvp-panel {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.4rem;
+  border: 1px solid var(--wow-border);
+  border-radius: 5px;
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(88, 182, 207, 0.06),
+      transparent 50%
+    ),
+    linear-gradient(120deg, #141D27, #090D13);
+  box-shadow: var(--wow-shadow);
+}
+
+.wowforever-pvp-emblem {
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  flex: 0 0 auto;
+  border: 1px solid var(--wow-gold-dark);
+  border-radius: 50%;
+  color: var(--wow-gold-light);
+  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.wowforever-pvp-panel h3 {
+  margin: 0.4rem 0;
+  color: var(--wow-heading);
+  font-size: 1.4rem;
+}
+
+.wowforever-pvp-panel p {
+  margin: 0;
+  color: var(--wow-muted);
+  font-size: 0.88rem;
+}
+
+.wowforever-pvp-size {
+  margin-left: auto;
+  color: var(--wow-heading);
+  font-size: 2rem;
+  white-space: nowrap;
+}
+
+.wowforever-pvp-size small {
+  color: var(--wow-cyan);
+  font-size: 0.7rem;
+}
+
+/* HOJA DE RUTA */
+
+.wowforever-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.wowforever-timeline::before {
+  position: absolute;
+  top: 12px;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: var(--wow-gold-dark);
+  content: "";
+}
+
+.wowforever-timeline article {
+  position: relative;
+  padding: 2rem 1rem 1rem;
+  border: 1px solid var(--wow-border);
+  border-radius: 4px;
+  background: linear-gradient(155deg, #141D27, #0B0F15 88%);
+}
+
+.wowforever-timeline-dot {
+  position: absolute;
+  top: 5px;
+  left: 1rem;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--wow-bg);
+  border-radius: 50%;
+  background: var(--wow-cyan);
+  box-shadow: 0 0 0 1px var(--wow-gold-dark);
+}
+
+.wowforever-timeline article small {
+  color: var(--wow-cyan);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.wowforever-timeline h3 {
+  margin: 0.5rem 0;
+  color: var(--wow-heading);
+  font-size: 1.05rem;
+}
+
+.wowforever-timeline p {
+  margin: 0;
+  color: var(--wow-muted);
+  font-size: 0.85rem;
+}
+
+.wowforever-roadmap-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-left: 3px solid var(--wow-gold-dark);
+  background: rgba(16, 23, 32, 0.8);
+}
+
+.wowforever-roadmap-note strong {
+  color: var(--wow-heading);
+}
+
+.wowforever-roadmap-note p {
+  margin: 0.35rem 0;
+  color: var(--wow-muted);
+  font-size: 0.83rem;
+}
+
+.wowforever-roadmap-note a {
+  color: var(--wow-link) !important;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+/* CIERRE */
+
+.wowforever-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 1rem 0 4rem;
+  padding: clamp(1.3rem, 3vw, 2rem);
+  border: 1px solid var(--wow-border);
+  border-left: 3px solid var(--wow-gold-dark);
+  border-radius: 5px;
+  background: linear-gradient(115deg, #141D27, #090D13 90%);
+}
+
+.wowforever-cta h2 {
+  margin: 0.3rem 0;
+  color: var(--wow-heading);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+}
+
+.wowforever-cta p {
+  margin: 0;
+  color: var(--wow-muted);
+}
+
+/* TABLET */
+
+@media (max-width: 950px) {
+  .wowforever-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .wowforever-hero-panel {
+    min-height: auto;
+  }
+
+  .wowforever-zone-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wowforever-content-columns,
+  .wowforever-race-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MÓVILES */
+
+@media (max-width: 700px) {
+  .wowforever-header {
+    align-items: flex-start;
+    padding: 0.75rem 5%;
+  }
+
+  .wowforever-header-status {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .wowforever-kicker {
+    display: none;
+  }
+
+  .wowforever-brand small {
+    max-width: 145px;
+  }
+
+  .wowforever-class-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wowforever-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .wowforever-timeline::before {
+    top: 15px;
+    bottom: 15px;
+    left: 17px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .wowforever-timeline article {
+    padding: 2rem 1rem 1rem 2.4rem;
+  }
+
+  .wowforever-timeline-dot {
+    left: 10px;
+  }
+
+  .wowforever-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .wowforever-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .wowforever-zone-grid,
+  .wowforever-combo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wowforever-pvp-panel {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .wowforever-pvp-size {
+    margin-left: 0;
+    font-size: 1.6rem;
+  }
+
+  .wowforever-dungeon-row {
+    grid-template-columns: 25px minmax(0, 1fr) auto;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+  }
+
+  .wowforever-nav {
+    margin-right: -5.5%;
+    width: 105.5%;
+  }
+
+  .wowforever-hero h1 {
+    font-size: clamp(2.8rem, 13vw, 4rem);
+  }
+}
+
+/* ACCESIBILIDAD */
+
+@media (prefers-reduced-motion: reduce) {
+  .wowforever-page *,
+  .wowforever-page *::before,
+  .wowforever-page *::after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

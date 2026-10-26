@@ -1,26 +1,25 @@
-//src/components/SectionBars/Footer.jsx
+
 import React from "react";
+import { Link } from "react-router-dom";
 import "./footer.css";
-import { links, socialLinks } from "./links";
+import { socialLinks } from "./links";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 const Footer = () => {
+  const { language, t } = useLanguage();
+
   return (
     <footer className="footer">
-      {/* 🔥 Logo / Nombre */}
-      <a href="#" className="footer__logo">
+      <Link to={`/${language}`} className="footer__logo">
         Dharry
-      </a>
+      </Link>
 
-      {/* 🔗 Links de navegación */}
       <ul className="permalinks">
-        {links.map(({ id, label }) => (
-          <li key={id}>
-            <a href={id}>{label}</a>
-          </li>
-        ))}
+        <li>
+          <Link to={`/${language}`}>{t("home")}</Link>
+        </li>
       </ul>
 
-      {/* 🌐 Redes sociales */}
       <div className="footer__socials">
         {socialLinks.map(({ id, url, icon, label }) => (
           <a
@@ -35,12 +34,10 @@ const Footer = () => {
         ))}
       </div>
 
-      {/* 📄 Copyright */}
-      
       <div className="footer__copyright">
         <small>
-          &copy; {new Date().getFullYear()} <strong>Dharry</strong>. Todos los
-          derechos reservados.
+          &copy; {new Date().getFullYear()}{" "}
+          <strong>Dharry</strong>. {t("allRightsReserved")}
         </small>
       </div>
     </footer>

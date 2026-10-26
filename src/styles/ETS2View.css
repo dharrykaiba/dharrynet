@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&display=swap");
+
+.ets2-page {
+  --ets-bg: #1d1f29;
+  --ets-panel: #222431;
+  --ets-card: #272937;
+  --ets-border: #36384a;
+  --ets-text: #ffffff;
+  --ets-muted: #c8c9d4;
+  --ets-subtle: #9295b2;
+  --ets-green: #1eb85c;
+  --ets-green-hover: #17964a;
+  min-height: 100vh;
+  background: var(--ets-bg);
+  color: var(--ets-text);
+  font-family: Roboto, sans-serif;
+  line-height: 1.6;
+}
+.ets2-page * { box-sizing: border-box; }
+.ets2-page a { color: inherit; text-decoration: none; }
+.ets2-page img { display: block; max-width: 100%; }
+
+.ets2-header {
+  min-height: 76px;
+  padding: 0.85rem max(5%, calc((100% - 1200px) / 2));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(29,31,41,.94);
+  border-bottom: 1px solid var(--ets-border);
+  box-shadow: 0 1px 2px rgba(0,0,0,.24), 0 1px 3px rgba(0,0,0,.12);
+  backdrop-filter: blur(12px);
+}
+.ets2-brand { display: flex; align-items: center; gap: 0.8rem; }
+.ets2-brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 4px; background: var(--ets-green); color: #102217; font-weight: 800; font-size: 1.25rem; }
+.ets2-brand strong { display: block; font-size: 1rem; line-height: 1.25; }
+.ets2-brand small { display: block; color: var(--ets-subtle); font-size: 0.76rem; }
+.ets2-main { width: min(1200px, 90%); margin: 0 auto; }
+.ets2-hero { padding: clamp(3.5rem, 8vw, 7rem) 0 3.5rem; }
+.ets2-eyebrow { color: var(--ets-green); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; }
+.ets2-hero h1 { max-width: 850px; margin: 0.6rem 0 1rem; font-size: clamp(2.8rem, 7vw, 5.7rem); line-height: 0.98; letter-spacing: -0.06em; }
+.ets2-hero h1 span { color: var(--ets-green); }
+.ets2-hero > p { max-width: 680px; color: var(--ets-muted); font-size: clamp(1.05rem, 2vw, 1.25rem); }
+.ets2-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.ets2-button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0.7rem 1rem; border: 1px solid var(--ets-border); border-radius: 4px; font-size: 0.9rem; font-weight: 700; transition: background 180ms ease, border-color 180ms ease, transform 180ms ease; }
+.ets2-button:hover { transform: translateY(-2px); }
+.ets2-button-primary { background: var(--ets-green); border-color: var(--ets-green); color: #102217 !important; }
+.ets2-button-primary:hover { background: var(--ets-green-hover); border-color: var(--ets-green-hover); }
+.ets2-button-secondary { background: var(--ets-panel); }
+.ets2-button-secondary:hover { border-color: var(--ets-green); }
+.ets2-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 760px; margin-top: 2.5rem; border: 1px solid var(--ets-border); border-radius: 4px; overflow: hidden; background: var(--ets-panel); }
+.ets2-stats div { display: flex; flex-direction: column; padding: 1rem 1.2rem; border-right: 1px solid var(--ets-border); }
+.ets2-stats div:last-child { border-right: 0; }
+.ets2-stats strong { font-size: 1rem; }
+.ets2-stats span { color: var(--ets-subtle); font-size: 0.82rem; }
+
+.ets2-section { padding: 1.5rem 0 3.5rem; }
+.ets2-section-heading { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.35rem; }
+.ets2-section-heading h2 { margin: 0.35rem 0 0; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2; }
+.ets2-text-link { color: var(--ets-green) !important; font-size: 0.88rem; font-weight: 700; }
+.ets2-text-link:hover, .ets2-card-link:hover { color: var(--ets-text) !important; }
+.ets2-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.ets2-card { overflow: hidden; background: var(--ets-card); border: 1px solid var(--ets-border); border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,.24), 0 1px 3px rgba(0,0,0,.12); transition: border-color 180ms ease, transform 180ms ease; }
+.ets2-card:hover { border-color: var(--ets-green); transform: translateY(-3px); }
+.ets2-card-image { display: block; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ets-panel); }
+.ets2-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 220ms ease; }
+.ets2-card:hover .ets2-card-image img { transform: scale(1.035); }
+.ets2-image-play { position: absolute; right: 0.8rem; bottom: 0.8rem; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 4px; background: var(--ets-green); color: #102217; }
+.ets2-card-body { padding: 1.1rem; }
+.ets2-card-category { color: var(--ets-green); font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em; }
+.ets2-card-body h3 { margin: 0.5rem 0; font-size: 1.08rem; line-height: 1.35; }
+.ets2-card-body p { margin: 0; color: var(--ets-muted); font-size: 0.9rem; }
+.ets2-card-link { display: inline-block; margin-top: 1rem; color: var(--ets-green) !important; font-size: 0.87rem; font-weight: 700; }
+.ets2-note { margin: 0.8rem 0 0; color: var(--ets-subtle); font-size: 0.78rem; }
+.ets2-bottom-panel { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin: 0 0 4rem; padding: clamp(1.3rem, 3vw, 2rem); border: 1px solid var(--ets-border); border-left: 3px solid var(--ets-green); border-radius: 4px; background: var(--ets-panel); }
+.ets2-bottom-panel h2 { margin: 0.3rem 0; font-size: clamp(1.35rem, 3vw, 1.8rem); }
+.ets2-bottom-panel p { margin: 0; color: var(--ets-muted); }
+
+@media (max-width: 800px) {
+  .ets2-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .ets2-header { padding: 0.75rem 5%; }
+  .ets2-main { width: 90%; }
+  .ets2-grid { grid-template-columns: 1fr; }
+  .ets2-section-heading { align-items: flex-start; flex-direction: column; }
+  .ets2-stats { grid-template-columns: 1fr; }
+  .ets2-stats div { border-right: 0; border-bottom: 1px solid var(--ets-border); }
+  .ets2-stats div:last-child { border-bottom: 0; }
+  .ets2-bottom-panel { align-items: flex-start; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ets2-page *, .ets2-page *::before, .ets2-page *::after { transition: none !important; scroll-behavior: auto !important; }
+}
+
+.ets2-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ets2-button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.ets2-section {
+  scroll-margin-top: 2rem;
+}

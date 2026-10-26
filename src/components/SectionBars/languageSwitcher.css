@@ -1,0 +1,143 @@
+
+.language-menu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9rem;
+  z-index: 1000;
+}
+
+.language-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.65rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    opacity 180ms ease;
+}
+
+.language-menu__trigger:hover,
+.language-menu.is-open .language-menu__trigger {
+  background-color: rgb(128 128 128 / 12%);
+}
+
+.language-menu__trigger svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
+}
+
+.language-menu__current {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.language-menu__arrow {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  transition: transform 180ms ease;
+}
+
+.language-menu.is-open .language-menu__arrow {
+  transform: rotate(180deg);
+}
+
+.language-menu__dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 175px;
+  padding: 0.4rem;
+  border: 1px solid rgb(128 128 128 / 22%);
+  border-radius: 0.7rem;
+  background: var(--color-bg, #fff);
+  color: var(--color-text, #222);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 16%);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(6px);
+
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    visibility 160ms ease;
+}
+
+.language-menu.is-open .language-menu__dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.language-menu__option {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.7rem 0.65rem;
+  border: 0;
+  border-radius: 0.45rem;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.language-menu__option:hover,
+.language-menu__option:focus-visible {
+  background-color: rgb(128 128 128 / 13%);
+  outline: none;
+}
+
+.language-menu__option.is-active {
+  font-weight: 700;
+}
+
+.language-menu__code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 1.6rem;
+  border: 1px solid rgb(128 128 128 / 25%);
+  border-radius: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.language-menu__check {
+  margin-left: auto;
+  font-size: 0.9rem;
+}
+
+/* Compatibilidad con pantallas pequeñas */
+@media (max-width: 600px) {
+  .language-menu__dropdown {
+    right: 0;
+    min-width: 160px;
+  }
+}
+
+/* Respeta la preferencia del sistema */
+@media (prefers-reduced-motion: reduce) {
+  .language-menu__trigger,
+  .language-menu__arrow,
+  .language-menu__dropdown,
+  .language-menu__option {
+    transition: none;
+  }
+}

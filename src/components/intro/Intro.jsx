@@ -1,51 +1,86 @@
-import React from "react";
-import "./intro.css";
-import Socials from "../SectionBars/Socials";
-import StreamingStatus from "../streamstate/streamstate";
-//import LastProjects from "../SectionBars/LastProjects";
-import UnderConstruction from "../SectionBars/UnderConstruction";
 
-const projects = [
+import React from "react";
+import { Link } from "react-router-dom";
+import "./intro.css";
+import StreamingStatus from "../streamstate/streamstate";
+import LanguageSwitcher from "../SectionBars/LanguageSwitcher";
+import { useLanguage } from "../../i18n/LanguageContext";
+
+const channels = [
   {
-    title: "🎮 Canal Gaming",
-    link: "https://youtube.com/@dieseldharry",
+    id: "wow",
+    title: "WoW Forever",
+    subtitle: "WORLD OF WARCRAFT",
+    to: "/wowforever",
   },
   {
-    title: "💻 GitHub",
-    link: "https://github.com/dharrynet",
+    id: "farming",
+    title: "Farming Simulator",
+    subtitle: "LA ISLA PERDIDA",
+    to: "/fs25",
   },
   {
-    title: "🔒 Seguridad Electrónica",
-    link: "https://youtube.com/security",
+    id: "truck",
+    title: "Euro Truck Simulator 2",
+    subtitle: "LA RUTA PERDIDA",
+    to: "/ets2",
   },
 ];
 
-const Header = () => {
+const Intro = () => {
+  const { language } = useLanguage();
+
+  // Evita generar una ruta sin idioma.
+  const currentLanguage = language || "es";
+
   return (
-    <header className="hero">
-      <div className="container header__container">
-        <div className="header__intro">
-          <StreamingStatus /> {/* Estado centrado */}
-          <p className="tagline">Gaming • Code • Seguridad</p>
+    <header className="hero" id="inicio">
+      <div className="header__container">
+        <div className="brand">
+          <div className="brand__identity">
+            <div className="brand__name">
+              Dharry<span>Net</span>
+            </div>
+          </div>
+
+          
+          <StreamingStatus />
+          <LanguageSwitcher />
         </div>
 
-        <Socials />
-
-        {/* Reemplazo del figure */}
-        {/* <LastProjects />*/}
-
-        <UnderConstruction /> 
-
-        <a
-          href="#contact"
-          className="scroll__down"
-          aria-label="Scroll down to contact section"
+        <main
+          className="channels"
+          aria-label="Canales y proyectos"
         >
-          Scroll Down
-        </a>
+          {channels.map((channel) => (
+            <Link
+              key={channel.id}
+              className={`channel channel--${channel.id}`}
+              to={`/${currentLanguage}${channel.to}`}
+              aria-label={`Entrar a ${channel.title}`}
+            >
+              <div className="channel__content">
+                <span className="channel__subtitle">
+                  {channel.subtitle}
+                </span>
+
+                <h2 className="channel__title">
+                  {channel.title}
+                </h2>
+
+                <span
+                  className="channel__indicator"
+                  aria-hidden="true"
+                >
+                  <span className="channel__arrow">↗</span>
+                </span>
+              </div>
+            </Link>
+          ))}
+        </main>
       </div>
     </header>
   );
 };
 
-export default Header;
+export default Intro;

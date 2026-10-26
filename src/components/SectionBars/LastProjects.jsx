@@ -1,46 +1,47 @@
-// LastProjects.jsx
+
 import React from "react";
+import { Link, useParams } from "react-router-dom";
 import "./lastProjects.css";
 import { projects } from "./links";
-import { Link } from "react-router-dom"; // ⬅️ importamos Link
 
 const LastProjects = () => {
+  const { lang } = useParams();
+  const language = lang === "en" ? "en" : "es";
+
   return (
     <div className="last-projects">
-      {projects.map((p) => {
-        // ✅ Si es proyecto gaming, usamos Link interno
-        const isInternal = p.id === "gaming";
+      {projects.map((project) => {
+        const cardStyle = {
+          backgroundImage: `linear-gradient(${project.color}, ${project.color}), url(${project.img})`,
+        };
 
         return (
-          <div key={p.id} className="project-wrapper">
-            {isInternal ? (
+          <div key={project.id} className="project-wrapper">
+            {project.id === "gaming" ? (
               <Link
-                to="/fs25" // ruta interna
+                to={`/${language}/fs25`}
                 className="project-card"
-                style={{
-                  backgroundImage: `linear-gradient(${p.color}, ${p.color}), url(${p.img})`,
-                }}
+                style={cardStyle}
               >
                 <div className="project-content">
-                  <h3>{p.title}</h3>
+                  <h3>{project.title}</h3>
                 </div>
               </Link>
             ) : (
               <a
-                href={p.link} // enlaces externos siguen igual
+                href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-card"
-                style={{
-                  backgroundImage: `linear-gradient(${p.color}, ${p.color}), url(${p.img})`,
-                }}
+                style={cardStyle}
               >
                 <div className="project-content">
-                  <h3>{p.title}</h3>
+                  <h3>{project.title}</h3>
                 </div>
               </a>
             )}
-            <p className="project-desc">{p.desc}</p>
+
+            <p className="project-desc">{project.desc}</p>
           </div>
         );
       })}

@@ -1,112 +1,365 @@
-/* ===== Header Hero ===== */
-header.hero {
-  height: 100vh;
-  padding-top: 5rem;
-  overflow: hidden;
-  background-image: linear-gradient(
-      rgba(18, 18, 18, 0.85),
-      rgba(18, 18, 18, 0.85)
-    ),
-    url("../../assets/bg-hero.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: var(--text-primary);
+
+/* =========================================================
+   DHARRYNET — HERO
+   ========================================================= */
+
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  padding: 5rem 0 7rem;
+
   position: relative;
+  overflow: hidden;
+
+  color: var(--text-primary);
+
+  background:
+    linear-gradient(
+      rgba(18, 18, 18, 0.78),
+      rgba(18, 18, 18, 0.94)
+    ),
+    url("../../assets/bg-hero.png") center / cover no-repeat;
+
   animation: var(--anim-fade-in);
 }
 
-/* Contenedor principal del header */
-.header__container {
-  text-align: center;
-  height: 100%;
-  position: relative;
-  width: var(--container-width-lg);
-  margin: 0 auto;
-}
 
-/* Introducción dentro del header */
-.header__intro {
+/* =========================================================
+   CONTENEDOR
+   ========================================================= */
+
+.header__container {
+  width: min(1200px, 90%);
+  min-height: calc(100vh - 12rem);
+
+  margin: 0 auto;
+
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   IDENTIDAD DHARRYNET
+   ========================================================= */
+
+.brand {
+  display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+  gap: 2rem;
+
+  margin-bottom: 3rem;
+
   animation: var(--anim-slide-up);
 }
 
-/* Tagline */
-.tagline {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  font-weight: 400;
-  margin-top: 0.5rem;
+.brand__identity {
+  min-width: 0;
 }
 
-/* Social links */
-.header__socials {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-  position: absolute;
-  left: 0;
-  bottom: 3rem;
+.brand__name {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
 }
 
-.header__socials::after {
-  content: "";
-  width: 1px;
-  height: 2rem;
-  background: var(--red);
+.brand__name span {
+  color: var(--red);
 }
 
-/* Últimos proyectos (sustituye la figura hero) */
-.last-projects {
-  margin-top: 3rem;
+.brand .streaming-status {
+  margin-left: auto;
+}
+
+
+/* =========================================================
+   CANALES
+   ========================================================= */
+
+.channels {
+  width: 100%;
+  min-height: 420px;
+
   display: grid;
-  gap: 1rem;
-  justify-content: center;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--radius-lg);
+
+  background: rgba(0, 0, 0, 0.20);
+  box-shadow: var(--shadow-dark);
+
   animation: var(--anim-scale);
 }
 
-.last-projects a {
-  color: var(--text-red);
-  transition: var(--transition-fast);
-}
-.last-projects a:hover {
-  color: var(--accent-red);
+
+/* =========================================================
+   TARJETA CLICABLE
+   ========================================================= */
+
+.channel {
+  min-width: 0;
+  min-height: 420px;
+  padding: 2.5rem;
+
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+
+  overflow: hidden;
+
+  color: var(--text-primary);
+  text-decoration: none;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.09);
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.02) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+
+  transition:
+    background 400ms ease,
+    opacity 400ms ease,
+    transform 400ms ease,
+    box-shadow 400ms ease;
 }
 
-/* Scroll down indicator */
-.scroll__down {
+.channel:last-child {
+  border-right: none;
+}
+
+
+/* Acento superior */
+
+.channel::before {
+  content: "";
+
   position: absolute;
-  right: -2.3rem;
-  bottom: 5rem;
-  transform: rotate(90deg);
-  font-weight: 300;
-  font-size: 0.9rem;
-  color: var(--red);
-  transition: var(--transition);
+  top: 0;
+  left: 0;
+
+  width: 0;
+  height: 3px;
+
+  background: var(--red);
+
+  transition: width 400ms ease;
 }
 
-.scroll__down:hover {
-  color: var(--accent-red);
+
+/* =========================================================
+   CONTENIDO DE LA TARJETA
+   ========================================================= */
+
+.channel__content {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
 }
 
-/* Media queries: Tablets */
+.channel__subtitle {
+  display: block;
+
+  margin-bottom: 0.7rem;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16rem;
+}
+
+.channel__title {
+  max-width: 360px;
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: clamp(1.8rem, 2.8vw, 2.7rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* Indicador de navegación */
+
+.channel__indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-top: 1.8rem;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  opacity: 0.75;
+
+  transition:
+    color 250ms ease,
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.channel__arrow {
+  font-size: 1.2rem;
+}
+
+
+/* =========================================================
+   INTERACCIÓN
+   ========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+  .channels:has(.channel:hover) .channel:not(:hover) {
+    opacity: 0.45;
+  }
+
+  .channel:hover {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 0, 0, 0.035) 0%,
+      rgba(0, 0, 0, 0.84) 100%
+    );
+  }
+
+  .channel:hover::before {
+    width: 100%;
+  }
+
+  .channel:hover .channel__indicator {
+    color: var(--text-primary);
+    opacity: 1;
+    transform: translateX(3px);
+  }
+}
+
+
+/* Accesibilidad por teclado */
+
+.channel:focus-visible {
+  z-index: 2;
+  outline: 2px solid var(--red);
+  outline-offset: -4px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
 @media screen and (max-width: 1024px) {
-  header.hero {
-    height: 87vh;
+  .hero {
+    padding: 5rem 0 7rem;
+  }
+
+  .header__container {
+    width: var(--container-width-md);
+    min-height: auto;
+  }
+
+  .brand {
+    margin-bottom: 2.5rem;
+  }
+
+  .channels {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .channel {
+    min-height: 220px;
+
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  }
+
+  .channel:last-child {
+    border-bottom: none;
+  }
+
+  .channels:has(.channel:hover) .channel:not(:hover) {
+    opacity: 1;
   }
 }
 
-/* Media queries: Mobile */
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
 @media screen and (max-width: 600px) {
-  header.hero {
-    height: 90vh;
+  .hero {
+    padding: 4rem 0 6rem;
   }
-  .header__socials,
-  .scroll__down {
-    display: none;
+
+  .header__container {
+    width: var(--container-width-sm);
+  }
+
+  .brand {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    margin-bottom: 2rem;
+  }
+
+  .brand__name {
+    font-size: 3rem;
+  }
+
+  .brand .streaming-status {
+    margin-left: 0;
+  }
+
+  .channel {
+    min-height: 210px;
+    padding: 1.6rem;
+  }
+
+  .channel__title {
+    font-size: 1.7rem;
+  }
+
+  .channel__subtitle {
+    font-size: 0.6rem;
+  }
+}
+
+
+/* =========================================================
+   REDUCIR MOVIMIENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .brand,
+  .channels {
+    animation: none;
+  }
+
+  .channel,
+  .channel::before,
+  .channel__indicator {
+    transition: none;
   }
 }

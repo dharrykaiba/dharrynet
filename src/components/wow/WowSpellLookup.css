@@ -1,0 +1,505 @@
+
+/* src/components/wow/WowSpellLookup.css */
+
+/* Paleta de respaldo por si el componente se reutiliza fuera de WoW Forever */
+.wow-spell-section {
+  --wow-bg: #06293F;
+  --wow-panel: #0D4362;
+  --wow-ocean: #196889;
+  --wow-arcane: #2995B8;
+  --wow-cyan: #3FC7E1;
+
+  --wow-bronze-dark: #352317;
+  --wow-bronze: #563D27;
+  --wow-bronze-mid: #745A3F;
+  --wow-gold-dark: #9C7F60;
+  --wow-gold: #C0A98D;
+  --wow-gold-light: #E0CBAF;
+  --wow-ivory: #F8EAD4;
+
+  margin-top: 72px;
+  padding: 32px;
+  border: 1px solid var(--wow-bronze);
+  border-radius: 10px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(63, 199, 225, 0.09),
+      transparent 42%
+    ),
+    var(--wow-bg);
+  color: var(--wow-ivory);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.wow-spell-heading {
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+
+.wow-spell-eyebrow {
+  color: var(--wow-cyan);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.wow-spell-heading h2 {
+  margin: 10px 0;
+  color: var(--wow-gold-light);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+
+.wow-spell-heading p,
+.wow-spell-description {
+  color: var(--wow-gold);
+  line-height: 1.7;
+}
+
+/* Formulario de búsqueda */
+
+.wow-spell-search {
+  max-width: 650px;
+  margin-bottom: 26px;
+}
+
+.wow-spell-search label {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--wow-gold-light);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.wow-spell-search-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.wow-spell-search-controls input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 15px;
+  border: 1px solid var(--wow-bronze-mid);
+  border-radius: 6px;
+  outline: none;
+  background: var(--wow-bronze-dark);
+  color: var(--wow-ivory);
+  font: inherit;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.wow-spell-search-controls input::placeholder {
+  color: var(--wow-gold-dark);
+  opacity: 1;
+}
+
+.wow-spell-search-controls input:focus {
+  border-color: var(--wow-cyan);
+  box-shadow: 0 0 0 3px rgba(63, 199, 225, 0.15);
+}
+
+.wow-spell-search-controls button {
+  flex-shrink: 0;
+  padding: 12px 19px;
+  border: 1px solid var(--wow-cyan);
+  border-radius: 6px;
+  background: var(--wow-ocean);
+  color: var(--wow-ivory);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.wow-spell-search-controls button:hover:not(:disabled) {
+  background: var(--wow-cyan);
+  border-color: var(--wow-cyan);
+  color: var(--wow-bg);
+  transform: translateY(-1px);
+}
+
+.wow-spell-search-controls button:focus-visible,
+.wow-spell-search select:focus-visible {
+  outline: 2px solid var(--wow-cyan);
+  outline-offset: 3px;
+}
+
+.wow-spell-search-controls button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+/* Selector de fuente */
+
+.wow-spell-search select {
+  display: block;
+  width: 100%;
+  margin: 8px 0 16px;
+  padding: 10px 12px;
+  border: 1px solid var(--wow-bronze-mid);
+  border-radius: 6px;
+  background: var(--wow-panel);
+  color: var(--wow-ivory);
+  font: inherit;
+  cursor: pointer;
+}
+
+.wow-spell-search select option {
+  background: var(--wow-bg);
+  color: var(--wow-ivory);
+}
+
+/* Tarjeta de resultado */
+
+.wow-spell-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 24px;
+  border: 1px solid var(--wow-bronze);
+  border-radius: 8px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(13, 67, 98, 0.9),
+      rgba(6, 41, 63, 0.98)
+    );
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.wow-spell-icon-frame {
+  flex-shrink: 0;
+  padding: 5px;
+  border: 1px solid var(--wow-gold-dark);
+  border-radius: 7px;
+  background: var(--wow-bronze-dark);
+  box-shadow: 0 0 18px rgba(156, 127, 96, 0.1);
+}
+
+.wow-spell-icon {
+  display: block;
+  width: 76px;
+  height: 76px;
+  border-radius: 4px;
+  object-fit: cover;
+  image-rendering: auto;
+}
+
+.wow-spell-no-icon {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  color: var(--wow-cyan);
+  font-size: 2rem;
+}
+
+.wow-spell-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.wow-spell-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.wow-spell-title-row h3 {
+  margin: 0;
+  color: var(--wow-gold-light);
+  font-size: 1.5rem;
+  overflow-wrap: anywhere;
+}
+
+.wow-spell-id {
+  padding: 5px 9px;
+  border: 1px solid var(--wow-bronze-mid);
+  border-radius: 5px;
+  background: rgba(53, 35, 23, 0.2);
+  color: var(--wow-gold);
+  font-size: 0.78rem;
+}
+
+.wow-spell-description {
+  margin: 15px 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.wow-spell-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wow-spell-meta span {
+  padding: 5px 9px;
+  border: 1px solid rgba(116, 90, 63, 0.55);
+  border-radius: 5px;
+  background: rgba(13, 67, 98, 0.65);
+  color: var(--wow-gold-light);
+  font-size: 0.76rem;
+  overflow-wrap: anywhere;
+}
+
+/* Estado vacío */
+
+.wow-spell-empty {
+  padding: 28px 16px;
+  border: 1px dashed var(--wow-bronze-mid);
+  border-radius: 8px;
+  background: rgba(13, 67, 98, 0.22);
+  color: var(--wow-gold);
+  text-align: center;
+}
+
+.wow-spell-empty > span {
+  color: var(--wow-cyan);
+  font-size: 1.8rem;
+}
+
+.wow-spell-empty p {
+  margin-bottom: 0;
+}
+
+/* Errores */
+
+.wow-spell-error {
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 130, 130, 0.5);
+  border-radius: 6px;
+  background: rgba(110, 28, 28, 0.22);
+  color: #FFD0C9;
+}
+
+/* Avisos y atribución de fuentes */
+
+.wow-spell-disclaimer {
+  margin: 18px 0 0;
+  color: var(--wow-gold);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.wow-spell-attribution {
+  margin-top: 12px;
+  color: var(--wow-gold);
+  font-size: 0.85rem;
+}
+
+.wow-spell-attribution a {
+  color: var(--wow-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.wow-spell-attribution a:hover {
+  color: var(--wow-ivory);
+}
+
+/* Datos completos del objeto */
+
+.wow-item-raw {
+  margin-top: 18px;
+  color: var(--wow-gold-light);
+}
+
+.wow-item-raw summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.wow-item-raw summary:hover {
+  color: var(--wow-cyan);
+}
+
+.wow-item-raw pre {
+  max-width: 100%;
+  max-height: 420px;
+  overflow: auto;
+  padding: 14px;
+  border: 1px solid var(--wow-bronze-mid);
+  border-radius: 6px;
+  background: var(--wow-bronze-dark);
+  color: var(--wow-ivory);
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Tooltip personalizado */
+
+.wow-tooltip-anchor {
+  position: relative;
+  z-index: 2;
+}
+
+.wow-tooltip-anchor:hover,
+.wow-tooltip-anchor:focus-within {
+  z-index: 20;
+}
+
+.wow-hover-tooltip {
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  bottom: calc(100% + 12px);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: min(320px, 75vw);
+  padding: 14px;
+  border: 1px solid var(--wow-gold-dark, #9C7F60);
+  border-radius: 6px;
+  background: rgba(6, 41, 63, 0.98);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+  color: var(--wow-ivory, #F8EAD4);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 5px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    visibility 0.15s ease;
+}
+
+.wow-tooltip-anchor:hover .wow-hover-tooltip,
+.wow-tooltip-anchor:focus-within .wow-hover-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.wow-tooltip-name {
+  color: var(--wow-gold-light, #E0CBAF);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.wow-tooltip-id {
+  color: var(--wow-gold, #C0A98D);
+  font-size: 0.72rem;
+}
+
+.wow-tooltip-description {
+  color: var(--wow-ivory, #F8EAD4);
+  white-space: pre-wrap;
+}
+
+.wow-tooltip-description:empty {
+  display: none;
+}
+
+/* Rareza original de los objetos de WoW.
+   Estos colores se mantienen por su significado en el juego. */
+
+.quality-poor .wow-tooltip-name,
+.wow-spell-title-row h3.quality-poor {
+  color: #9D9D9D;
+}
+
+.quality-common .wow-tooltip-name,
+.wow-spell-title-row h3.quality-common {
+  color: #FFFFFF;
+}
+
+.quality-uncommon .wow-tooltip-name,
+.wow-spell-title-row h3.quality-uncommon {
+  color: #1EFF00;
+}
+
+.quality-rare .wow-tooltip-name,
+.wow-spell-title-row h3.quality-rare {
+  color: #0070DD;
+}
+
+.quality-epic .wow-tooltip-name,
+.wow-spell-title-row h3.quality-epic {
+  color: #A335EE;
+}
+
+.quality-legendary .wow-tooltip-name,
+.wow-spell-title-row h3.quality-legendary {
+  color: #FF8000;
+}
+
+.quality-artifact .wow-tooltip-name,
+.wow-spell-title-row h3.quality-artifact {
+  color: #E6CC80;
+}
+
+.quality-heirloom .wow-tooltip-name,
+.wow-spell-title-row h3.quality-heirloom {
+  color: #00CCFF;
+}
+
+.quality-wow-token .wow-tooltip-name,
+.wow-spell-title-row h3.quality-wow-token {
+  color: #00CCFF;
+}
+
+/* Móviles */
+
+@media (max-width: 600px) {
+  .wow-spell-section {
+    margin-top: 44px;
+    padding: 20px 16px;
+  }
+
+  .wow-spell-search-controls {
+    flex-direction: column;
+  }
+
+  .wow-spell-search-controls button {
+    width: 100%;
+  }
+
+  .wow-spell-card {
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .wow-spell-icon,
+  .wow-spell-no-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .wow-hover-tooltip {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    width: calc(100vw - 40px);
+    max-width: 360px;
+    transform: translate(-50%, 5px);
+  }
+
+  .wow-tooltip-anchor:hover .wow-hover-tooltip,
+  .wow-tooltip-anchor:focus-within .wow-hover-tooltip {
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wow-spell-section *,
+  .wow-spell-section *::before,
+  .wow-spell-section *::after {
+    transition: none !important;
+  }
+}
