@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.6f659727.css",
-    "main.js": "/static/js/main.f5822462.js",
+    "main.css": "/static/css/main.4a0b1c06.css",
+    "main.js": "/static/js/main.df93feef.js",
     "static/media/bg-hero.png": "/static/media/bg-hero.c88ac20edaf68cbba1f3.png",
     "static/media/fondoheaderazul_3.png": "/static/media/fondoheaderazul_3.6bcc40d7aecbd89c480f.png",
     "static/media/fs25y1bundle_pc_cover_giantsbonus.png": "/static/media/fs25y1bundle_pc_cover_giantsbonus.e1789d5f7daa9485414d.png",
@@ -18,11 +18,11 @@
     "static/media/logodiesel200.png": "/static/media/logodiesel200.ee286d15af78df0d7343.png",
     "static/media/Giants_OfficialPartnerBadge_TransparentWhite.png": "/static/media/Giants_OfficialPartnerBadge_TransparentWhite.1f6899334472610a853d.png",
     "index.html": "/index.html",
-    "main.6f659727.css.map": "/static/css/main.6f659727.css.map",
-    "main.f5822462.js.map": "/static/js/main.f5822462.js.map"
+    "main.4a0b1c06.css.map": "/static/css/main.4a0b1c06.css.map",
+    "main.df93feef.js.map": "/static/js/main.df93feef.js.map"
   },
   "entrypoints": [
-    "static/css/main.6f659727.css",
-    "static/js/main.f5822462.js"
+    "static/css/main.4a0b1c06.css",
+    "static/js/main.df93feef.js"
   ]
 }
