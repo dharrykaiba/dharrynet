@@ -111,3 +111,511 @@
 .ets2-section {
   scroll-margin-top: 2rem;
 }
+
+
+/* =========================================
+   LA RUTA PERDIDA
+   Adaptación al diseño original de DharryNet
+   ========================================= */
+
+.ruta-page {
+  --ruta-accent: var(--ets-green);
+  --ruta-panel: var(--ets-panel);
+  --ruta-border: var(--ets-border);
+  --ruta-muted: var(--ets-muted);
+}
+
+/* Portada */
+
+.ruta-main {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+}
+
+.ruta-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding: clamp(2.5rem, 6vw, 5rem) 0 3.5rem;
+}
+
+.ruta-hero-copy {
+  min-width: 0;
+}
+
+.ruta-kicker,
+.ruta-section-label {
+  color: var(--ets-green);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.6;
+}
+
+.ruta-hero h1 {
+  margin: 0.6rem 0 1rem;
+  color: var(--ets-text);
+  font-size: clamp(2.5rem, 5.3vw, 5rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+  overflow-wrap: anywhere;
+}
+
+.ruta-hero h1 span {
+  display: block;
+  color: var(--ets-green);
+}
+
+.ruta-subtitle {
+  margin: 0 0 1rem;
+  color: var(--ets-text);
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.ruta-intro {
+  margin: 0;
+  color: var(--ets-muted);
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+.ruta-intro strong {
+  color: var(--ets-text);
+}
+
+.ruta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.ruta-tags span {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--ets-border);
+  border-radius: 4px;
+  background: var(--ets-panel);
+  color: var(--ets-muted);
+  font-size: 0.76rem;
+}
+
+.ruta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.ruta-actions .ets2-button,
+.ruta-cta-actions .ets2-button {
+  min-height: 44px;
+  text-align: center;
+}
+
+.ruta-note {
+  margin: 1rem 0 0;
+  color: var(--ets-subtle);
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+/* Playlist */
+
+.ruta-player-wrap {
+  min-width: 0;
+  padding: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--ets-border);
+  border-radius: 4px;
+  background: var(--ets-panel);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24),
+    0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.ruta-player-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.25rem 0.25rem 0.8rem;
+  color: var(--ets-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.ruta-live-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: var(--ets-green);
+}
+
+.ruta-player-label {
+  margin-left: auto;
+  color: var(--ets-subtle);
+  font-size: 0.68rem;
+}
+
+.ruta-player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #111;
+}
+
+.ruta-player iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.ruta-player-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.8rem 0.25rem 0.2rem;
+  color: var(--ets-muted);
+  font-size: 0.8rem;
+}
+
+.ruta-player-footer a,
+.ruta-inline-link {
+  color: var(--ets-green);
+  font-weight: 700;
+}
+
+.ruta-player-footer a:hover,
+.ruta-inline-link:hover {
+  color: var(--ets-text);
+}
+
+/* Capítulo 1 */
+
+.ruta-chapter {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin: 0 0 3.5rem;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border: 1px solid var(--ets-border);
+  border-left: 3px solid var(--ets-green);
+  border-radius: 4px;
+  background: var(--ets-panel);
+  scroll-margin-top: 90px;
+}
+
+.ruta-chapter-number {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  color: var(--ets-subtle);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.ruta-chapter-number strong {
+  color: var(--ets-green);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.ruta-chapter-copy h2,
+.ruta-section-heading h2,
+.ruta-cta h2 {
+  margin: 0.4rem 0 0.8rem;
+  color: var(--ets-text);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.ruta-chapter-copy > p,
+.ruta-section-heading > p,
+.ruta-cta p {
+  color: var(--ets-muted);
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+.ruta-chapter-copy > p strong {
+  color: var(--ets-green);
+}
+
+.ruta-chapter-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.ruta-chapter-facts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid var(--ets-border);
+  border-radius: 4px;
+  background: var(--ets-card);
+}
+
+.ruta-chapter-facts span {
+  color: var(--ets-subtle);
+  font-size: 0.76rem;
+}
+
+.ruta-chapter-facts strong {
+  color: var(--ets-text);
+  font-size: 0.86rem;
+  overflow-wrap: anywhere;
+}
+
+.ruta-inline-link {
+  display: inline-block;
+  font-size: 0.88rem;
+}
+
+/* Objetivos */
+
+.ruta-progression {
+  margin-bottom: 3.5rem;
+}
+
+.ruta-section-heading {
+  max-width: 760px;
+  margin-bottom: 1.35rem;
+}
+
+.ruta-section-heading > p {
+  margin-bottom: 0;
+}
+
+.ruta-goals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.ruta-goal-card {
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--ets-border);
+  border-radius: 4px;
+  background: var(--ets-card);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.ruta-goal-card:hover {
+  border-color: var(--ets-green);
+  transform: translateY(-2px);
+}
+
+.ruta-goal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.ruta-goal-icon {
+  font-size: 1.6rem;
+}
+
+.ruta-goal-number {
+  color: var(--ets-subtle);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.ruta-goal-card h3 {
+  margin: 0 0 0.65rem;
+  color: var(--ets-text);
+  font-size: 1.08rem;
+  line-height: 1.4;
+}
+
+.ruta-goal-card p {
+  margin: 0;
+  color: var(--ets-muted);
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+/* Cierre */
+
+.ruta-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 0 0 4rem;
+  padding: clamp(1.3rem, 3vw, 2rem);
+  border: 1px solid var(--ets-border);
+  border-left: 3px solid var(--ets-green);
+  border-radius: 4px;
+  background: var(--ets-panel);
+}
+
+.ruta-cta > div:first-child {
+  max-width: 700px;
+}
+
+.ruta-cta h2 {
+  margin-top: 0.3rem;
+}
+
+.ruta-cta p {
+  margin-bottom: 0;
+}
+
+.ruta-cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  gap: 0.8rem;
+}
+
+.ruta-members-link {
+  color: var(--ets-muted);
+  font-size: 0.88rem;
+}
+
+/* Adaptación a tablet */
+
+@media (max-width: 900px) {
+  .ruta-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+    padding-top: 2.5rem;
+  }
+
+  .ruta-hero-copy {
+    max-width: 760px;
+  }
+
+  .ruta-player-wrap {
+    width: 100%;
+  }
+
+  .ruta-chapter {
+    grid-template-columns: 80px minmax(0, 1fr);
+  }
+
+  .ruta-chapter-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .ruta-goals {
+    grid-template-columns: 1fr;
+  }
+
+  .ruta-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ruta-cta-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+/* Adaptación a móvil */
+
+@media (max-width: 600px) {
+  .ruta-main {
+    width: 90%;
+  }
+
+  .ruta-hero {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .ruta-hero h1 {
+    font-size: clamp(2.55rem, 12vw, 4rem);
+  }
+
+  .ruta-actions {
+    flex-direction: column;
+  }
+
+  .ruta-actions .ets2-button {
+    width: 100%;
+  }
+
+  .ruta-player-wrap {
+    padding: 0.5rem;
+  }
+
+  .ruta-player-footer {
+    flex-direction: column;
+  }
+
+  .ruta-chapter {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    padding: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .ruta-chapter-number {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .ruta-chapter-number strong {
+    font-size: 2.5rem;
+  }
+
+  .ruta-chapter-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ruta-progression {
+    margin-bottom: 2.5rem;
+  }
+
+  .ruta-goals {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ruta-cta {
+    padding: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .ruta-cta-actions {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ruta-cta-actions .ets2-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ruta-goal-card {
+    transition: none;
+  }
+
+  .ruta-goal-card:hover {
+    transform: none;
+  }
+}

@@ -7,44 +7,44 @@ import LanguageSwitcher from "../components/SectionBars/LanguageSwitcher";
 import StreamingStatus from "../components/streamstate/streamstate";
 import { useLanguage } from "../i18n/LanguageContext";
 
+const PLAYLIST_URL =
+  "https://www.youtube.com/watch?v=03DTx4VteaQ&list=PLMuZGaMwCskM";
+
+const FIRST_EPISODE_URL =
+  "https://www.youtube.com/watch?v=03DTx4VteaQ&list=PLMuZGaMwCskM&index=1";
+
+const PLAYLIST_EMBED_URL =
+  "https://www.youtube-nocookie.com/embed/videoseries?list=PLMuZGaMwCskM";
+
 export default function ETS2View() {
   const { language, t } = useLanguage();
 
-  const routes = [
+  const goals = [
     {
-      id: "travel",
-      title: t("ets2TravelTitle"),
-      category: t("ets2TravelCategory"),
-      description: t("ets2TravelDescription"),
-      image:
-        "https://placehold.co/640x360/222431/1eb85c?text=Rutas+por+Europa",
+      number: "01",
+      title: "El primer camión",
+      description:
+        "Ahorrar nuestros primeros ingresos y dejar de depender de vehículos ajenos.",
+      icon: "🚛",
     },
     {
-      id: "trucks",
-      title: t("ets2TrucksTitle"),
-      category: t("ets2TrucksCategory"),
-      description: t("ets2TrucksDescription"),
-      image: "https://placehold.co/640x360/272937/c8c9d4?text=Camiones",
+      number: "02",
+      title: "Nuestra empresa",
+      description:
+        "Convertirnos en transportistas independientes y construir una compañía propia.",
+      icon: "🏢",
     },
     {
-      id: "series",
-      title: t("ets2SeriesTitle"),
-      category: t("ets2SeriesCategory"),
-      description: t("ets2SeriesDescription"),
-      image:
-        "https://placehold.co/640x360/222431/9295b2?text=Proximos+viajes",
+      number: "03",
+      title: "Una flota en expansión",
+      description:
+        "Comprar garajes, contratar conductores y abrir nuevas rutas por Europa.",
+      icon: "🌍",
     },
   ];
 
-  const scrollToEpisodes = () => {
-    document.getElementById("ets2-episodios")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
   return (
-    <div className="ets2-page">
+    <div className="ets2-page ruta-page">
       <header className="ets2-header">
         <Link
           className="ets2-brand"
@@ -64,110 +64,200 @@ export default function ETS2View() {
         </div>
       </header>
 
-      <main className="ets2-main">
-        <section className="ets2-hero">
-          <span className="ets2-eyebrow">{t("ets2Eyebrow")}</span>
+      <main className="ets2-main ruta-main">
+        <section className="ruta-hero">
+          <div className="ruta-hero-copy">
+            <span className="ruta-kicker">
+              DIESELDHARRY PRESENTA
+            </span>
 
-          <h1>
-            {t("ets2HeadlineStart")}{" "}
-            <span>{t("ets2HeadlineEnd")}</span>
-          </h1>
+            <h1>
+              LA RUTA
+              <span> PERDIDA</span>
+            </h1>
 
-          <p>{t("ets2Description")}</p>
+            <p className="ruta-subtitle">
+              Una historia que se construye kilómetro a kilómetro.
+            </p>
 
-          <div className="ets2-actions">
-            <a
-              className="ets2-button ets2-button-primary"
-              href="https://youtube.com/@dharrygames"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ▶ {t("ets2WatchYoutube")}
-            </a>
+            <p className="ruta-intro">
+              Llegamos a Milán con <strong>0 € y sin camión propio</strong>.
+              Tenemos una oportunidad para comenzar, una primera entrega
+              que cumplir y un objetivo: construir nuestra propia empresa
+              de transporte y recorrer toda Europa.
+            </p>
 
-            <button
-              type="button"
-              className="ets2-button ets2-button-secondary"
-              onClick={scrollToEpisodes}
-            >
-              {t("ets2ViewEpisodes")}
-            </button>
+            <div className="ruta-tags">
+              <span>🚛 Progresión desde cero</span>
+              <span>🎬 Serie narrativa</span>
+              <span>🌍 Viajes por Europa</span>
+            </div>
+
+            <div className="ruta-actions">
+              <a
+                className="ets2-button ets2-button-primary"
+                href={PLAYLIST_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ▶ Ver la serie
+              </a>
+
+              <a
+                className="ets2-button ets2-button-secondary"
+                href={FIRST_EPISODE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Comenzar por el capítulo 1 ↗
+              </a>
+            </div>
+
+            <p className="ruta-note">
+              Sin prisas. Sin saltarnos el camino. Cada viaje cuenta.
+            </p>
           </div>
 
-          <div className="ets2-stats" aria-label={t("ets2ContentTypes")}>
-            <div>
-              <strong>{t("ets2Routes")}</strong>
-              <span>{t("ets2Europe")}</span>
+          <div className="ruta-player-wrap">
+            <div className="ruta-player-heading">
+              <span className="ruta-live-dot" />
+              <span>LA SERIE COMPLETA</span>
+              <span className="ruta-player-label">YOUTUBE</span>
             </div>
-            <div>
-              <strong>{t("ets2Trucks")}</strong>
-              <span>{t("ets2TruckSetup")}</span>
+
+            <div className="ruta-player">
+              <iframe
+                src={PLAYLIST_EMBED_URL}
+                title="La Ruta Perdida — Serie de Euro Truck Simulator 2"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
             </div>
-            <div>
-              <strong>{t("ets2Series")}</strong>
-              <span>{t("ets2EpisodesAdventures")}</span>
+
+            <div className="ruta-player-footer">
+              <span>DieselDharry</span>
+              <a
+                href={PLAYLIST_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir playlist en YouTube ↗
+              </a>
             </div>
           </div>
         </section>
 
-        <section className="ets2-section" id="ets2-episodios">
-          <div className="ets2-section-heading">
-            <div>
-              <span className="ets2-eyebrow">
-                {t("ets2FeaturedVideos")}
-              </span>
-              <h2>{t("ets2NextStop")}</h2>
+        <section className="ruta-chapter">
+          <div className="ruta-chapter-number">
+            <span>CAPÍTULO</span>
+            <strong>01</strong>
+          </div>
+
+          <div className="ruta-chapter-copy">
+            <span className="ruta-section-label">
+              TODO GRAN VIAJE TIENE UN COMIENZO
+            </span>
+
+            <h2>Milán, Italia. Una oportunidad.</h2>
+
+            <p>
+              No tenemos dinero, camión, empleados ni una empresa propia.
+              Nuestro primer trabajo será como conductor contratado,
+              llevando un contenedor de zanahorias de 15,4 toneladas
+              a bordo de un Volvo FH16 que todavía no nos pertenece.
+            </p>
+
+            <p>
+              La primera entrega nos deja <strong>1.182 €</strong>.
+              Es poco para construir un imperio, pero suficiente para
+              dar el primer paso.
+            </p>
+
+            <div className="ruta-chapter-facts">
+              <div>
+                <span>📍 Ubicación</span>
+                <strong>Milán, Italia</strong>
+              </div>
+              <div>
+                <span>📦 Primera carga</span>
+                <strong>Zanahorias · 15,4 t</strong>
+              </div>
+              <div>
+                <span>💰 Primeros ingresos</span>
+                <strong>1.182 €</strong>
+              </div>
             </div>
 
             <a
-              className="ets2-text-link"
-              href="https://youtube.com/@dharrygames"
+              className="ruta-inline-link"
+              href={FIRST_EPISODE_URL}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {t("ets2YoutubeChannel")} ↗
+              Ver el comienzo de la historia ↗
             </a>
           </div>
+        </section>
 
-          <div className="ets2-grid">
-            {routes.map((route) => (
-              <article className="ets2-card" key={route.id}>
-                <div className="ets2-card-image">
-                  <img src={route.image} alt={route.title} loading="lazy" />
-                </div>
+        <section className="ruta-progression">
+          <div className="ruta-section-heading">
+            <span className="ruta-section-label">
+              NUESTRO OBJETIVO
+            </span>
+            <h2>De conductor contratado a empresario.</h2>
+            <p>
+              Nada llegará de golpe. Cada entrega nos acercará un poco
+              más a la empresa que queremos construir.
+            </p>
+          </div>
 
-                <div className="ets2-card-body">
-                  <span className="ets2-card-category">
-                    {route.category}
-                  </span>
-                  <h3>{route.title}</h3>
-                  <p>{route.description}</p>
-                  <span className="ets2-card-link">
-                    {t("ets2WatchVideo")}
-                  </span>
+          <div className="ruta-goals">
+            {goals.map((goal) => (
+              <article className="ruta-goal-card" key={goal.number}>
+                <div className="ruta-goal-top">
+                  <span className="ruta-goal-icon">{goal.icon}</span>
+                  <span className="ruta-goal-number">{goal.number}</span>
                 </div>
+                <h3>{goal.title}</h3>
+                <p>{goal.description}</p>
               </article>
             ))}
           </div>
-
-          <p className="ets2-note">{t("ets2ExampleNote")}</p>
         </section>
 
-        <section className="ets2-bottom-panel">
+        <section className="ruta-cta">
           <div>
-            <span className="ets2-eyebrow">{t("ets2BrandLine")}</span>
-            <h2>{t("ets2BottomTitle")}</h2>
-            <p>{t("ets2BottomDescription")}</p>
+            <span className="ruta-section-label">
+              LA CARRETERA SERÁ NUESTRA HISTORIA
+            </span>
+            <h2>El viaje acaba de comenzar.</h2>
+            <p>
+              Acompáñanos en La Ruta Perdida. Cada capítulo es un nuevo
+              viaje, una decisión y un paso más hacia nuestro objetivo.
+            </p>
           </div>
 
-          <a
-            className="ets2-button ets2-button-primary"
-            href="https://youtube.com/@dharrygames"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t("ets2JoinJourney")} ↗
-          </a>
+          <div className="ruta-cta-actions">
+            <a
+              className="ets2-button ets2-button-primary"
+              href={PLAYLIST_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ▶ Ver todos los capítulos
+            </a>
+
+            <a
+              className="ruta-members-link"
+              href="https://www.youtube.com/@DieselDharry/join"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ❤️ Apoyar el canal
+            </a>
+          </div>
         </section>
       </main>
 
