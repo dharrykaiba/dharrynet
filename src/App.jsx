@@ -2,14 +2,13 @@
 import React from "react";
 import { HashRouter as Router } from "react-router-dom";
 
-// Estilos globales
-
-import Routes from "./routes/routes"; // Importa el archivo de rutas
-// Views
+import Routes from "./routes/routes";
+import AnalyticsTracker from "./components/AnalyticsTracker";
 
 function App() {
   return (
     <Router>
+      <AnalyticsTracker />
       <Routes />
     </Router>
   );
